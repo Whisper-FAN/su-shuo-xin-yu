@@ -72,7 +72,7 @@
         <div class="p-6 rounded-2xl bg-primary/5 border border-primary/10 max-w-sm mx-auto">
           <p class="text-sm text-on-surface-variant mb-3">加入生肖守护者社群 · 领9折定制券</p>
           <div class="w-28 h-28 mx-auto rounded-xl bg-white border border-outline-variant/20 flex items-center justify-center shadow-sm overflow-hidden">
-            <img src="/images/team/qrcode.jpg" alt="社群二维码" class="w-full h-full object-cover" @error="e=>e.target.remove()"/>
+            <img :src="base + '/images/team/qrcode.jpg'" alt="社群二维码" class="w-full h-full object-cover" @error="e=>e.target.remove()"/>
           </div>
           <p class="text-xs text-on-surface-variant/50 mt-2">扫码入群 · 每周福利 · 传承人直播</p>
         </div>
@@ -152,6 +152,7 @@
 </template>
 
 <script setup>
+import { base } from '@/utils/base'
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { recordBehavior } from '@/utils/scroll-reveal'

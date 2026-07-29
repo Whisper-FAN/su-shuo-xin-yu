@@ -9,7 +9,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem">
         <div v-for="p in products" :key="p.id" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);cursor:default">
           <div style="aspect-ratio:1;overflow:hidden;background:#f0eee8">
-            <img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s" loading="lazy"
+            <img :src="base + p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s" loading="lazy"
                  @error="e => { e.target.style.display='none'; e.target.parentElement.innerHTML='<div style=width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(140,74,47,0.05)>'+p.cat+'</div>' }" />
           </div>
           <div style="padding:1rem">
@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+import { base } from '@/utils/base'
 const products = [
   { id:1, name:'十二生肖泥塑摆件', price:'29', cat:'文创', img:'/images/zodiac/all-zodiac.png' },
   { id:2, name:'红桃粿泥塑口哨', price:'12', cat:'文创', img:'/images/products/creative/hongtaoguo.jpg' },

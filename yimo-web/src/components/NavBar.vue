@@ -6,7 +6,7 @@
       <router-link to="/" class="flex items-center gap-3 hover:scale-105 transition-transform">
         <img
           v-if="!logoError"
-          src="/images/team/logo.jpg"
+          :src="base + '/images/team/logo.jpg'"
           alt="塑说心语"
           class="h-10 md:h-12 w-auto object-contain rounded-lg shadow-sm"
           @error="logoError = true"
@@ -73,6 +73,7 @@
 </template>
 
 <script setup>
+import { base } from '@/utils/base'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 

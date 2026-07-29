@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+import { base } from '@/utils/base'
 import { ref } from 'vue'
 const lightbox = ref(null)
 const images = [
