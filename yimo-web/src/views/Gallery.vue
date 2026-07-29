@@ -8,7 +8,7 @@
 
       <div style="column-count:2;column-gap:1rem;margin-bottom:4rem">
         <div v-for="img in images" :key="img.id" style="break-inside:avoid;margin-bottom:1rem;border-radius:0.75rem;overflow:hidden;background:#f0eee8;box-shadow:0 1px 3px rgba(0,0,0,0.06);cursor:pointer" @click="lightbox = img">
-          <img :src="base + img.url" :alt="img.title" style="width:100%;display:block;transition:transform 0.5s" loading="lazy"
+          <img :src="'/su-shuo-xin-yu' + img.url" :alt="img.title" style="width:100%;display:block;transition:transform 0.5s" loading="lazy"
                @error="e => { e.target.src='/images/products/workshop/IMG_0031.JPG' }" />
           <div style="padding:0.75rem"><p style="font-size:0.8rem;color:#1c1c18;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ img.title }}</p></div>
         </div>
@@ -20,7 +20,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem">
           <div v-for="p in products" :key="p.id" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
             <div style="aspect-ratio:1;overflow:hidden;background:#f0eee8">
-              <img :src="base + p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;transform:scale(1);box-shadow:none" loading="lazy"
+              <img :src="'/su-shuo-xin-yu' + p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;transform:scale(1);box-shadow:none" loading="lazy"
                    @mouseenter="e => e.target.style.transform='scale(1.05)'"
                    @mouseleave="e => e.target.style.transform='scale(1)'"
                    @error="e => { e.target.style.display='none'; e.target.parentElement.innerHTML='<div style=width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(140,74,47,0.05)>'+p.cat+'</div>' }" />
@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { base } from '@/utils/base'
+
 import { ref } from 'vue'
 const lightbox = ref(null)
 const images = [

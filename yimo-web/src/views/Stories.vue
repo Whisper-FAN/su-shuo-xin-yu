@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { base } from '@/utils/base'
+
 const stories = [
   {
     title: '大吴泥塑：国家级非物质文化遗产',

@@ -12,7 +12,7 @@
              style="width:calc((100% - 50px) / 6);cursor:pointer;text-align:center"
              @click="$router.push('/zodiac/'+z.id)">
           <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:#f0eee8;margin-bottom:6px">
-            <img :src="base + z.img" :alt="z.name"
+            <img :src="'/su-shuo-xin-yu' + z.img" :alt="z.name"
                  style="width:100%;height:100%;object-fit:cover"
                  loading="lazy"
                  @error="e => e.target.parentElement.innerHTML='<span style=display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:2rem;background:rgba(140,74,47,0.05)>'+z.emoji+'</span>'" />
@@ -28,7 +28,7 @@
              style="width:calc((100% - 50px) / 6);cursor:pointer;text-align:center"
              @click="$router.push('/zodiac/'+z.id)">
           <div style="aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:#f0eee8;margin-bottom:6px">
-            <img :src="base + z.img" :alt="z.name"
+            <img :src="'/su-shuo-xin-yu' + z.img" :alt="z.name"
                  style="width:100%;height:100%;object-fit:cover"
                  loading="lazy"
                  @error="e => e.target.parentElement.innerHTML='<span style=display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:2rem;background:rgba(140,74,47,0.05)>'+z.emoji+'</span>'" />
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { base } from '@/utils/base'
+
 const zodiacs = [
   { id:1, name:'鼠', alias:'子鼠', emoji:'🐭', img:'/images/zodiac/rat.jpg' },
   { id:2, name:'牛', alias:'丑牛', emoji:'🐮', img:'/images/zodiac/ox.jpg' },

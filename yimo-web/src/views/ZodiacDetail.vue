@@ -7,7 +7,7 @@
 
       <div class="grid md:grid-cols-2 gap-10 mb-16">
         <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl bg-surface-container">
-          <img :src="base + z.img" :alt="z.name" class="w-full h-full object-cover"
+          <img :src="'/su-shuo-xin-yu' + z.img" :alt="z.name" class="w-full h-full object-cover"
                @error="e => { e.target.replaceWith(Object.assign(document.createElement('span'),{className:'w-full h-full flex items-center justify-center text-[160px] bg-gradient-to-br from-primary/10 to-secondary/10',textContent:z.emoji})) }" />
         </div>
         <div class="flex flex-col justify-center">
@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { base } from '@/utils/base'
+
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 

@@ -10,7 +10,7 @@
         <p style="color:#53433d;font-size:0.9rem;margin-bottom:1.5rem">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
 
         <div style="max-width:320px;margin:0 auto 1.5rem;aspect-ratio:4/3;border-radius:1rem;overflow:hidden;background:#f0eee8;box-shadow:0 4px 20px rgba(0,0,0,0.1)">
-          <img v-if="!imgErr" :src="base + result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover" @error="imgErr=true"/>
+          <img v-if="!imgErr" :src="'/su-shuo-xin-yu' + result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover" @error="imgErr=true"/>
           <div v-else style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,rgba(140,74,47,0.1),rgba(57,103,89,0.1))">{{ emoji }}</div>
         </div>
 
@@ -81,7 +81,7 @@
         <div style="background:rgba(140,74,47,0.03);border-radius:1rem;padding:1.5rem;border:1px solid rgba(140,74,47,0.08);max-width:20rem;margin:0 auto 1.5rem">
           <p style="font-size:0.9rem;color:#53433d;margin-bottom:1rem">加入生肖守护者社群 · 领9折定制券</p>
           <div style="width:6rem;height:6rem;margin:0 auto 0.75rem;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(0,0,0,0.06)">
-            <img :src="base + '/images/team/qrcode.jpg'" alt="社群二维码" style="width:100%;height:100%;object-fit:cover" @error="e=>e.target.remove()"/>
+            <img :src="'/su-shuo-xin-yu/images/team/qrcode.jpg'" alt="社群二维码" style="width:100%;height:100%;object-fit:cover" @error="e=>e.target.remove()"/>
           </div>
           <p style="font-size:0.75rem;color:rgba(83,67,61,0.5)">扫码入群 · 每周福利 · 传承人直播</p>
         </div>
@@ -109,7 +109,7 @@
 
             <!-- Zodiac image -->
             <div style="aspect-ratio:4/3;background:#f0eee8;overflow:hidden">
-              <img v-if="!imgErr" :src="base + result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover"/>
+              <img v-if="!imgErr" :src="'/su-shuo-xin-yu' + result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover"/>
             </div>
 
             <!-- Tags -->
@@ -164,7 +164,7 @@
 </template>
 
 <script setup>
-import { base } from '@/utils/base'
+
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { recordBehavior } from '@/utils/scroll-reveal'
