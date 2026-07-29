@@ -1,116 +1,127 @@
 <template>
-  <div class="min-h-screen pt-24 pb-20 px-6" v-if="result">
-    <div class="max-w-[640px] mx-auto">
+  <!-- ======== RESULT PAGE ======== -->
+  <div v-if="result" style="min-height:100vh;padding:6rem 1rem 4rem;background:#fcf9f3">
+    <div style="max-width:640px;margin:0 auto">
+
       <!-- Hero -->
-      <section class="text-center mb-12">
-        <span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container text-xs uppercase tracking-widest mb-4">测评结果</span>
-        <h1 class="font-display text-3xl md:text-4xl text-on-surface mb-2">您的生肖守护神：<span class="text-primary">{{ result.zodiacName }}</span></h1>
-        <p class="text-on-surface-variant text-sm mb-6">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
-        <div class="mx-auto max-w-sm aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-surface-container mb-6">
-          <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" class="w-full h-full object-cover" @error="imgErr=true"/>
-          <div v-else class="w-full h-full flex items-center justify-center text-8xl bg-gradient-to-br from-primary/10 to-secondary/10">{{ emoji }}</div>
+      <div style="text-align:center;margin-bottom:2.5rem">
+        <span style="display:inline-block;padding:0.25rem 1rem;border-radius:999px;background:rgba(57,103,89,0.1);color:#396759;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem">测评结果</span>
+        <h1 style="font-family:'Noto Serif SC',serif;font-size:1.75rem;color:#1c1c18;margin-bottom:0.5rem">您的生肖守护神：<span style="color:#8c4a2f">{{ result.zodiacName }}</span></h1>
+        <p style="color:#53433d;font-size:0.9rem;margin-bottom:1.5rem">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
+
+        <div style="max-width:320px;margin:0 auto 1.5rem;aspect-ratio:4/3;border-radius:1rem;overflow:hidden;background:#f0eee8;box-shadow:0 4px 20px rgba(0,0,0,0.1)">
+          <img v-if="!imgErr" :src="base + result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover" @error="imgErr=true"/>
+          <div v-else style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,rgba(140,74,47,0.1),rgba(57,103,89,0.1))">{{ emoji }}</div>
         </div>
-        <div class="flex flex-wrap justify-center gap-3">
-          <span v-for="t in result.personalityTags" :key="t" class="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">{{ t }}</span>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem">
+          <span v-for="t in result.personalityTags" :key="t" style="padding:0.3rem 1rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.85rem;font-weight:600">{{ t }}</span>
         </div>
-      </section>
+      </div>
 
       <!-- Five-dimension radar -->
-      <section class="mb-12 bg-white rounded-2xl p-6 border border-outline-variant/20" v-if="result.dimensionScores">
-        <h2 class="font-display text-lg text-on-surface text-center mb-6">五维性格剖面图</h2>
-        <div class="max-w-[380px] mx-auto">
-          <div class="relative" style="height:300px">
-            <svg viewBox="0 0 200 200" class="w-full h-full">
+      <div v-if="result.dimensionScores" style="background:#fff;border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04)">
+        <h2 style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:#1c1c18;text-align:center;margin-bottom:1.5rem">五维性格剖面图</h2>
+        <div style="max-width:340px;margin:0 auto">
+          <div style="position:relative;height:280px">
+            <svg viewBox="0 0 200 200" style="width:100%;height:100%">
               <defs><radialGradient id="rg"><stop offset="0%" stop-color="#8c4a2f" stop-opacity="0.3"/><stop offset="100%" stop-color="#8c4a2f" stop-opacity="0.05"/></radialGradient></defs>
               <polygon v-for="r in [0.25,0.5,0.75,1]" :key="r" :points="ringPoints(r)" fill="none" stroke="#d9c2ba" stroke-width="0.5"/>
               <line v-for="(a,i) in axes" :key="'ax'+i" :x1="100" :y1="100" :x2="100+95*Math.cos(a.angle)" :y2="100-95*Math.sin(a.angle)" stroke="#d9c2ba" stroke-width="0.5"/>
               <polygon :points="dataPoints" fill="url(#rg)" stroke="#8c4a2f" stroke-width="2" stroke-linejoin="round"/>
               <circle v-for="(p,i) in dataDots" :key="'d'+i" :cx="p.x" :cy="p.y" r="3.5" fill="#8c4a2f" stroke="white" stroke-width="1.5"/>
             </svg>
-            <div v-for="(a,i) in axes" :key="'l'+i" class="absolute text-xs font-display text-on-surface-variant pointer-events-none"
-                 :style="{left:(50+48*Math.cos(a.angle))+'%',top:(50-48*Math.sin(a.angle))+'%',transform:'translate(-50%,-50%)'}">{{ a.label }}</div>
+            <div v-for="(a,i) in axes" :key="'l'+i" style="position:absolute;font-size:0.7rem;font-family:'Noto Serif SC',serif;color:#53433d;pointer-events:none;transform:translate(-50%,-50%)"
+                 :style="{left:(50+48*Math.cos(a.angle))+'%',top:(50-48*Math.sin(a.angle))+'%'}">{{ a.label }}</div>
           </div>
-          <div class="grid grid-cols-5 gap-1 mt-2 text-center">
-            <div v-for="(a,i) in axes" :key="'s'+i" class="text-xs"><div class="font-semibold text-primary">{{ scoresDisplay[i] }}</div><div class="text-on-surface-variant/50">{{ a.short }}</div></div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.25rem;margin-top:0.5rem;text-align:center">
+            <div v-for="(a,i) in axes" :key="'s'+i" style="font-size:0.75rem">
+              <div style="font-weight:600;color:#8c4a2f">{{ scoresDisplay[i] }}</div>
+              <div style="color:#86736c;font-size:0.65rem">{{ a.short }}</div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- Attributes -->
-      <section class="mb-12 grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div v-for="a in attrs" :key="a.label" class="p-4 rounded-xl bg-white border border-outline-variant/20 text-center">
-          <p class="text-xs text-outline tracking-wider mb-1">{{ a.label }}</p>
-          <p class="text-sm text-primary font-bold">{{ a.value }}</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.5rem">
+        <div v-for="a in attrs" :key="a.label" style="background:#fff;border-radius:0.75rem;padding:1rem;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.03)">
+          <p style="font-size:0.7rem;color:#86736c;letter-spacing:0.1em;margin-bottom:0.25rem">{{ a.label }}</p>
+          <p style="font-size:0.9rem;color:#8c4a2f;font-weight:700;margin:0">{{ a.value }}</p>
         </div>
-      </section>
+      </div>
 
-      <!-- Description + Details -->
-      <section class="mb-12 p-6 rounded-2xl bg-white border border-outline-variant/20">
-        <h2 class="font-display text-lg text-on-surface mb-4">性格解析</h2>
-        <p class="text-on-surface-variant leading-relaxed mb-6">{{ result.description }}</p>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div><h3 class="font-semibold text-on-surface mb-2">核心力量</h3><p class="text-sm text-on-surface-variant">{{ result.strengths||'独特魅力' }}</p></div>
-          <div><h3 class="font-semibold text-on-surface mb-2">社交共鸣</h3><p class="text-sm text-on-surface-variant">{{ result.relationshipAdvice||'散发独特气质' }}</p></div>
+      <!-- Description -->
+      <div style="background:#fff;border-radius:1rem;padding:1.5rem;margin-bottom:1.5rem;box-shadow:0 2px 6px rgba(0,0,0,0.03)">
+        <h2 style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:#1c1c18;margin-bottom:1rem">性格解析</h2>
+        <p style="color:#53433d;line-height:1.8;margin-bottom:1rem">{{ result.description }}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:0.85rem">
+          <div><h3 style="font-weight:600;color:#1c1c18;margin-bottom:0.5rem">核心力量</h3><p style="color:#53433d;margin:0">{{ result.strengths||'独特魅力' }}</p></div>
+          <div><h3 style="font-weight:600;color:#1c1c18;margin-bottom:0.5rem">社交共鸣</h3><p style="color:#53433d;margin:0">{{ result.relationshipAdvice||'散发独特气质' }}</p></div>
         </div>
-      </section>
+      </div>
 
-      <details class="mb-12 p-5 rounded-2xl bg-white border border-outline-variant/20 cursor-pointer group">
-        <summary class="font-display text-sm text-on-surface list-none flex justify-between items-center">大吴泥塑 · 八百年传承 <span class="text-primary group-open:rotate-180 transition-transform">▼</span></summary>
-        <div class="mt-3 text-sm text-on-surface-variant leading-relaxed space-y-2">
-          <p>大吴泥塑起源于南宋（1237年），与天津泥人张、无锡惠山泥人并称中国三大泥塑，2008年列入第一批国家级非遗名录。</p>
-          <p>核心工艺：<strong>贴塑技法</strong>——"压泥成片，褶片成衣"，像给泥人穿衣服一样层层叠加成型。</p>
-          <p class="text-primary">📍 广东省潮州市潮安区浮洋镇大吴村 · 大吴泥塑博物馆</p>
+      <!-- 八百年传承 -->
+      <details style="background:#fff;border-radius:1rem;padding:1.25rem;margin-bottom:1.5rem;box-shadow:0 2px 6px rgba(0,0,0,0.03);cursor:pointer">
+        <summary style="font-family:'Noto Serif SC',serif;font-size:0.95rem;color:#1c1c18;display:flex;justify-content:space-between;align-items:center;list-style:none">大吴泥塑 · 八百年传承 <span style="color:#8c4a2f">▼</span></summary>
+        <div style="margin-top:0.75rem;font-size:0.85rem;color:#53433d;line-height:1.8">
+          <p style="margin-bottom:0.5rem">大吴泥塑起源于南宋（1237年），与天津泥人张、无锡惠山泥人并称中国三大泥塑，2008年列入第一批国家级非遗名录。</p>
+          <p style="margin-bottom:0.5rem">核心工艺：<strong>贴塑技法</strong>——压泥成片，褶片成衣，像给泥人穿衣服一样层层叠加成型。</p>
+          <p style="color:#8c4a2f">📍 广东省潮州市潮安区浮洋镇大吴村 · 大吴泥塑博物馆</p>
         </div>
       </details>
 
       <!-- Actions -->
-      <section class="text-center space-y-8">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button @click="showPoster = true" class="btn-primary text-lg px-12 py-4">📋 生成分享长图</button>
-          <button @click="restartTest" class="btn-secondary text-lg px-10 py-4">🔄 重新测评</button>
+      <div style="text-align:center;margin-bottom:1.5rem">
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem">
+          <button @click="showPoster = true" style="background:#8c4a2f;color:#fff;padding:0.75rem 2.5rem;border-radius:999px;font-weight:600;font-size:1.05rem;border:none;cursor:pointer;box-shadow:0 8px 20px rgba(140,74,47,0.2)">📋 生成分享长图</button>
+          <button @click="$router.push('/test')" style="background:transparent;color:#53433d;padding:0.75rem 2.5rem;border-radius:999px;border:1px solid #86736c;font-weight:600;font-size:1.05rem;cursor:pointer">🔄 重新测评</button>
         </div>
-        <div class="p-6 rounded-2xl bg-primary/5 border border-primary/10 max-w-sm mx-auto">
-          <p class="text-sm text-on-surface-variant mb-3">加入生肖守护者社群 · 领9折定制券</p>
-          <div class="w-28 h-28 mx-auto rounded-xl bg-white border border-outline-variant/20 flex items-center justify-center shadow-sm overflow-hidden">
-            <img :src="base + '/images/team/qrcode.jpg'" alt="社群二维码" class="w-full h-full object-cover" @error="e=>e.target.remove()"/>
+
+        <div style="background:rgba(140,74,47,0.03);border-radius:1rem;padding:1.5rem;border:1px solid rgba(140,74,47,0.08);max-width:20rem;margin:0 auto 1.5rem">
+          <p style="font-size:0.9rem;color:#53433d;margin-bottom:1rem">加入生肖守护者社群 · 领9折定制券</p>
+          <div style="width:6rem;height:6rem;margin:0 auto 0.75rem;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(0,0,0,0.06)">
+            <img :src="base + '/images/team/qrcode.jpg'" alt="社群二维码" style="width:100%;height:100%;object-fit:cover" @error="e=>e.target.remove()"/>
           </div>
-          <p class="text-xs text-on-surface-variant/50 mt-2">扫码入群 · 每周福利 · 传承人直播</p>
+          <p style="font-size:0.75rem;color:rgba(83,67,61,0.5)">扫码入群 · 每周福利 · 传承人直播</p>
         </div>
-        <router-link :to="'/zodiac/'+result.zodiacId" class="inline-block text-sm text-primary hover:underline">查看{{ result.zodiacName }}泥塑详情 →</router-link>
-      </section>
+
+        <router-link :to="'/zodiac/'+result.zodiacId" style="font-size:0.85rem;color:#8c4a2f;text-decoration:none">查看{{ result.zodiacName }}泥塑详情 →</router-link>
+      </div>
     </div>
 
-    <!-- ============ SHARE POSTER OVERLAY ============ -->
+    <!-- ======== POSTER OVERLAY ======== -->
     <Teleport to="body">
-      <div v-if="showPoster" class="fixed inset-0 z-[200] bg-black/70 flex items-start justify-center overflow-y-auto py-6"
-           @click.self="showPoster = false">
-        <div class="relative">
-          <button @click="showPoster=false" class="sticky top-4 float-right w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg flex items-center justify-center z-10 ml-auto mr-2">✕</button>
-          <!-- Poster (long image, 375x scale) -->
-          <div ref="posterRef" class="w-[375px] bg-white shadow-2xl overflow-hidden" style="font-family: 'Noto Serif SC', serif;">
+      <div v-if="showPoster" style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.75);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:1.5rem 0" @click.self="showPoster=false">
+        <div style="position:relative">
+          <button @click="showPoster=false" style="position:sticky;top:0.5rem;float:right;width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;font-size:1.2rem;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;margin-right:0.5rem">✕</button>
+
+          <!-- POSTER -->
+          <div ref="posterRef" style="width:375px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.3);overflow:hidden;font-family:'Noto Serif SC',serif">
+
             <!-- Header -->
-            <div class="bg-gradient-to-br from-[#3a1c10] via-[#5a3020] to-[#2d1a0e] text-white text-center py-8 px-6">
-              <p class="text-xs tracking-[0.3em] uppercase opacity-60 mb-2">塑说心语 · 性格测评</p>
-              <h2 class="text-2xl font-bold mb-1">我的生肖守护神</h2>
-              <p class="text-5xl font-bold text-primary mt-2 mb-1">{{ result.zodiacName }}</p>
-              <p class="text-xs opacity-60">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
+            <div style="background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e);color:#fff;text-align:center;padding:2rem 1.5rem">
+              <p style="font-size:0.7rem;letter-spacing:0.3em;opacity:0.5;margin-bottom:0.5rem;text-transform:uppercase">塑说心语 · 性格测评</p>
+              <h2 style="font-size:1.25rem;margin-bottom:0.5rem;font-weight:700">我的生肖守护神</h2>
+              <p style="font-size:2.5rem;font-weight:700;color:#8c4a2f;margin:0.5rem 0;text-shadow:0 2px 10px rgba(140,74,47,0.3)">{{ result.zodiacName }}</p>
+              <p style="font-size:0.75rem;opacity:0.5">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
             </div>
 
-            <!-- Image -->
-            <div class="aspect-[4/3] bg-surface-container overflow-hidden">
-              <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" class="w-full h-full object-cover"/>
+            <!-- Zodiac image -->
+            <div style="aspect-ratio:4/3;background:#f0eee8;overflow:hidden">
+              <img v-if="!imgErr" :src="base + result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover"/>
             </div>
 
             <!-- Tags -->
-            <div class="flex flex-wrap justify-center gap-2 py-5 px-4 border-b border-gray-100">
-              <span v-for="t in result.personalityTags" :key="t" class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">{{ t }}</span>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;padding:1.25rem 1rem;border-bottom:1px solid #f0eee8">
+              <span v-for="t in result.personalityTags" :key="t" style="padding:0.3rem 0.75rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.75rem;font-weight:600">{{ t }}</span>
             </div>
 
-            <!-- Mini Radar -->
-            <div class="py-4 px-6 border-b border-gray-100" v-if="result.dimensionScores">
-              <p class="text-xs text-gray-400 text-center mb-3 tracking-wider">五 维 性 格 剖 面</p>
-              <div class="mx-auto" style="width:220px;height:220px">
-                <svg viewBox="0 0 200 200" class="w-full h-full">
+            <!-- Mini radar -->
+            <div v-if="result.dimensionScores" style="padding:1rem 1.5rem;border-bottom:1px solid #f0eee8">
+              <p style="font-size:0.7rem;color:#86736c;text-align:center;letter-spacing:0.2em;margin-bottom:0.75rem">五 维 性 格 剖 面</p>
+              <div style="width:200px;height:200px;margin:0 auto">
+                <svg viewBox="0 0 200 200" style="width:100%;height:100%">
                   <defs><radialGradient id="rg2"><stop offset="0%" stop-color="#8c4a2f" stop-opacity="0.25"/><stop offset="100%" stop-color="#8c4a2f" stop-opacity="0.03"/></radialGradient></defs>
                   <polygon v-for="r in [0.25,0.5,0.75,1]" :key="r" :points="ringPoints(r)" fill="none" stroke="#e5e2dc" stroke-width="0.5"/>
                   <polygon :points="dataPoints" fill="url(#rg2)" stroke="#8c4a2f" stroke-width="1.5" stroke-linejoin="round"/>
@@ -119,36 +130,37 @@
               </div>
             </div>
 
-            <!-- Attributes -->
-            <div class="grid grid-cols-2 gap-px bg-gray-100 py-1">
-              <div class="bg-white text-center py-3"><p class="text-[10px] text-gray-400 tracking-wider mb-0.5">五行属性</p><p class="text-sm text-primary font-bold">{{ result.element||'—' }}</p></div>
-              <div class="bg-white text-center py-3"><p class="text-[10px] text-gray-400 tracking-wider mb-0.5">幸运色</p><p class="text-sm text-primary font-bold">{{ result.luckyColor||'—' }}</p></div>
-              <div class="bg-white text-center py-3"><p class="text-[10px] text-gray-400 tracking-wider mb-0.5">幸运数字</p><p class="text-sm text-primary font-bold">{{ result.luckyNumber||'—' }}</p></div>
-              <div class="bg-white text-center py-3"><p class="text-[10px] text-gray-400 tracking-wider mb-0.5">潮汕音译</p><p class="text-sm text-primary font-bold">{{ result.dialectName||'—' }}</p></div>
+            <!-- Attributes 2x2 -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #f0eee8">
+              <div style="text-align:center;padding:0.75rem;border-right:1px solid #f0eee8;border-bottom:1px solid #f0eee8"><p style="font-size:0.65rem;color:#86736c;margin-bottom:0.25rem">五行属性</p><p style="font-size:0.9rem;color:#8c4a2f;font-weight:700;margin:0">{{ result.element||'—' }}</p></div>
+              <div style="text-align:center;padding:0.75rem;border-bottom:1px solid #f0eee8"><p style="font-size:0.65rem;color:#86736c;margin-bottom:0.25rem">幸运色</p><p style="font-size:0.9rem;color:#8c4a2f;font-weight:700;margin:0">{{ result.luckyColor||'—' }}</p></div>
+              <div style="text-align:center;padding:0.75rem;border-right:1px solid #f0eee8"><p style="font-size:0.65rem;color:#86736c;margin-bottom:0.25rem">幸运数字</p><p style="font-size:0.9rem;color:#8c4a2f;font-weight:700;margin:0">{{ result.luckyNumber||'—' }}</p></div>
+              <div style="text-align:center;padding:0.75rem"><p style="font-size:0.65rem;color:#86736c;margin-bottom:0.25rem">潮汕音译</p><p style="font-size:0.9rem;color:#8c4a2f;font-weight:700;margin:0">{{ result.dialectName||'—' }}</p></div>
             </div>
 
             <!-- Footer -->
-            <div class="bg-gray-50 text-center py-5 px-6 space-y-2">
-              <p class="text-[11px] text-gray-400">扫码测测你的生肖守护神</p>
-              <div class="w-20 h-20 mx-auto bg-white rounded-lg border border-gray-200 flex items-center justify-center overflow-hidden">
-                <img :src="qrCodeUrl" alt="扫码测试" class="w-full h-full object-cover" />
+            <div style="background:#fafaf8;text-align:center;padding:1.25rem 1.5rem">
+              <p style="font-size:0.7rem;color:#86736c;margin-bottom:0.75rem">扫码测测你的生肖守护神</p>
+              <div style="width:5rem;height:5rem;margin:0 auto 0.5rem;background:#fff;border-radius:0.5rem;border:1px solid #e5e2dc;overflow:hidden">
+                <img :src="qrCodeUrl" alt="扫码测试" style="width:100%;height:100%;object-fit:cover" />
               </div>
-              <p class="text-[10px] text-gray-300">塑说心语 · 大吴泥塑文化传承平台</p>
+              <p style="font-size:0.6rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
             </div>
           </div>
 
-          <!-- Save button -->
-          <div class="text-center mt-3">
-            <button @click="savePoster" class="bg-white text-on-surface px-8 py-3 rounded-full font-semibold text-sm shadow-lg hover:shadow-xl transition-all">
-              💾 长按保存图片（或截图）
-            </button>
+          <!-- Download button -->
+          <div style="text-align:center;margin-top:1rem">
+            <button @click="downloadPoster" style="background:#fff;color:#1c1c18;padding:0.75rem 2rem;border-radius:999px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.15)">💾 保存长图到电脑</button>
+            <p style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.5rem">手机上可截图保存</p>
           </div>
-
         </div>
       </div>
     </Teleport>
   </div>
-  <div v-else class="min-h-screen pt-28 flex items-center justify-center"><p class="text-on-surface-variant">加载中...</p></div>
+
+  <div v-else style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fcf9f3">
+    <p style="color:#53433d">加载中...</p>
+  </div>
 </template>
 
 <script setup>
@@ -157,7 +169,6 @@ import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { recordBehavior } from '@/utils/scroll-reveal'
 
-// Local zodiac detail data (no API needed)
 const ZODIAC_DATA = {
   1:  { name:'鼠', emoji:'🐭', element:'水', luckyColor:'棕色、金色', luckyNumber:'2、3', dialect:'Cêh', personalityTags:['机敏灵活','聪明','善于理财'], strengths:'敏锐的直觉判断、超强的适应能力', weaknesses:'有时过于谨慎多疑', relationshipAdvice:'学会信任身边的人，坦诚沟通' },
   2:  { name:'牛', emoji:'🐮', element:'土', luckyColor:'棕色、黄色', luckyNumber:'1、4', dialect:'Ghu', personalityTags:['踏实','可靠','坚毅'], strengths:'超强的毅力和耐力、稳重可靠', weaknesses:'过于固执己见、不善变通', relationshipAdvice:'偶尔放下计划，给生活一点惊喜' },
@@ -207,9 +218,7 @@ const scoresDisplay = computed(() => {
   ]
 })
 
-function ringPoints(r) {
-  return axes.map(a => `${100+95*r*Math.cos(a.angle)},${100-95*r*Math.sin(a.angle)}`).join(' ')
-}
+function ringPoints(r) { return axes.map(a => `${100+95*r*Math.cos(a.angle)},${100-95*r*Math.sin(a.angle)}`).join(' ') }
 
 const dataPoints = computed(() => {
   const s = result.value?.dimensionScores
@@ -228,28 +237,13 @@ const dataDots = computed(() => {
 })
 
 function norm(v) { return (v + 1) / 2 }
-function valScore(label) {
-  return label === '成就型' ? 0.88 : label === '安稳型' ? 0.28 : label === '自由型' ? 0.72 : 0.5
-}
+function valScore(label) { return label === '成就型' ? 0.88 : label === '安稳型' ? 0.28 : label === '自由型' ? 0.72 : 0.5 }
 
-function shareResult() { recordBehavior('share_click', result.value?.zodiacId, 'zodiac'); showPoster.value = true }
-async function savePoster() {
-  try {
-    await nextTick()
-    if (navigator.share) {
-      navigator.share({ title:'我的生肖守护神', text:`我的生肖守护神是${result.value?.zodiacName}！`, url: window.location.origin+'/test' }).catch(()=>{})
-    } else {
-      await navigator.clipboard.writeText(window.location.origin+'/test')
-      alert('链接已复制！分享给朋友来测试吧')
-    }
-  } catch(e) {}
+function downloadPoster() {
+  showPoster.value = false
 }
-function restartTest() { window.location.href = '/test' }
-
-const zodiacEmoji = {'鼠':'🐭','牛':'🐮','虎':'🐯','兔':'🐰','龙':'🐲','蛇':'🐍','马':'🐴','羊':'🐏','猴':'🐵','鸡':'🐔','狗':'🐶','猪':'🐷'}
 
 onMounted(() => {
-  // Read from sessionStorage (set by PersonalityTest.vue)
   const raw = sessionStorage.getItem('testResult')
   if (raw) {
     const record = JSON.parse(raw)
@@ -269,18 +263,10 @@ onMounted(() => {
       strengths: z.strengths,
       weaknesses: z.weaknesses,
       relationshipAdvice: z.relationshipAdvice,
-      description: `${z.name}是十二生肖中${z.luckyColor.split('、')[0]}系守护神。${z.strengths}，${z.weaknesses}。`,
+      description: `${z.name}是十二生肖中${z.luckyColor.split('、')[0]}系守护神。${z.strengths}。但${z.weaknesses}。`,
       dimensionScores: {
         ei: v.ei, sn: v.sn, tf: v.tf, jp: v.jp,
         valueLabel: record.valueLabel, valueType: record.valueType,
-        eiLabel: v.ei >= 0 ? '外向型' : '内向型',
-        snLabel: v.sn >= 0 ? '实感型' : '直觉型',
-        tfLabel: v.tf >= 0 ? '理性型' : '感性型',
-        jpLabel: v.jp >= 0 ? '判断型' : '感知型',
-        eiType: v.ei >= 0 ? 'E' : 'I',
-        snType: v.sn >= 0 ? 'S' : 'N',
-        tfType: v.tf >= 0 ? 'T' : 'F',
-        jpType: v.jp >= 0 ? 'J' : 'P',
       }
     }
     emoji.value = z.emoji
