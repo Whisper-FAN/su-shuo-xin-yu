@@ -1,0 +1,486 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>塑说心语 - 大吴泥塑文化传承</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-variant": "#e5e2dc",
+                        "primary-container": "#a96245",
+                        "on-surface": "#1c1c18",
+                        "secondary-container": "#b9ead9",
+                        "tertiary-fixed": "#ffdeaa",
+                        "primary": "#8c4a2f",
+                        "inverse-primary": "#ffb599",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#204f42",
+                        "primary-fixed": "#ffdbce",
+                        "surface-container": "#f0eee8",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary": "#7a5500",
+                        "outline-variant": "#d9c2ba",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#396759",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1c1c18",
+                        "surface-dim": "#dcdad4",
+                        "on-surface-variant": "#53433d",
+                        "surface-container-high": "#ebe8e2",
+                        "secondary-fixed-dim": "#a0d1c0",
+                        "tertiary-fixed-dim": "#f5bd58",
+                        "primary-fixed-dim": "#ffb599",
+                        "outline": "#86736c",
+                        "on-primary-fixed-variant": "#71361c",
+                        "tertiary-container": "#996c04",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-primary-fixed": "#370e00",
+                        "surface-container-low": "#f6f3ed",
+                        "background": "#fcf9f3",
+                        "secondary-fixed": "#bceddc",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "inverse-on-surface": "#f3f0ea",
+                        "inverse-surface": "#31312d",
+                        "error-container": "#ffdad6",
+                        "surface": "#fcf9f3",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#fffbff",
+                        "on-secondary-fixed": "#002019",
+                        "on-secondary-container": "#3d6b5e",
+                        "surface-tint": "#8e4c31",
+                        "surface-bright": "#fcf9f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-desktop": "120px",
+                        "gutter": "24px",
+                        "container-max-width": "1280px",
+                        "base": "8px",
+                        "section-gap-mobile": "64px"
+                    },
+                    "fontFamily": {
+                        "display-hero-mobile": ["Noto Serif SC"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-hero": ["Noto Serif SC"],
+                        "headline-md": ["Noto Serif SC"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Noto Serif SC"]
+                    },
+                    "fontSize": {
+                        "display-hero-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .parallax-bg {
+            will-change: transform;
+            transform: scale(1.1);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .nav-scrolled {
+            background-color: rgba(252, 249, 243, 0.9) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+        }
+        #page-overlay {
+            position: fixed;
+            inset: 0;
+            background: #fcf9f3;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-in-out;
+        }
+        #page-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<div id="page-overlay"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent transition-all duration-500 py-6" id="navbar">
+<div class="flex justify-between items-center px-gutter py-0 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-6"><div class="transition-all duration-300 hover:scale-105 cursor-pointer"><img alt="塑说心语 Team Logo" class="h-12 md:h-16 w-auto object-contain duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJcq1PBjexnVf8BdOW2k9TuEg9vRN0agC9PL8gQ4kCqZ25rMpHIXuMlSUWGpdvkM8Z4d0--cwW_0gZhWfyGKc51M-85kMU4yKbp5WkZDKSOuzifcEGzvbcB1i6oC_mbWzTMd8byPou5tu3lbFKebvchn-fQcCtT2juuYj_BfHpP4gzNQ0e_Oa91IIIgGiny4gG9ajlwQ0ob-FQ1-4avpjwC18NPloTZYMAlq36_3uWMS6a1XmSz79WrCfe_A6CJ_lxwspe7BxsCw"></div></div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="#">文化起源</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">作品赏析</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">性格测试</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">手艺工坊</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm hover:bg-primary/90 transition-all duration-300 shadow-md" onclick="startTransition()">
+            立即开启
+        </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-100 ease-out parallax-bg" id="hero-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnItso1v_wIlsBI_Q3J7ADOE9N65Sbs-m4SS-h3OGb0EwgO3Nxrkdwppsr_hJ_gNgfZ5h-Mmh6ll96w6J8fN1kYCuGCZBx1_AQcUuluRgFLoOzt0JG1wKE19V4L2ZsBZAZV5LV6ZaP1JwRX6RN1xDuwLDaORJo3vqiANIiH0AKep7KDChFy7ZNxpIfTCSGhbsAC6BmueEu_KioHhow_lFhaX7UXt2pm6w6nyQjcXRDPeL0vkqAJnMDXmVU0UHvUBDdtPoMUzhLpw')"></div>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="relative z-10 text-center text-white px-gutter max-w-4xl scroll-reveal visible">
+<h1 class="font-display-hero text-display-hero mb-6 tracking-widest">塑说心语</h1>
+<p class="font-headline-lg text-headline-lg mb-12 font-light opacity-90 leading-relaxed">
+            万物有灵，泥韵传情<br>
+            在指尖的温度中，开启一场跨越千年的灵魂对话
+        </p>
+<a class="inline-block bg-primary hover:bg-primary-container text-white px-10 py-4 rounded-full font-headline-md text-headline-md transition-all duration-300 transform hover:scale-105 shadow-2xl" href="#heritage">
+            开启旅程
+        </a>
+</div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-white text-4xl">keyboard_double_arrow_down</span>
+</div>
+</header>
+<!-- Heritage Introduction -->
+<section class="py-[120px] bg-background relative overflow-hidden" id="heritage">
+<div class="max-w-container-max-width mx-auto px-gutter relative z-10">
+<div class="scroll-reveal text-center mb-16 visible">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em] block mb-4">Heritage</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">大吴泥塑：泥土中的文化图腾</h2>
+<div class="flex justify-center mb-12">
+<div class="w-16 h-[2px] bg-tertiary-fixed-dim rounded-full"></div>
+</div>
+<div class="max-w-3xl mx-auto space-y-6">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
+                    大吴泥塑起源于宋代，是国家级非物质文化遗产。它以“捏、贴、塑、彩”四大工艺闻名，每一尊塑像都承载着潮汕地区深厚的民间信仰与生活美学。
+                </p>
+</div>
+</div>
+<!-- Decorative Motto -->
+<div class="scroll-reveal flex justify-center py-12 visible">
+<div class="max-w-4xl opacity-80 hover:opacity-100 transition-opacity duration-500">
+
+</div>
+</div>
+<div class="scroll-reveal max-w-3xl mx-auto text-center mt-12 visible">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-loose">
+                在这里，泥土不再是冰冷的物质，而是通过匠人之手，被赋予了血肉与神采。我们致力于让这项古老艺术在现代语境下重新绽放，触动每一个现代灵魂的心弦。
+            </p>
+</div>
+</div>
+</section>
+<!-- Interactive Zodiac Preview -->
+<section class="py-[120px] bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max-width mx-auto px-gutter mb-16">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 scroll-reveal visible">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em] block mb-2">Collection</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">十二生肖：时间的守护者</h2>
+</div>
+<div class="flex items-center gap-12">
+<div class="hidden lg:block">
+<img alt="Clay Figure Example" class="h-24 w-auto object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG_7h_qr4nR-qixYKM8rHSfHQwBgoaZH5VdwTE6k5GWVXT3c38xCPjEhQ0De4sJiiktd9Q0H8f3AqAxXHYVhlfjWVMzOPVOT-EzR3VXeJAgwQ0Mufehbgo5REnVT__xk2w3oiJeNoj_vxzKpKJuQ3mYb4J8BPd4C4wc5IgChL5AI_j93c5BwhNJr-XyetXc4bA4fm1_CQW8eRqYcunpToyXURDQ2e7h8s9uWV9M8H5RXq4Dz1u75sZwT7CJdHSCqBfD_f8UFE-Kg">
+</div>
+<a class="flex items-center gap-2 text-primary hover:gap-4 transition-all duration-300" href="#">
+<span class="font-body-md text-body-md">查看全部系列</span>
+<span class="material-symbols-outlined">east</span>
+</a>
+</div>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto px-[5%] pb-12 no-scrollbar scroll-reveal visible" id="zodiac-slider" style="cursor: pointer;">
+<!-- Zodiac Card 1 -->
+<div class="flex-shrink-0 w-[320px] group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-white mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUU3SHsgYxk8Tl0XDssOGb5ns-EFp0tadkW2Jn7Eh7q7NzJpBqBl3nva9qu5h02YV6e91oGrOwHyx44PC0XHByRYTszZ7mCn4bh0DgcQ7fUXAyRjfF_MxiSd1YJ9rl19jlxt8bPu_a2v7XIhLv_N7zTCutWaOhlI3r_BZI2Q_X0VEWikYqFfq4q3KWZWcVf6qtakITO06bT2KQnv5kAwn8jQSjOpzzUjAJlWAAKgTfaMaEy3CJgkJYY1dMxIxnXjUk-5ri1zF3Cg">
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">辰龙 · 祥瑞</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">威严与力量的化身</p>
+</div>
+<!-- Zodiac Card 2 -->
+<div class="flex-shrink-0 w-[320px] group cursor-pointer md:mt-12">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-white mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwZ9kw7B60gcZyn1qLmJiFTWAKKm3TDciiCqyOrB4xJqXIC4f3E1_PkKvqRPwXojf-NoRwh_xkxnwE807GwHYhzfd6bGNZtz0jhAOaBcapIbBPGr0Pkhoccs_CPXMUP_FSuAJVDsFCKwzn7ho4bu0LXvbY3_qP8nspoGx-u-CNYVFFXQqoeCC5HZ9klBRKUK-mn3ciyZumAqB3vdTQJfBPt7eNcubYj3PB3xv7xfetFLiWkYtin0KB2olJZCHlWunxBm76HzKJyw">
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">卯兔 · 灵动</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">温柔与敏捷的守候</p>
+</div>
+<!-- Zodiac Card 3 -->
+<div class="flex-shrink-0 w-[320px] group cursor-pointer">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-white mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvJFlEHMVKKOpYCI5kfs3C2-2E3_VGq6oO_CHyBDh85mNHtXTkLku8RcEMowdgg5VtoBuBnOcTq6iwGZ-zrW7lOtZqy823qarS6U6TLsVpKJ9_Y8C1_CvZCOx7B9XZZBu8lwT7T2JLo-QoD5qiAUthQi93v3WXsC6qzqhEs1W4ywI4ni9IaLwDG8gZEI6jUdIfTxsr9B1Y6LduoyumQjOJc17ibWRUqPHRZyhItHUNQkujfK_3ie6dwXYehXXTN2-Jf64DkgUj3g">
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">寅虎 · 威风</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">勇气与威严的象征</p>
+</div>
+<!-- Zodiac Card 4 -->
+<div class="flex-shrink-0 w-[320px] group cursor-pointer md:mt-12">
+<div class="aspect-[3/4] rounded-xl overflow-hidden bg-white mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxNdXxekIOzxZOjxkNqlOSeKQKlikZalUtSo5E29ZmlETn4vP1OIVQ71QJOvCiLUmuv2trNHS8TKpMw-hsUmAwjcJ0sTN56xAwhNgKQvnM3DdekCKcr9WCRpSAnpBe6CvTVPX2B2Dr9K4ok2X8u8Hmb4nX1-8rwfvm3ODU-cUXje_Atk4p4--vcJMJd9vGJwTtmiGUECtEu9FLMZG2uhHZ8yIpuDvPycOIujlfhDmvegIGs5_qAOA2M_1384t_Ru__kioA6VIH4w">
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">丑牛 · 勤恳</h3>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">厚德载物的力量</p>
+</div>
+</div>
+</section>
+<!-- Personality Test Entry -->
+<section class="py-[120px] px-gutter overflow-hidden">
+<div class="max-w-container-max-width mx-auto">
+<div class="relative rounded-[32px] overflow-hidden bg-primary p-12 md:p-24 flex flex-col md:flex-row items-center gap-12 scroll-reveal visible">
+<!-- Background Pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="grid grid-cols-6 h-full w-full">
+<div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-b border-white"></div>
+<div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-r border-b border-white"></div><div class="border-b border-white"></div>
+</div>
+</div>
+<div class="relative z-10 flex-1 text-white text-center md:text-left">
+<h2 class="font-headline-lg text-display-hero-mobile md:text-headline-lg mb-4">发现你的生肖守护神</h2>
+<p class="font-body-lg text-body-lg mb-10 opacity-80 max-w-lg mx-auto md:mx-0">
+                    每一个生命都有其对应的灵魂原型。通过性格测试，开启一场跨越千年的文化对话，寻找属于你的那尊本命塑像。
+                </p>
+<button class="bg-white text-primary px-12 py-4 rounded-full font-headline-md text-headline-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" onclick="startTransition()">
+                    开始测试
+                </button>
+</div>
+<div class="relative z-10 flex-1 w-full max-w-sm">
+<div class="aspect-square bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 animate-float">
+<span class="material-symbols-outlined text-white text-[120px] opacity-60">psychology_alt</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Inheritance Stories -->
+<section class="py-[120px] bg-background">
+<div class="max-w-container-max-width mx-auto px-gutter">
+<div class="text-center mb-24 scroll-reveal visible">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em] block mb-2">Craftsmanship</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">匠心四法：从泥土到灵魂</h2>
+</div>
+<div class="space-y-[120px]">
+<!-- Step 1: 捏 (Nie) -->
+<div class="flex flex-col md:flex-row items-center gap-16 md:gap-24 scroll-reveal visible">
+<div class="flex-1 group">
+<div class="aspect-video rounded-2xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-1">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcDl46MJfpvkiDt2aJ0qeC4eEizK4dsxC0qfg_D4ixte_Vj6dQFdaPUyNaC-Mf-sMYU5Abh5S45DulI5ZBMuFUaB-x0G5p-Qzok3WBrZLDnbKILtsg37JfJR4paoqnLKyclSKQeyHExkscZEmeXcajshfIqcB7Xvmrt7iIsI1Jy4oDoHBbheByIpxukDOD_T_fEqWh2WGkf8Svt5OZTnN-SCTQ2kkqLpOEuOLt7Wua2GQ6KWBjuuG2Gylqqwzid7zaF2sXZ916QA">
+</div>
+</div>
+<div class="flex-1">
+<span class="text-primary font-display-hero-mobile opacity-20 block mb-2">01</span>
+<h3 class="font-headline-lg text-headline-lg mb-6 text-on-surface">捏 · 定乾坤</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        取澄泥，合掌而捏。这是塑像的灵魂起点，赋予了泥土最初的生命张力。指尖的每一次律动，都在勾勒骨骼的走向。
+                    </p>
+</div>
+</div>
+<!-- Step 2: 贴 (Tie) -->
+<div class="flex flex-col md:flex-row-reverse items-center gap-16 md:gap-24 scroll-reveal visible">
+<div class="flex-1 group">
+<div class="aspect-video rounded-2xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-1">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5zFsG7RfivuYasAAClbB2SHIVRQF8srA8uXsN5WMot7LpHJ_ozQxpA4ArTS5XxThxB0Ak9xczZa9v4Ma-GEj4F_JENG_L60F3CC01sig8sEp1415ZgLyjim1H0LBvE2cvN4-C2QPgmL65_XF_W7peQqa-bPEjAosmCIRbbq8ES9wzQf-Hkb0XlAKU9MRajmw7mMwF_sOPdZCnXk4C3U2rnpDMld6yYNH8CGypJ4IDL-2H_ohYoJ2hJOYiG5AbDXJ-vIE2ZYsRuQ">
+</div>
+</div>
+<div class="flex-1 text-right md:text-left">
+<span class="text-primary font-display-hero-mobile opacity-20 block mb-2">02</span>
+<h3 class="font-headline-lg text-headline-lg mb-6 text-on-surface">贴 · 丰肌理</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        层层堆叠，细细铺贴。泥片在塑像表面延伸，如肌肉丰盈，如衣褶垂落。这是一场关于细节的修行，让平整化为立体。
+                    </p>
+</div>
+</div>
+<!-- Step 3: 塑 (Su) -->
+<div class="flex flex-col md:flex-row items-center gap-16 md:gap-24 scroll-reveal visible">
+<div class="flex-1 group">
+<div class="aspect-video rounded-2xl overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-1">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM-bf7mRC2IWpCltgFShEOQSXo6jCaqi2SpViDCpAGbh1L3dJ1gTQA4a6VQ2sZO670RQ56qs-yNLJU-ezYyteAON9ypsaep_V0tFZcErRJNJyl9O4RvAfK46AsZ1gAcPtQ7iOtLB2MG-QAN-EB84EOp0QyeL9W86ob0VKmetIiIp8Tp1VXv-EH4YUJVFcTYlB1VYCIt1JXdx6PcLvD6uB21FFH5-y4gJAToXZK3bMxS4KwV1cT6jCGSA2CsSY3WEjbxAVXW0RJRw">
+</div>
+</div>
+<div class="flex-1">
+<span class="text-primary font-display-hero-mobile opacity-20 block mb-2">03</span>
+<h3 class="font-headline-lg text-headline-lg mb-6 text-on-surface">塑 · 传神韵</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        最后的神来之笔。通过刻、刮、削等技法，让人物眉眼含情，飞禽走兽生风。至此，泥土彻底告别凡胎，化为传世之作。
+                    </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sponsors & Partners Section -->
+<section class="py-20 bg-surface-container-low border-t border-outline-variant">
+<div class="max-w-container-max-width mx-auto px-gutter text-center scroll-reveal visible">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase tracking-[0.2em] mb-12">Partners &amp; Sponsors</h3>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500"><img alt="School Motto Calligraphy" class="h-10 md:h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSBdI7PnqyO0QGQguvQhsaDYv_FYwlaNyrm0ZehYTJMxX7KBuQhcTaaoBfQe_W7v6CgbfiUv_KV3cvDJnYesoYMta5QDU7yQOCyWUC5SXCV5XIvWSrMQfWo3AezLZsDquh-vkXGD8qwtirjLhMpejme6u4vK4di1B9V3mlrJC7S4hCVdo-Jqu9p3k_z9Yt540jjBJ7TbJL_3NUbf4-0vyZRm1Bcz6mv_Jfn995ASIhO5tS-mZPcgyreagyuORqfhTA5qxoif0qw">
+
+<img alt="Innovation Competition Logo" class="h-12 md:h-16 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtliVzYaWqJK9IaTC475s5imnnJZ0-Ax5EevTRkZj-2BgGNEIui5S_5CZ8KaUE-TZcpPfy8jriyEPBU-65ah2G0afPlbI11djPDX1PHQs4_d4ayP3QjBa7Mcl-u4TmguLIWed8LUIQAaIJJqrNutZDxh0OA67cNcBQBSlfesOCvEJIkptyGBHg3pj4iz-N7pG4dWvMZkXtrfJCzHCIFKvHWJRBkdJ_L4f-BYEnrkkUN4f0tQ3pXJj2sIvOo5EJyZJIbvK7oNeoKA">
+<img alt="School Mark" class="h-10 md:h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbddaZwIMUA_-a_P6ccSeQBt2ksAcbgkEEo9-2L-o-tZm0XnS9M2zl9uEcQaffHn1_1n4t0yo3Co33uw0XUEi_i0f7quuGqi3DRs6BefGxKpoqjVbevEdunOq-0t0csLle6edHjAShmr1oNa0hSokv2S0AY0gsjgi3du0R0xJIcvBZEstKxIqnThVkeonkM_eWqZpYh6swV2ZtBYzhlzbUoS5e1zFs9jNXnslES16A5Q2tCL09Hu8uRzHvQwf4oOhSvpk7JXT1jA">
+
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-16 border-t border-outline-variant/30">
+<div class="max-w-container-max-width mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-16">
+<div class="flex items-center gap-6">
+
+<div>
+<span class="font-headline-md text-headline-md text-on-surface block">塑说心语</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-60">传统文化的数字守护者</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<div class="space-y-4">
+<h4 class="font-label-sm text-label-sm text-primary uppercase">探索</h4>
+<ul class="space-y-2">
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">文化起源</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">作品赏析</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-sm text-label-sm text-primary uppercase">互动</h4>
+<ul class="space-y-2">
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">性格测试</a></li>
+<li class=""><a class="text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">手艺工坊</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/20 gap-8">
+<p class="font-label-sm text-label-sm text-on-surface-variant/70 text-center md:text-left">
+                © 2026 塑说心语. 大吴泥塑文化传承与保护.
+            </p>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant/70 hover:text-primary transition-all hover:underline" href="#">隐私政策</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant/70 hover:text-primary transition-all hover:underline" href="#">使用条款</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant/70 hover:text-primary transition-all hover:underline" href="#">联系我们</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Intersection Observer for Reveal on Scroll
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+    // Parallax Effect for Hero and Navbar State
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        // Hero Parallax
+        const heroBg = document.getElementById('hero-bg');
+        if (heroBg) {
+            heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.3}px)`;
+        }
+
+        // Navbar State transition
+        const navbar = document.getElementById('navbar');
+        if (scrolled > 80) {
+            navbar.classList.add('nav-scrolled');
+            navbar.classList.remove('py-6');
+            navbar.classList.add('py-4');
+        } else {
+            navbar.classList.remove('nav-scrolled');
+            navbar.classList.add('py-6');
+            navbar.classList.remove('py-4');
+        }
+    });
+
+    // Horizontal Scroll Interaction for Zodiac Slider
+    const slider = document.getElementById('zodiac-slider');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.style.cursor = 'grabbing';
+    });
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'pointer';
+    });
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'pointer';
+    });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Smooth Page Transition Simulation
+    function startTransition() {
+        const overlay = document.getElementById('page-overlay');
+        overlay.classList.add('active');
+        
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                overlay.classList.remove('active');
+            }, 500);
+        }, 800);
+    }
+</script>
+
+
+</body></html>

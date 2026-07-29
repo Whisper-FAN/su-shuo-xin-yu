@@ -1,0 +1,91 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: yimo-server
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/yimo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: mysql
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  flyway:
+    enabled: false
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      timeout: 3000ms
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+# MyBatis Plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.yimo.entity
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      update-strategy: not_null
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# JWT
+jwt:
+  secret: yimo-jwt-secret-key-2026-very-long-secure
+  expiration: 604800000
+
+# 微信小程序配置
+wechat:
+  miniapp:
+    appid: wx1f6470a470238314
+    secret: d1397c8f4db5c037499f183c04ada18b
+
+# 阿里云OSS配置
+oss:
+  endpoint: oss-cn-hangzhou.aliyuncs.com
+  access-key-id: your-access-key
+  access-key-secret: your-secret
+  bucket: yimo-bucket
+
+# 管理端登录
+admin:
+  username: admin
+  password: admin123
+
+# DeepSeek AI
+deepseek:
+  api-key: sk-61e548004ae545ba966e27716ca98782
+  api-url: https://api.deepseek.com/v1/chat/completions
+  model: deepseek-v4-flash
+
+# Knife4j
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+knife4j:
+  enable: true

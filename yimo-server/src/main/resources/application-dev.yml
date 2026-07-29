@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:yimo;DB_CLOSE_DELAY=-1;MODE=MySQL;NON_KEYWORDS=USER
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+
+# 管理端登录
+admin:
+  username: admin
+  password: admin123

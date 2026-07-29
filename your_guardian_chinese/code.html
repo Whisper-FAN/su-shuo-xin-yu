@@ -1,0 +1,391 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>塑说心语 - 测评结果 | 大吴泥塑文化传承</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#31312d",
+                      "tertiary-fixed": "#ffdeaa",
+                      "secondary-fixed": "#bceddc",
+                      "secondary": "#396759",
+                      "on-primary-fixed": "#370e00",
+                      "on-surface": "#1c1c18",
+                      "surface-dim": "#dcdad4",
+                      "secondary-container": "#b9ead9",
+                      "on-tertiary-container": "#fffbff",
+                      "primary-fixed": "#ffdbce",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#ffb599",
+                      "on-surface-variant": "#53433d",
+                      "on-primary-fixed-variant": "#71361c",
+                      "tertiary": "#7a5500",
+                      "tertiary-container": "#996c04",
+                      "background": "#fcf9f3",
+                      "surface-container-highest": "#e5e2dc",
+                      "on-background": "#1c1c18",
+                      "primary-container": "#a96245",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#a0d1c0",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#fcf9f3",
+                      "on-secondary-fixed-variant": "#204f42",
+                      "surface-container": "#f0eee8",
+                      "primary-fixed-dim": "#ffb599",
+                      "on-secondary-container": "#3d6b5e",
+                      "surface-variant": "#e5e2dc",
+                      "outline-variant": "#d9c2ba",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "surface-container-high": "#ebe8e2",
+                      "surface": "#fcf9f3",
+                      "outline": "#86736c",
+                      "on-secondary-fixed": "#002019",
+                      "surface-tint": "#8e4c31",
+                      "primary": "#8c4a2f",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f6f3ed",
+                      "inverse-on-surface": "#f3f0ea",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#271900",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#f5bd58",
+                      "on-primary-container": "#fffbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap-mobile": "64px",
+                      "base": "8px",
+                      "gutter": "24px",
+                      "section-gap-desktop": "120px",
+                      "container-max-width": "1280px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter", "sans-serif"],
+                      "headline-lg": ["Noto Serif SC", "serif"],
+                      "display-hero": ["Noto Serif SC", "serif"],
+                      "headline-md": ["Noto Serif SC", "serif"],
+                      "label-sm": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "display-hero-mobile": ["Noto Serif SC", "serif"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "display-hero-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .horizontal-scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .horizontal-scroll-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .ceramic-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/rice-paper-3.png");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/50 backdrop-blur-xl shadow-[0_2px_40px_rgba(0,0,0,0.02)] border-none">
+<div class="flex justify-between items-center px-gutter py-2 max-w-container-max-width mx-auto">
+<div class="flex items-center">
+<img alt="塑说心语 Logo" class="h-16 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1OmilOYJWhw-O64JdVSyat5HGlmfitguZdM0mCz940x2OPvCCSs47Uw2ZXEUenHxFm0qJKOqFGzxi3o-ZAUsG5DDiire44Kfkh3zyKJ-8dk8A76mQ1x_ItiEe6QXIUuC7UoJrBOjS2Hoi5X8L9zLY_FE_HvCx38wQhvG_azZPI3zMa_bZ8x9cZG_fM6_8jXcta2AjvGC9h1LdlHFiaA0B_JLnc8KAS8ycFhQAg3crKnoexdQP0-J7xdfEfsp1qlzKbJmv1bDvhw">
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">文化起源</a>
+<a class="font-body-md text-body-md text-primary border-b border-primary pb-1" href="#">生肖守护</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">作品赏析</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">传承故事</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-body-md text-body-md hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-md">
+                在线咨询
+            </button>
+</div>
+</nav>
+<main class="pt-24 pb-section-gap-desktop">
+<!-- Hero Section -->
+<section class="max-w-container-max-width mx-auto px-gutter text-center mb-24 reveal-up active">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm mb-6 uppercase tracking-widest">测评结果 · 塑说心语</span>
+<h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-on-surface mb-8">
+                您的生肖守护神：<span class="text-[#c97c5d]">龙</span>
+</h1>
+<div class="relative w-full aspect-[1.79] max-h-[600px] rounded-2xl overflow-hidden bg-surface-container-high shadow-2xl group mb-12">
+<img alt="大吴泥塑 祥龙作品" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLtAj103oc5a_kXH8vkTrZAwBBGL0Vg2UvWEXO2tBhRCl-9qFHWs_ePmX3ztNFOkV8Qp2vfQWLTwWKKRQ03B_OfMdNaPJBIucljtDGZw9u6b_eqziDj9Lp0Ps5jWHiMsXjff1ebxuagzA2KrqXEcQz0QPm0UeTwHG2ASRDRXbkibWOe6Q39BJ_ejlF1kfcM0HaidPdSlWHGAO7IL1P5GQfjH9YjEcQC4R8KLg-vjdlc2V8qgo1HNQ73pPw">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/20 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16">
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-outline tracking-[0.2em] mb-2">人格特质 01</p>
+<p class="font-headline-lg text-headline-lg text-primary">韧性</p>
+</div>
+<div class="w-px h-16 bg-outline-variant hidden md:block"></div>
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-outline tracking-[0.2em] mb-2">人格特质 02</p>
+<p class="font-headline-lg text-headline-lg text-primary">自省</p>
+</div>
+<div class="w-px h-16 bg-outline-variant hidden md:block"></div>
+<div class="text-center">
+<p class="font-label-sm text-label-sm text-outline tracking-[0.2em] mb-2">人格特质 03</p>
+<p class="font-headline-lg text-headline-lg text-primary">灵动</p>
+</div>
+</div>
+</section>
+<!-- Personality Analysis Section -->
+<section class="bg-surface-container-low py-section-gap-desktop ceramic-texture">
+<div class="max-w-container-max-width mx-auto px-gutter reveal-up active">
+<div class="grid md:grid-cols-12 gap-12">
+<div class="md:col-span-5">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">性格解析</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                            正如大吴泥塑精细的入窑火候，您的内心也历经了耐心与力量的淬炼。您拥有一种罕见的特质：既有热烈的抱负，又不失沉稳的智慧，恰如那跨越天地、连接虚实的生肖祥龙。
+                        </p>
+<div class="mt-8 space-y-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-md text-body-md text-on-surface">卓越的领导力与远见卓识</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-body-md text-body-md text-on-surface">深层的情感共鸣与同理心</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-body-md text-body-md text-on-surface">在传统之中追求创新的精神</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="p-8 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 transition-colors">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">核心力量</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">您在纷扰中保持冷静的能力，让您在他人止步不前时仍能雕琢出完美的解决方案。您是自己人生的“大师级匠人”。</p>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 transition-colors">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">社交共鸣</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">在群体中，您是那股稳定的核心力量。人们被您的真实感所吸引，那种在举手投足间流露出的从容与自信令人信赖。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Cultural Story Section -->
+<section class="max-w-container-max-width mx-auto px-gutter py-section-gap-desktop reveal-up active">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-1/2 order-2 md:order-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">大吴龙的传说</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 italic border-l-4 border-primary pl-6">
+                        “源自黄土，历经千度火炼，大吴龙象征着潮汕人民不屈不挠的精神风骨。”
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-8">
+                        大吴泥塑艺术起源于明朝，是国家级非物质文化遗产。这种特殊的生肖形态融入了“S型”美学，象征着流动的生命力与永恒的生机。匠人们花费数周手工绘制鳞片，确保每一尊祥龙都拥有独特的灵魂，正如测评揭示了您独一无二的性格。
+                    </p>
+<a class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-4 transition-all duration-300" href="#">
+                        探索工艺历史
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="md:w-1/2 order-1 md:order-2 grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-8">
+<div class="h-64 rounded-xl overflow-hidden bg-surface-variant">
+<img alt="泥塑工具与黄土" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4-xDBWLCuSAvpaXHzOShxA4wDEN7oVbx2b7LnZuC_nda18cFEHK9xWuZprx-J-TNmmZFyFqBHMfVJ56RpMpSKMr0OnQwH12vr7hcLNGwgyC_UzLqOIWUxaCq9cut1djwbLnhddFsBaSHpIXsemLCJ2wG0ec3HX6rpeLklyymedHXHXBHivGo3AI1xk_i50DzvHHR7FMx0YIlT65Ljp5n3RstOZoOFcJ0ug2wfv0l4XCSHk25G2FhojKzf0opeyZUaX5o9miTD5w">
+</div>
+<div class="h-48 rounded-xl overflow-hidden bg-surface-variant">
+<img alt="细腻的手绘过程" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnV_JQ5dxyaEGhqHGbwIegAA8Y8kshE4H22qxDxEMhHIUtzMV-km1w-l4saMYrFwD9KGZWaNNxzKgKdwL0NbHetu56JtxGcAzSDQ3BHSNboioJmqrC-hkZwmVvEKaF3jInk2wPClVTKhkNSBxKL__FTGKXmX0KkhiWK0hwSpzi4SwpmamJg4v-cVRXt2-tDjrYkRR-O77gPn5kAngmOvKB8ixeB8r5DIqVMNhiq0kuR2TofCBf9r_4L-ZIkafcGRFuJzqY_MC9JA">
+</div>
+</div>
+<div class="space-y-4">
+<div class="h-48 rounded-xl overflow-hidden bg-surface-variant">
+<img alt="窑炉火光" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK8uBSa7Hyn02bRD0bMISLDHmyF-p04jogn6iP2g-UA9mWbKLGI1fdINXgrY-3aSf3asQEU_5PzmhZTYJcmgwK8XKUdsTVxyg3azu7ave8zh64PWQg_C8PIdoGHxr0dikuHxk1rJ6Zr1fXbG6H5svI81MzTvN8s1Wk25qVREtoephr7Asq6TdrB8t7lJSeYIbIIjljbUUMm4icqKyp1d-ha5CeVgBGoFXYiuwJmYaTC_waYYQtO-wBJ3gGCF3fiBCF4qOGi9ecHw">
+</div>
+<div class="h-64 rounded-xl overflow-hidden bg-surface-variant">
+<img alt="艺术展厅" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv6TG8fm84OEx7hSdXs9iIgGHW1EtN_tJERGYVK__bGfd_JMKRedYklmb65esMdfVfagje4AfRxZUQD3hc9vTO4_mHUZDxaBRV9XUPA7AXxWG3FLbWOSnPhfQWnL14opc0DcOlRZrUhQS_jS5S64o8qehrcSflPgc-ORSdl-vsvm9aijzlTTVE38FK-hG14xDgpIKexxsLz_OuzXmna_ck-SzWHxIPaZW4JXfQT6T4hYmGXRFEkXQG97229R_kOH4QKCnD1J1q_w">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Products -->
+<section class="max-w-container-max-width mx-auto px-gutter mb-section-gap-desktop reveal-up active">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">为您甄选</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">将祥龙瑞气带回您的生活空间</p>
+</div>
+<div class="flex gap-4">
+<button class="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-8 horizontal-scroll-hide pb-8">
+<!-- Product Card 1 -->
+<div class="flex-shrink-0 w-72 group">
+<div class="h-96 rounded-2xl overflow-hidden bg-surface-container mb-4 relative">
+<img alt="祥龙瑞气摆件" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEUJ3c1b01e7mZb5JdrZTg9MYU_tqqmVn4_KQjLjeqf0dVpnoS-_qFgbin5REHfMNpjqK_0SuETmPhvkwb7oyTXWis2LXKpncPXIRXBLUKQ8_2zQXwqMWxrsSEUHOkRF7tPE0s6wdsQtrtnUqJUT5SGXEZUWnJRhpFy9MYi9gjxZCUXvtmYqhU8J7CN1Kh-xkkCuAyaQBoOIqjFdQjw2eXKSOgOFh1-t_pUt5jiIqXUWq2gfAAkJJwUFqCbtmNsRbuHuYQIxH4Xg">
+<div class="absolute bottom-4 left-4 right-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-on-surface text-surface py-3 rounded-xl font-label-sm text-label-sm">查看详情</button>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface">祥龙瑞气摆件</h3>
+<p class="font-body-md text-body-md text-primary">¥ 880.00</p>
+</div>
+<!-- Product Card 2 -->
+<div class="flex-shrink-0 w-72 group">
+<div class="h-96 rounded-2xl overflow-hidden bg-surface-container mb-4 relative">
+<img alt="十二生肖福牌" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDcXp0I4fruvHDFXtLOg9IL3-jpi-WHLYpsDdJSs53H8QoTPPmvph0i3FYOaK16bpPWUybDoy9sM0_ah-hLzZpkqXSTC0w-rabA7Rg8LCd3RwK5IkXcmn5HDScWbar8tj4sizAaZUpcCbDSVcZVGGUI9VhxabiD1TGlZDj4b-ajSpRpgASMxloFVvIAIGVyt--RDHIFBZKzNWPifo1iCdkKO1NPdkF7YxEguJ6_jBqzu-LEaPESHd6XTfvT82bEH52mUKBA6UZIw">
+<div class="absolute bottom-4 left-4 right-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-on-surface text-surface py-3 rounded-xl font-label-sm text-label-sm">查看详情</button>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface">十二生肖福牌</h3>
+<p class="font-body-md text-body-md text-primary">¥ 299.00</p>
+</div>
+<!-- Product Card 3 -->
+<div class="flex-shrink-0 w-72 group">
+<div class="h-96 rounded-2xl overflow-hidden bg-surface-container mb-4 relative">
+<img alt="祥龙出云香炉" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3BOvuY35ONFhQujZu4QJzcMpFfHD0vJN0kD7p7zvf2e1P3xM3umg_7ncbpabHEq_IdZa7ZNqjRCHMKvb3CIfDe74IO5x70pPPDgvijsfGA9HwoJNhBFxtFwSb8H78ZlMhj8odfB5shptjWFtj62xHPGkecC4pZTPM_cydubR6F1yrHUwe4YUPdv0BqgHxCffSDOq-0SWIU9xfdMptt7QYKKKAUSCTpyzrzObz5P_RmGVI3BFMUN6-kgH0KVi1Ukvgqe8GHluokQ">
+<div class="absolute bottom-4 left-4 right-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-on-surface text-surface py-3 rounded-xl font-label-sm text-label-sm">查看详情</button>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface">祥龙出云香炉</h3>
+<p class="font-body-md text-body-md text-primary">¥ 580.00</p>
+</div>
+<!-- Product Card 4 -->
+<div class="flex-shrink-0 w-72 group">
+<div class="h-96 rounded-2xl overflow-hidden bg-surface-container mb-4 relative">
+<img alt="龙魂影盒" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKc33C-53ZPReHux--Z5hC8j7A-flil89efVW1B9G5dlnhj2wF1EVepFoY5vsxNNOK3Ec2grgpmUb_uXKi1PqFj0OgS87aQ--9XqABAv3sG3UXsESbibT8BYpwjY-U0qdJT1GFgujJZg_E9nlhoDmZBYrE7LDeBs0jvmli_L6M1-b1COCvwBl8F5CNxmXgguxp3X0WhGOv8C7lEIzqlZJ_Y6Fhrvtv_Ui_8CN77xKrnn9xIbm-lQYQQ3Qt6IO1QVJJ1-ac4JE84g">
+<div class="absolute bottom-4 left-4 right-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-on-surface text-surface py-3 rounded-xl font-label-sm text-label-sm">查看详情</button>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] text-on-surface">龙魂影盒</h3>
+<p class="font-body-md text-body-md text-primary">¥ 1380.00</p>
+</div>
+</div>
+</section>
+<!-- Final Actions -->
+<section class="max-w-container-max-width mx-auto px-gutter text-center reveal-up active">
+<div class="p-12 md:p-24 rounded-3xl bg-primary-container/10 border border-primary/20 backdrop-blur-sm">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">分享您的守护神</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    让更多人发现属于自己的泥塑生肖，共同助力非遗文化的保护与传承。每一次分享，都在为大吴泥塑的薪火相传贡献力量。
+                </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="group flex items-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-full font-headline-md text-[18px] shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all" id="save-poster-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
+                        保存海报
+                    </button>
+<button class="flex items-center gap-3 bg-transparent text-on-surface-variant border border-outline px-10 py-5 rounded-full font-headline-md text-[18px] hover:bg-surface-container-high hover:text-on-surface transition-all">
+<span class="material-symbols-outlined">restart_alt</span>
+                        重新测评
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-low dark:bg-inverse-surface border-none mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center gap-base px-gutter py-12 max-w-container-max-width mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<img alt="广东金融学院" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3bO4Te3XkDQkV40HTOraI6jmShNwouc06JkRh0Jh2wCQbSd6LU5BELfelcMNMolNJtaJ-wCFqOAy0g1X25ffpEe39DnyyaeRoHMm_9Qe9KfGVxoon2fPfmW9jPrxf5f-WK6ehmcdaO8kM4CtushP8qJ7MnFJkYNdVr87PT44AjIV80-MRPEMAicogJqNrhycbjXauHFL38lr8CMD5cIN07bHT33otILVrUl5xNymM3ejjaPkQ1c7GVWUuIU-OPY1pQKTohXnVNA">
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left max-w-md mt-2">
+                    © 2026 大吴泥塑文化传承平台. 保留所有权利。&nbsp;</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">学术合作</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">赛事信息</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">使用条款</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">隐私政策</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Horizontal scroll button logic
+        document.querySelectorAll('section button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const container = btn.closest('section').querySelector('.horizontal-scroll-hide');
+                if (!container) return;
+                
+                const scrollAmount = 320;
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (!icon) return;
+                
+                if (icon.textContent === 'chevron_right') {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                } else if (icon.textContent === 'chevron_left') {
+                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Save Poster Interaction
+        const saveBtn = document.getElementById('save-poster-btn');
+        if (saveBtn) {
+            saveBtn.addEventListener('click', () => {
+                saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> 正在准备...';
+                setTimeout(() => {
+                    saveBtn.innerHTML = '<span class="material-symbols-outlined">check</span> 已保存至相册';
+                    setTimeout(() => {
+                        saveBtn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">download</span> 保存海报';
+                    }, 2000);
+                }, 1500);
+            });
+        }
+    </script>
+
+
+</body></html>

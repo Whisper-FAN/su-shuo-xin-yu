@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>塑说心语 - 泥塑性格测评</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#31312d",
+                        "tertiary-fixed": "#ffdeaa",
+                        "secondary-fixed": "#bceddc",
+                        "secondary": "#396759",
+                        "on-primary-fixed": "#370e00",
+                        "on-surface": "#1c1c18",
+                        "surface-dim": "#dcdad4",
+                        "secondary-container": "#b9ead9",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed": "#ffdbce",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#ffb599",
+                        "on-surface-variant": "#53433d",
+                        "on-primary-fixed-variant": "#71361c",
+                        "tertiary": "#7a5500",
+                        "tertiary-container": "#996c04",
+                        "background": "#fcf9f3",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-background": "#1c1c18",
+                        "primary-container": "#a96245",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a0d1c0",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fcf9f3",
+                        "on-secondary-fixed-variant": "#204f42",
+                        "surface-container": "#f0eee8",
+                        "primary-fixed-dim": "#ffb599",
+                        "on-secondary-container": "#3d6b5e",
+                        "surface-variant": "#e5e2dc",
+                        "outline-variant": "#d9c2ba",
+                        "on-tertiary-fixed-variant": "#5f4100",
+                        "surface-container-high": "#ebe8e2",
+                        "surface": "#fcf9f3",
+                        "outline": "#86736c",
+                        "on-secondary-fixed": "#002019",
+                        "surface-tint": "#8e4c31",
+                        "primary": "#8c4a2f",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f6f3ed",
+                        "inverse-on-surface": "#f3f0ea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f5bd58",
+                        "on-primary-container": "#fffbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-mobile": "64px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "section-gap-desktop": "120px",
+                        "container-max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter", "sans-serif"],
+                        "headline-lg": ["Noto Serif SC", "serif"],
+                        "display-hero": ["Noto Serif SC", "serif"],
+                        "headline-md": ["Noto Serif SC", "serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "display-hero-mobile": ["Noto Serif SC", "serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-hero-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .paper-texture {
+            background-color: #fcf9f3;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        .rice-paper-card {
+            background-color: #ffffff;
+            background-image: url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+            box-shadow: 0 10px 40px -10px rgba(140, 74, 47, 0.1);
+            border: 1px solid rgba(217, 194, 186, 0.4);
+            position: relative;
+        }
+
+        .rice-paper-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 24px solid transparent;
+            border-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H100V100H0V0Z' fill='none'/%3E%3Cpath d='M10 10V20M10 10H20' stroke='%23d9c2ba' stroke-width='0.5'/%3E%3Cpath d='M90 10V20M90 10H80' stroke='%23d9c2ba' stroke-width='0.5'/%3E%3Cpath d='M10 90V80M10 90H20' stroke='%23d9c2ba' stroke-width='0.5'/%3E%3Cpath d='M90 90V80M90 90H80' stroke='%23d9c2ba' stroke-width='0.5'/%3E%3C/svg%3E") 25 stretch;
+            pointer-events: none;
+        }
+
+        .likert-btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(140, 74, 47, 0.1);
+        }
+
+        .likert-btn:hover {
+            transform: scale(1.01);
+            background: rgba(140, 74, 47, 0.03);
+            border-color: rgba(140, 74, 47, 0.3);
+        }
+
+        .likert-btn.active {
+            background-color: #8c4a2f;
+            color: white;
+            border-color: #8c4a2f;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.2), 0 8px 16px rgba(140, 74, 47, 0.2);
+            transform: scale(0.98);
+        }
+
+        .likert-btn.active .inner-dot {
+            background-color: #fcf9f3;
+            box-shadow: 0 0 10px rgba(252, 249, 243, 0.5);
+        }
+
+        @keyframes inkFade {
+            from { opacity: 0; filter: blur(4px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        .ink-appear {
+            animation: inkFade 1.2s ease-out forwards;
+        }
+
+        .ritual-progress {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
+</head>
+<body class="paper-texture min-h-screen flex flex-col font-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed-variant">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md transition-all duration-300 border-b border-outline-variant/20">
+<div class="max-w-container-max-width mx-auto px-gutter py-3 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<img alt="塑说心语 Logo" class="h-12 w-12 object-contain hover:rotate-6 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGooCsJB2MdaMS_bKDBUsZHrECqj3_sMpcm2PHovGnusCTNuwxrXQzOnqvorrGMkfJ20io7e0rxRANVuxzI1UngctnOrvaXzDGU8uS0MkoS4gjHZO_1TRge_UgVhm6sl7gGmB9jU5p5vjLPbryf09X1xOrFR0bCkqAV8x8Xoer3b14gB7HPqSqgGBny9DltjxRABLetQ7FQaCMAFH7PlMuJbpr-9hgVByYEwIA2lc-0AjDNoOmObal5lVzPryajnzeDVKRZxpT6w"/>
+<span class="font-headline-md text-xl font-bold tracking-tight text-primary">塑说心语</span>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="font-headline-md text-base text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">文化起源</a>
+<a class="font-headline-md text-base text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">作品赏析</a>
+<a class="font-headline-md text-base text-primary font-bold border-b-2 border-primary" href="#">性格测试</a>
+<a class="font-headline-md text-base text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">手艺工坊</a>
+</nav>
+<button class="px-7 py-2.5 bg-primary text-on-primary rounded-full font-headline-md text-sm hover:shadow-lg hover:shadow-primary/30 transition-all active:scale-95">
+            立即开启
+        </button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-section-gap-desktop px-gutter flex flex-col items-center justify-center max-w-container-max-width mx-auto w-full">
+<!-- Progress Header -->
+<div class="w-full max-w-4xl mb-12 flex flex-col items-center">
+<div class="flex flex-col items-center mb-6 ink-appear">
+<p class="font-headline-md text-primary text-lg mb-2">第 <span class="text-3xl font-bold px-1">01</span> / 24 步</p>
+<h1 class="font-headline-lg text-4xl text-on-surface tracking-widest">探 寻 本 我</h1>
+</div>
+<!-- Progress Bar (Artistic Style) -->
+<div class="w-full max-w-md h-0.5 bg-outline-variant/30 relative overflow-visible">
+<div class="absolute top-0 left-0 h-full bg-primary transition-all duration-1000 ease-in-out" style="width: 4.16%;">
+<div class="absolute -right-2 -top-1.5 w-3.5 h-3.5 rounded-full bg-primary border-4 border-surface shadow-sm"></div>
+</div>
+</div>
+</div>
+<!-- Question Card (Rice Paper Style) -->
+<div class="w-full max-w-3xl rice-paper-card rounded-sm p-10 md:p-20 ink-appear" style="animation-delay: 0.2s;">
+<!-- Decorative Seal Style Icon -->
+<div class="absolute top-8 right-8 w-14 h-14 border-2 border-primary/20 flex items-center justify-center rounded-sm opacity-40">
+<span class="font-headline-md text-primary text-xl leading-none">心</span>
+</div>
+<div id="question-content">
+<p class="font-headline-lg text-2xl md:text-3xl leading-relaxed text-on-surface mb-16 text-center italic opacity-90">
+                “在大吴泥塑博物馆参观时，我更愿意一个人静静观看每件作品，而不是和同伴边走边聊。”
+            </p>
+<!-- Likert Scale (Clay-like tactile feel) -->
+<div class="space-y-4 max-w-md mx-auto">
+<button class="likert-btn w-full px-6 py-4 rounded-lg flex justify-between items-center group cursor-pointer" onclick="selectOption(this)">
+<span class="font-headline-md text-lg">完全不符合</span>
+<div class="w-6 h-6 rounded-full border-2 border-primary/30 flex items-center justify-center transition-all">
+<div class="inner-dot w-3 h-3 rounded-full bg-transparent transition-all"></div>
+</div>
+</button>
+<button class="likert-btn w-full px-6 py-4 rounded-lg flex justify-between items-center group cursor-pointer" onclick="selectOption(this)">
+<span class="font-headline-md text-lg">不符合</span>
+<div class="w-6 h-6 rounded-full border-2 border-primary/30 flex items-center justify-center transition-all">
+<div class="inner-dot w-3 h-3 rounded-full bg-transparent transition-all"></div>
+</div>
+</button>
+<button class="likert-btn w-full px-6 py-4 rounded-lg flex justify-between items-center group cursor-pointer" onclick="selectOption(this)">
+<span class="font-headline-md text-lg">中立</span>
+<div class="w-6 h-6 rounded-full border-2 border-primary/30 flex items-center justify-center transition-all">
+<div class="inner-dot w-3 h-3 rounded-full bg-transparent transition-all"></div>
+</div>
+</button>
+<button class="likert-btn w-full px-6 py-4 rounded-lg flex justify-between items-center group cursor-pointer" onclick="selectOption(this)">
+<span class="font-headline-md text-lg">符合</span>
+<div class="w-6 h-6 rounded-full border-2 border-primary/30 flex items-center justify-center transition-all">
+<div class="inner-dot w-3 h-3 rounded-full bg-transparent transition-all"></div>
+</div>
+</button>
+<button class="likert-btn w-full px-6 py-4 rounded-lg flex justify-between items-center group cursor-pointer" onclick="selectOption(this)">
+<span class="font-headline-md text-lg">完全符合</span>
+<div class="w-6 h-6 rounded-full border-2 border-primary/30 flex items-center justify-center transition-all">
+<div class="inner-dot w-3 h-3 rounded-full bg-transparent transition-all"></div>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="w-full max-w-3xl mt-16 flex items-center justify-between">
+<button class="flex items-center gap-3 px-8 py-3 rounded-full border border-primary/20 text-on-surface-variant font-headline-md hover:bg-white hover:text-primary transition-all active:scale-95 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-lg">west</span>
+<span>上一题</span>
+</button>
+<div class="flex items-center gap-8">
+<button class="font-headline-md text-sm text-on-surface-variant/60 hover:text-error transition-colors tracking-widest" onclick="confirm('确定要退出测试吗？')">
+                退出测试
+            </button>
+<button class="flex items-center gap-3 px-12 py-4 rounded-full bg-primary text-on-primary font-headline-md text-lg shadow-xl shadow-primary/20 hover:shadow-2xl hover:-translate-y-1 transition-all active:translate-y-0">
+<span>下一题</span>
+<span class="material-symbols-outlined text-xl">east</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/20">
+<div class="max-w-container-max-width mx-auto px-gutter py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Logo" class="h-8 w-8 opacity-60 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGooCsJB2MdaMS_bKDBUsZHrECqj3_sMpcm2PHovGnusCTNuwxrXQzOnqvorrGMkfJ20io7e0rxRANVuxzI1UngctnOrvaXzDGU8uS0MkoS4gjHZO_1TRge_UgVhm6sl7gGmB9jU5p5vjLPbryf09X1xOrFR0bCkqAV8x8Xoer3b14gB7HPqSqgGBny9DltjxRABLetQ7FQaCMAFH7PlMuJbpr-9hgVByYEwIA2lc-0AjDNoOmObal5lVzPryajnzeDVKRZxpT6w"/>
+<span class="font-headline-md text-xl text-on-surface tracking-wider">大吴泥塑文化传承平台</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant/70 text-center md:text-left">
+                © 2024 塑说心语 团队. 版权所有. 艺术支持：文化艺术研究院.
+            </p>
+</div>
+<div class="flex flex-wrap justify-center gap-10">
+<a class="font-headline-md text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">隐私政策</a>
+<a class="font-headline-md text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">使用条款</a>
+<a class="font-headline-md text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">联系我们</a>
+</div>
+</div>
+</footer>
+<script>
+    function selectOption(btn) {
+        // Remove active classes from all buttons
+        const buttons = document.querySelectorAll('.likert-btn');
+        buttons.forEach(b => {
+            b.classList.remove('active');
+            const dot = b.querySelector('.inner-dot');
+            dot.classList.remove('bg-on-primary', 'scale-100');
+            dot.classList.add('bg-transparent', 'scale-0');
+        });
+
+        // Add active class to clicked button
+        btn.classList.add('active');
+        const activeDot = btn.querySelector('.inner-dot');
+        activeDot.classList.remove('bg-transparent', 'scale-0');
+        activeDot.classList.add('bg-white', 'scale-100');
+        
+        // Haptic-like effect logic would go here
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Additional subtle entry animations can be added here
+    });
+</script>
+</body></html>
