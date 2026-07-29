@@ -240,7 +240,24 @@ function norm(v) { return (v + 1) / 2 }
 function valScore(label) { return label === '成就型' ? 0.88 : label === '安稳型' ? 0.28 : label === '自由型' ? 0.72 : 0.5 }
 
 function downloadPoster() {
-  showPoster.value = false
+  const w = window.open('', '_blank', 'width=420,height=900')
+  if (w) {
+    const root = window.location.origin + base
+    const posterEl = posterRef.value
+    if (!posterEl) return
+    const clone = posterEl.cloneNode(true)
+    // Fix all relative image src to absolute
+    clone.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src')
+      if (src && src.startsWith('/')) img.setAttribute('src', root + src)
+    })
+    w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>我的生肖守护神 - 分享海报</title>'
+      + '<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">'
+      + '<style>body{margin:0;display:flex;justify-content:center;background:#e5e2dc;padding:1rem}'
+      + '@media print{body{background:#fff;padding:0}}</style></head>'
+      + '<body>' + clone.outerHTML + '</body></html>')
+    w.document.close()
+  }
 }
 
 onMounted(() => {
