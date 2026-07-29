@@ -244,6 +244,8 @@ const dataDots = computed(()=>{
   return axes.map(a=>({x:100+82*norm(s[a.key])*Math.cos(a.angle),y:100-82*norm(s[a.key])*Math.sin(a.angle)}))
 })
 
+const NAME_TO_EN = { '鼠':'rat','牛':'ox','虎':'tiger','兔':'rabbit','龙':'dragon','蛇':'snake','马':'horse','羊':'goat','猴':'monkey','鸡':'rooster','狗':'dog','猪':'pig' }
+
 const qrCodeUrl = computed(()=>`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.origin+'/test')}`)
 
 function norm(v){return (v+1)/2}
@@ -262,23 +264,29 @@ function downloadPoster(){
 }
 
 onMounted(()=>{
-  const raw=sessionStorage.getItem('testResult')
-  if(raw){
-    const record=JSON.parse(raw)
-    const z=ZODIAC_DATA[record.zodiacId]||ZODIAC_DATA[5]
-    const v=record.vector
-    result.value={
-      recordId:record.recordId,zodiacId:record.zodiacId,
-      zodiacName:record.zodiacName||z.name,
-      zodiacImage:`/images/zodiac/${record.zodiacName||z.name}.jpg`,
-      dialectName:z.dialect,element:z.element,luckyColor:z.luckyColor,
-      luckyNumber:z.luckyNumber,personalityTags:z.personalityTags,
-      strengths:z.strengths,weaknesses:z.weaknesses,relationshipAdvice:z.relationshipAdvice,
-      craft:z.craft,
-      description:`${z.name}是十二生肖中${z.luckyColor.split('、')[0]}系守护神。${z.strengths}。但${z.weaknesses}。`,
-      dimensionScores:{ei:v.ei,sn:v.sn,tf:v.tf,jp:v.jp,valueLabel:record.valueLabel,valueType:record.valueType},
-    }
-    emoji.value=z.emoji
+  const raw = sessionStorage.getItem('testResult')
+  let record = null
+  if (raw) record = JSON.parse(raw)
+
+  // If no session data (direct URL access), show Dragon as default
+  if (!record) {
+    record = { zodiacId: 5, zodiacName: '龙', vector: { ei: 0.8, sn: -0.6, tf: 0.7, jp: 0.8 }, valueType: 'ACHIEVE', valueLabel: '成就型' }
   }
+
+  const z = ZODIAC_DATA[record.zodiacId] || ZODIAC_DATA[5]
+  const v = record.vector
+  result.value = {
+    recordId: record.recordId || Date.now(),
+    zodiacId: record.zodiacId,
+    zodiacName: record.zodiacName || z.name,
+    zodiacImage: '/images/zodiac/' + NAME_TO_EN[record.zodiacName || z.name] + '.jpg',
+    dialectName: z.dialect, element: z.element, luckyColor: z.luckyColor,
+    luckyNumber: z.luckyNumber, personalityTags: z.personalityTags,
+    strengths: z.strengths, weaknesses: z.weaknesses, relationshipAdvice: z.relationshipAdvice,
+    craft: z.craft,
+    description: z.name + '是十二生肖中' + z.luckyColor.split('、')[0] + '系守护神。' + z.strengths + '。但' + z.weaknesses + '。',
+    dimensionScores: { ei: v.ei, sn: v.sn, tf: v.tf, jp: v.jp, valueLabel: record.valueLabel, valueType: record.valueType },
+  }
+  emoji.value = z.emoji
 })
 </script>
