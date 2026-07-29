@@ -78,13 +78,18 @@
 
       <!-- ===== 你的守护神文创 ===== -->
       <div style="background:#fff;border-radius:1rem;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.03)">
-        <details>
+        <details open>
           <summary style="cursor:pointer;font-family:'Noto Serif SC',serif;font-size:1rem;color:#1c1c18;font-weight:600">你的守护神文创</summary>
           <div style="margin-top:0.75rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
-            <div v-for="p in relatedProducts" :key="p.id" @click="openContact(p)" style="cursor:pointer;background:rgba(140,74,47,0.03);border-radius:0.75rem;padding:0.75rem;text-align:center;transition:all 0.2s">
-              <div style="font-size:0.8rem;color:#1c1c18;margin-bottom:0.25rem">{{ p.name }}</div>
-              <div style="font-size:0.8rem;color:#8c4a2f;font-weight:600">&yen;{{ p.price }}</div>
-              <div style="font-size:0.65rem;color:#86736c;margin-top:0.25rem">点击咨询 →</div>
+            <div v-for="p in relatedProducts" :key="p.id" @click="openTaobao(p.taobao)" style="cursor:pointer;background:rgba(140,74,47,0.03);border-radius:0.75rem;overflow:hidden;transition:all 0.2s">
+              <div style="aspect-ratio:1;overflow:hidden;background:#f0eee8">
+                <img :src="'/su-shuo-xin-yu'+p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
+              </div>
+              <div style="padding:0.5rem;text-align:center">
+                <div style="font-size:0.75rem;color:#1c1c18;margin-bottom:0.15rem;line-height:1.3">{{ p.name }}</div>
+                <div style="font-size:0.8rem;color:#8c4a2f;font-weight:600">&yen;{{ p.price }}</div>
+                <div style="font-size:0.6rem;color:#86736c;margin-top:0.15rem">去淘宝购买 →</div>
+              </div>
             </div>
           </div>
         </details>
@@ -108,14 +113,6 @@
         <router-link :to="'/zodiac/'+result.zodiacId" style="font-size:0.85rem;color:#8c4a2f;text-decoration:none">查看{{ result.zodiacName }}泥塑详情 →</router-link>
       </div>
 
-      <!-- Contact Modal -->
-      <div v-if="contactModal" @click.self="contactModal=null" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;padding:1rem">
-        <div style="background:#fff;border-radius:1rem;padding:2rem;max-width:320px;width:100%;text-align:center">
-          <p style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:#1c1c18;margin-bottom:1rem">联系我们</p>
-          <p style="font-size:0.9rem;color:#53433d;line-height:1.8;margin-bottom:1.5rem">感兴趣？<br/>微信：<strong style="color:#8c4a2f">cyy50713</strong></p>
-          <button @click="contactModal=null" style="background:#8c4a2f;color:#fff;padding:0.6rem 2rem;border-radius:999px;font-weight:600;border:none;cursor:pointer">关闭</button>
-        </div>
-      </div>
     </div>
 
     <!-- ===== POSTER ===== -->
@@ -197,8 +194,6 @@ const imgErr = ref(false)
 const emoji = ref('🐲')
 const showPoster = ref(false)
 const posterRef = ref(null)
-const contactModal = ref(null)
-
 const axes = [
   {label:'外向/内向',short:'EI',angle:Math.PI/2,key:'ei'},
   {label:'实感/直觉',short:'SN',angle:Math.PI/2+2*Math.PI/5,key:'sn'},
@@ -217,10 +212,10 @@ const attrs = computed(() => result.value ? [
 ] : [])
 
 const relatedProducts = [
-  {id:1,name:'生肖守护神盲盒',price:'29',link:'#'},
-  {id:2,name:'基础DIY材料包',price:'29',link:'#'},
-  {id:3,name:'大师手作珍藏定制',price:'699',link:'#'},
-  {id:4,name:'《贴塑》专题小课',price:'129',link:'#'},
+  { id:1, name:'生肖守护神盲盒', price:'29', taobao:'https://shop.m.taobao.com', img:'/images/zodiac/all-zodiac.png' },
+  { id:2, name:'基础DIY材料包', price:'29', taobao:'https://shop.m.taobao.com', img:'/images/products/creative/IMG_9912.JPG' },
+  { id:3, name:'大师手作珍藏定制', price:'699', taobao:'https://shop.m.taobao.com', img:'/images/products/premium/premium1.png' },
+  { id:4, name:'潮剧脸谱冰箱贴（4枚）', price:'39', taobao:'https://shop.m.taobao.com', img:'/images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
 ]
 
 const scoresDisplay = computed(() => {
@@ -252,7 +247,7 @@ const dataDots = computed(()=>{
 const qrCodeUrl = computed(()=>`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.origin+'/test')}`)
 
 function norm(v){return (v+1)/2}
-function openContact(p){contactModal.value=p}
+function openTaobao(link) { window.open(link || 'https://shop.m.taobao.com', '_blank') }
 
 function downloadPoster(){
   const el=posterRef.value

@@ -18,7 +18,7 @@
       <div style="border-top:1px solid rgba(140,74,47,0.1);padding-top:3rem;margin-top:2rem">
         <h2 style="font-family:'Noto Serif SC',serif;font-size:1.5rem;font-weight:700;color:#1c1c18;text-align:center;margin-bottom:2rem">文创产品</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem">
-          <div v-for="p in products" :key="p.id" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
+          <div v-for="p in products" :key="p.id" @click="window.open(p.link||'https://shop.m.taobao.com','_blank')" style="cursor:pointer;background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06)">
             <div style="aspect-ratio:1;overflow:hidden;background:#f0eee8">
               <img :src="'/su-shuo-xin-yu' + p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;transform:scale(1);box-shadow:none" loading="lazy"
                    @mouseenter="e => e.target.style.transform='scale(1.05)'"
@@ -69,18 +69,19 @@ const images = [
   { id:'p4',title:'精品泥塑',cat:'premium',url:'/images/products/premium/premium3.jpg'},
 ]
 
+const TAOBAO = 'https://shop.m.taobao.com'
 const products = [
-  { id:1,  name:'深度人格报告',               price:'9.90',  cat:'数字', img:'/images/zodiac/all-zodiac.png' },
-  { id:2,  name:'潮剧脸谱冰箱贴（单枚）',     price:'12',    cat:'文创', img:'/images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
-  { id:3,  name:'生肖守护神盲盒（单盒）',       price:'29',    cat:'盲盒', img:'/images/zodiac/all-zodiac.png' },
-  { id:4,  name:'基础DIY材料包',               price:'29',    cat:'DIY',  img:'/images/products/creative/IMG_9912.JPG' },
-  { id:5,  name:'潮剧脸谱冰箱贴（4枚套组）',    price:'39',    cat:'文创', img:'/images/products/creative/IMG_9910.JPG' },
-  { id:6,  name:'进阶DIY彩绘材料包',           price:'39',    cat:'DIY',  img:'/images/products/creative/IMG_9912.JPG' },
-  { id:7,  name:'生肖守护神盲盒（端盒6个）',    price:'158',   cat:'盲盒', img:'/images/zodiac/all-zodiac.png' },
-  { id:8,  name:'《贴塑》专题小课（6节）',      price:'129',   cat:'课程', img:'/images/products/workshop/IMG_0031.JPG' },
-  { id:9,  name:'泥塑入门系统课（10节）',       price:'199',   cat:'课程', img:'/images/products/workshop/IMG_0050.JPG' },
-  { id:10, name:'基础生肖定制',                price:'199',   cat:'定制', img:'/images/zodiac/all-zodiac.png' },
-  { id:11, name:'泥塑里的中国 非遗研学营（1大1小）', price:'298', cat:'研学', img:'/images/products/workshop/IMG_0050.JPG' },
-  { id:12, name:'大师手作·珍藏定制',            price:'699',   cat:'高端', img:'/images/products/premium/premium1.png' },
+  { id:1,  name:'深度人格报告',               price:'9.90',  cat:'数字', img:'/images/zodiac/all-zodiac.png', link: TAOBAO },
+  { id:2,  name:'潮剧脸谱冰箱贴（单枚）',     price:'12',    cat:'文创', img:'/images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg', link: TAOBAO },
+  { id:3,  name:'生肖守护神盲盒（单盒）',       price:'29',    cat:'盲盒', img:'/images/zodiac/all-zodiac.png', link: TAOBAO },
+  { id:4,  name:'基础DIY材料包',               price:'29',    cat:'DIY',  img:'/images/products/creative/IMG_9912.JPG', link: TAOBAO },
+  { id:5,  name:'潮剧脸谱冰箱贴（4枚套组）',    price:'39',    cat:'文创', img:'/images/products/creative/IMG_9910.JPG', link: TAOBAO },
+  { id:6,  name:'进阶DIY彩绘材料包',           price:'39',    cat:'DIY',  img:'/images/products/creative/IMG_9912.JPG', link: TAOBAO },
+  { id:7,  name:'生肖守护神盲盒（端盒6个）',    price:'158',   cat:'盲盒', img:'/images/zodiac/all-zodiac.png', link: TAOBAO },
+  { id:8,  name:'《贴塑》专题小课（6节）',      price:'129',   cat:'课程', img:'/images/products/workshop/IMG_0031.JPG', link: TAOBAO },
+  { id:9,  name:'泥塑入门系统课（10节）',       price:'199',   cat:'课程', img:'/images/products/workshop/IMG_0050.JPG', link: TAOBAO },
+  { id:10, name:'基础生肖定制',                price:'199',   cat:'定制', img:'/images/zodiac/all-zodiac.png', link: TAOBAO },
+  { id:11, name:'泥塑里的中国 非遗研学营',     price:'298',   cat:'研学', img:'/images/products/workshop/IMG_0050.JPG', link: TAOBAO },
+  { id:12, name:'大师手作·珍藏定制',            price:'699',   cat:'高端', img:'/images/products/premium/premium1.png', link: TAOBAO },
 ]
 </script>
