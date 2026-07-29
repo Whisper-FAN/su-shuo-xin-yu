@@ -1,10 +1,10 @@
 # Dependencies
 node_modules/
-yimo-web/node_modules/
+su-shuo-xin-yu-web/node_modules/
 
 # Build output
-yimo-web/dist/
-yimo-server/target/
+su-shuo-xin-yu-web/dist/
+su-shuo-xin-yu-server/target/
 
 # IDE
 .idea/
@@ -19,7 +19,7 @@ Thumbs.db
 *.log
 
 # Uploads
-yimo-server/uploads/
+su-shuo-xin-yu-server/uploads/
 
 # Java compiled
 *.class

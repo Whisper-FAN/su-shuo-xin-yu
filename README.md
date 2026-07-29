@@ -18,7 +18,7 @@
 ### 项目结构
 
 ```
-├── yimo-server/          # Spring Boot 后端
+├── su-shuo-xin-yu-server/          # Spring Boot 后端
 │   ├── src/main/java/com/yimo/
 │   │   ├── annotation/   # 自定义注解
 │   │   ├── common/       # 通用类 (Result, PageResult, PageRequest)
@@ -40,7 +40,7 @@
 │       ├── db/schema.sql  # 数据库建表脚本
 │       └── db/data.sql    # 初始化数据
 │
-├── yimo-web/             # Vue 3 前端
+├── su-shuo-xin-yu-web/             # Vue 3 前端
 │   └── src/
 │       ├── api/          # API 封装
 │       ├── assets/       # 静态资源
@@ -59,14 +59,14 @@
 #### 1. 数据库初始化
 
 ```bash
-mysql -u root -p < yimo-server/src/main/resources/db/schema.sql
-mysql -u root -p < yimo-server/src/main/resources/db/data.sql
+mysql -u root -p < su-shuo-xin-yu-server/src/main/resources/db/schema.sql
+mysql -u root -p < su-shuo-xin-yu-server/src/main/resources/db/data.sql
 ```
 
 #### 2. 启动后端
 
 ```bash
-cd yimo-server
+cd su-shuo-xin-yu-server
 mvn spring-boot:run
 ```
 
@@ -77,7 +77,7 @@ API 文档: http://localhost:8088/doc.html
 #### 3. 启动前端
 
 ```bash
-cd yimo-web
+cd su-shuo-xin-yu-web
 npm install
 npm run dev
 ```

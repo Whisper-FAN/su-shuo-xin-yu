@@ -34,11 +34,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: yimo-web
+        working-directory: su-shuo-xin-yu-web
 
       - name: Build
         run: npm run build
-        working-directory: yimo-web
+        working-directory: su-shuo-xin-yu-web
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -46,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: yimo-web/dist
+          path: su-shuo-xin-yu-web/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
