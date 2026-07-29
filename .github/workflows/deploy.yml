@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: yimo-web/package-lock.json
+          cache-dependency-path: su-shuo-xin-yu-web/package-lock.json
 
       - name: Install dependencies
         run: npm install
