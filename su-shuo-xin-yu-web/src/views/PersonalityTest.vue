@@ -109,10 +109,7 @@ function prevQuestion() {
 
 function submit() {
   if (selectedAnswer.value !== null) answers.value[currentQuestion.value.id] = selectedAnswer.value
-  submitted.value = true
-
   const result = matchZodiac(questions.value, answers.value)
-  // Store result in sessionStorage for result page
   const record = {
     recordId: Date.now(),
     zodiacId: result.zodiacId,
@@ -122,8 +119,7 @@ function submit() {
     valueLabel: result.valueLabel,
   }
   sessionStorage.setItem('testResult', JSON.stringify(record))
-
-  setTimeout(() => router.push(`/result/${record.recordId}`), 800)
+  router.push('/result/' + record.recordId)
 }
 
 // ========== 24 questions with options (from 性格测试题目.docx + 商业计划书) ==========
