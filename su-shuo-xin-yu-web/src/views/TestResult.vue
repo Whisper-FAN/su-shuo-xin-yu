@@ -285,7 +285,7 @@ onMounted(()=>{
     recordId: record.recordId || Date.now(),
     zodiacId: record.zodiacId,
     zodiacName: record.zodiacName || z.name,
-    zodiacImage: '/images/zodiac/' + NAME_TO_EN[record.zodiacName || z.name] + '.jpg',
+    zodiacImage: (location.hostname==='localhost'?'':'/su-shuo-xin-yu') + '/images/zodiac/' + NAME_TO_EN[record.zodiacName||z.name] + '.jpg',
     dialectName: z.dialect, element: z.element, luckyColor: z.luckyColor,
     luckyNumber: z.luckyNumber, personalityTags: z.personalityTags,
     strengths: z.strengths, weaknesses: z.weaknesses, relationshipAdvice: z.relationshipAdvice,

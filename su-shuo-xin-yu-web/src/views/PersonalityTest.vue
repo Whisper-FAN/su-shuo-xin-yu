@@ -65,7 +65,21 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { matchZodiac } from '@/utils/matching'
+
+// Table 4-2: 12 zodiac center points [EI, SN, TF, JP] - inlined to prevent tree-shaking
+const ZC = [[+0.7,+0.6,+0.5,+0.6],[-0.8,+0.7,+0.6,+0.8],[+0.9,-0.5,+0.8,+0.7],[-0.6,+0.5,-0.7,-0.5],[+0.8,-0.6,+0.7,+0.8],[-0.5,-0.7,+0.4,+0.3],[+0.9,+0.4,-0.6,-0.7],[-0.4,+0.6,-0.5,+0.2],[+0.8,-0.4,+0.3,-0.6],[+0.6,+0.5,+0.7,+0.9],[-0.3,+0.5,-0.4,+0.4],[+0.5,-0.3,-0.6,-0.5]]
+const ZN = ['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪']
+const ZP = {ACHIEVE:[2,4,9],HARMONY:[1,3,7],EXPLORE:[6,8,11],RELATION:[10,0]}
+function matchZodiac(questions,answers){
+  const ei=n('E/I'),sn=n('S/N'),tf=n('T/F'),jp=n('J/P'),vt=g(),vl={ACHIEVE:'成就型',HARMONY:'安稳型',EXPLORE:'自由型',RELATION:'关系型'}
+  const D=ZC.map(c=>Math.sqrt((ei-c[0])**2+(sn-c[1])**2+(tf-c[2])**2+(jp-c[3])**2))
+  let b=0,s=1;if(D[1]<D[0]){b=1;s=0}
+  for(let i=2;i<12;i++){if(D[i]<D[b]){s=b;b=i}else if(D[i]<D[s])s=i}
+  if(D[s]-D[b]<.05){const p=ZP[vt]||[];if(p.includes(s)&&!p.includes(b))b=s}
+  return{zodiacId:b+1,zodiacName:ZN[b],vector:{ei,sn,tf,jp},valueType:vt,valueLabel:vl[vt]||'安稳型'}
+  function n(dim){let r=0,c=0;for(const q of questions){if(q.dimension!==dim)continue;const sc=answers[q.id];if(sc==null)continue;r+=(q.positiveScore&&q.positiveScore[0]===dim[0])?sc:-sc;c++}if(c===0)return 0;return Math.max(-1,Math.min(1,r/(c*2)))}
+  function g(){const sc={ACHIEVE:0,HARMONY:0,EXPLORE:0,RELATION:0};for(const q of questions){if(q.dimension!=='VALUE')continue;const s=answers[q.id];if(s!=null&&q.positiveScore)sc[q.positiveScore]=(sc[q.positiveScore]||0)+s}return Object.entries(sc).sort((a,b)=>b[1]-a[1])[0][0]}
+}
 
 const router = useRouter()
 const currentIndex = ref(0)
