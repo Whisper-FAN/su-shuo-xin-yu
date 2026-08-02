@@ -49,8 +49,8 @@
           :style="selectedAnswer===null ? 'opacity:0.4;cursor:not-allowed;box-shadow:none' : ''">下一题 →</button>
 
         <button v-else @click="submit" :disabled="selectedAnswer===null"
-          style="background:linear-gradient(135deg,#8c4a2f,#a96245);color:#fff;padding:0.6rem 2.5rem;border-radius:999px;font-weight:600;cursor:pointer;border:none;font-size:1rem;box-shadow:0 8px 20px rgba(140,74,47,0.25)"
-          :style="selectedAnswer===null ? 'opacity:0.4;cursor:not-allowed;box-shadow:none' : ''">生成结果 ✨</button>
+          style="background:#8c4a2f;color:#fff;padding:0.6rem 2.5rem;border-radius:999px;font-weight:600;cursor:pointer;border:none;font-size:1rem;box-shadow:0 8px 20px rgba(140,74,47,0.2)"
+          :style="selectedAnswer===null ? 'opacity:0.4;cursor:not-allowed;box-shadow:none' : ''">查看结果</button>
       </div>
 
       <!-- Computing -->
@@ -91,13 +91,7 @@ const currentQuestion = computed(() => questions.value[currentIndex.value])
 const currentOptions = computed(() => currentQuestion.value?.options || [])
 const progressPercent = computed(() => questions.value.length ? ((currentIndex.value + 1) / questions.value.length) * 100 : 0)
 
-function selectOption(score) {
-  selectedAnswer.value = score
-  // Auto-advance for questions 1-23; last question stays for manual submit
-  if (currentIndex.value < questions.value.length - 1) {
-    setTimeout(() => nextQuestion(), 350)
-  }
-}
+function selectOption(score) { selectedAnswer.value = score }
 function nextQuestion() {
   if (selectedAnswer.value === null) return
   answers.value[currentQuestion.value.id] = selectedAnswer.value

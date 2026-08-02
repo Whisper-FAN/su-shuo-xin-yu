@@ -102,6 +102,14 @@
           <button @click="$router.push('/test')" style="background:transparent;color:#53433d;padding:0.65rem 2rem;border-radius:999px;border:1px solid #86736c;font-weight:600;font-size:1rem;cursor:pointer">🔄 重新测评</button>
         </div>
 
+        <div style="background:rgba(140,74,47,0.03);border-radius:1rem;padding:1.25rem;border:1px solid rgba(140,74,47,0.06);max-width:18rem;margin:0 auto 1rem">
+          <p style="font-size:0.85rem;color:#53433d;margin-bottom:0.75rem">加入生肖守护者社群 · 领9折定制券</p>
+          <div style="width:5rem;height:5rem;margin:0 auto 0.5rem;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(0,0,0,0.05)">
+            <img :src="'/images/team/qrcode.jpg'" alt="公众号二维码" style="width:100%;height:100%;object-fit:cover" @error="e=>e.target.remove()"/>
+          </div>
+          <p style="font-size:0.7rem;color:rgba(83,67,61,0.5)">扫码入群 · 每周福利 · 传承人直播</p>
+        </div>
+
         <router-link :to="'/zodiac/'+result.zodiacId" style="font-size:0.85rem;color:#8c4a2f;text-decoration:none">查看{{ result.zodiacName }}泥塑详情 →</router-link>
       </div>
 
@@ -144,7 +152,11 @@
               </div>
             </div>
             <div style="background:#fafaf8;text-align:center;padding:1rem">
-              <p style="font-size:0.65rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
+              <p style="font-size:0.65rem;color:#86736c;margin:0 0 0.5rem">扫码测测你的生肖守护神</p>
+              <div style="width:4rem;height:4rem;margin:0 auto 0.25rem;background:#fff;border-radius:0.5rem;border:1px solid #e5e2dc;overflow:hidden">
+                <img :src="qrCodeUrl" alt="扫码测试" style="width:100%;height:100%;object-fit:cover"/>
+              </div>
+              <p style="font-size:0.55rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
             </div>
           </div>
           <div style="text-align:center;margin-top:0.75rem">
@@ -243,6 +255,8 @@ const dataDots = computed(()=>{
 
 const NAME_TO_EN = { '鼠':'rat','牛':'ox','虎':'tiger','兔':'rabbit','龙':'dragon','蛇':'snake','马':'horse','羊':'goat','猴':'monkey','鸡':'rooster','狗':'dog','猪':'pig' }
 
+const qrCodeUrl = computed(()=>`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.origin+'/test')}`)
+
 function norm(v){return (v+1)/2}
 function openTaobao(link) { window.open(link || 'https://shop.m.taobao.com', '_blank') }
 
@@ -252,7 +266,7 @@ function downloadPoster(){
   const clone=el.cloneNode(true)
   clone.querySelectorAll('img').forEach(img=>{
     const s=img.getAttribute('src')
-    if(s&&s.startsWith('/')) img.setAttribute('src',window.location.origin+'/su-shuo-xin-yu'+s)
+    if(s&&s.startsWith('/')) img.setAttribute('src',window.location.origin+s)
   })
   const w=window.open('','_blank','width=420,height=900')
   if(w){w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>我的生肖守护神</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet"><style>body{margin:0;display:flex;justify-content:center;background:#e5e2dc;padding:1rem}@media print{body{background:#fff;padding:0}}</style></head><body>'+clone.outerHTML+'</body></html>');w.document.close()}

@@ -7,7 +7,7 @@
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:4rem">
         <div style="aspect-ratio:3/4;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1);background:#f0eee8">
-          <img :src="'/su-shuo-xin-yu' + z.img" :alt="z.name" style="width:100%;height:100%;object-fit:cover"
+          <img :src="z.img" :alt="z.name" style="width:100%;height:100%;object-fit:cover"
                @error="e => { e.target.style.display='none'; e.target.parentElement.innerHTML='<span style=display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:6rem;background:linear-gradient(135deg,rgba(140,74,47,0.1),rgba(57,103,89,0.1))>'+z.emoji+'</span>' }" />
         </div>
 

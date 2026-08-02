@@ -6,7 +6,7 @@
       <router-link to="/" class="flex items-center gap-3 hover:scale-105 transition-transform">
         <img
           v-if="!logoError"
-          :src="'/su-shuo-xin-yu/images/team/logo.jpg'"
+          :src="'images/team/logo.jpg'"
           alt="塑说心语"
           class="h-10 md:h-12 w-auto object-contain rounded-lg shadow-sm"
           @error="logoError = true"

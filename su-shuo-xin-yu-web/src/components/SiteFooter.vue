@@ -9,7 +9,7 @@
             <div class="h-10 w-10 rounded-lg overflow-hidden bg-surface-container border border-outline-variant/20 flex-shrink-0">
               <img
                 v-if="!logoImgError"
-                :src="'/su-shuo-xin-yu/images/team/logo.jpg'"
+                :src="'images/team/logo.jpg'"
                 alt="塑说心语"
                 class="h-full w-full object-cover"
                 @error="logoImgError = true" />
@@ -26,7 +26,7 @@
             <div class="h-8 rounded-lg overflow-hidden bg-white/50 border border-outline-variant/10">
               <img
                 v-if="!getImgError('school-name-badge')"
-                :src="'/su-shuo-xin-yu/images/team/school-name-badge.png'"
+                :src="'images/team/school-name-badge.png'"
                 alt="广东金融学院"
                 class="h-full w-auto object-contain opacity-60"
                 @error="onImgError('school-name-badge')" />
@@ -37,7 +37,7 @@
             <div class="h-8 rounded-lg overflow-hidden bg-white/50 border border-outline-variant/10">
               <img
                 v-if="!getImgError('contest-badge-footer')"
-                :src="'/su-shuo-xin-yu/images/team/contest-badge.png'"
+                :src="'images/team/contest-badge.png'"
                 alt="国创赛"
                 class="h-full w-auto object-contain opacity-60"
                 @error="onImgError('contest-badge-footer')" />
@@ -48,7 +48,7 @@
             <div class="h-8 rounded-lg overflow-hidden bg-white/50 border border-outline-variant/10">
               <img
                 v-if="!getImgError('contest-full-footer')"
-                :src="'/su-shuo-xin-yu/images/team/contest-full.png'"
+                :src="'images/team/contest-full.png'"
                 alt="竞赛"
                 class="h-full w-auto object-contain opacity-60"
                 @error="onImgError('contest-full-footer')" />
@@ -85,7 +85,7 @@
             <div class="w-24 h-24 rounded-xl overflow-hidden mx-auto border border-outline-variant/20 shadow-sm bg-white">
               <img
                 v-if="!getImgError('qrcode')"
-                :src="'/su-shuo-xin-yu/images/team/qrcode.jpg'"
+                :src="'images/team/qrcode.jpg'"
                 alt="公众号"
                 class="w-full h-full object-cover"
                 @error="onImgError('qrcode')" />
@@ -108,7 +108,7 @@
                       shadow-sm group-hover:shadow-md transition-all duration-300">
             <img
               v-if="!getImgError('school-name-footer')"
-              :src="'/su-shuo-xin-yu/images/team/school-name.png'"
+              :src="'images/team/school-name.png'"
               alt="学校名称"
               class="h-full w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity px-3"
               loading="lazy"
@@ -123,7 +123,7 @@
                       shadow-sm group-hover:shadow-md transition-all duration-300">
             <img
               v-if="!getImgError('school-badge-footer')"
-              :src="'/su-shuo-xin-yu/images/team/school-badge.png'"
+              :src="'images/team/school-badge.png'"
               alt="校徽"
               class="h-full w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity px-3"
               loading="lazy"
@@ -138,7 +138,7 @@
                       shadow-sm group-hover:shadow-md transition-all duration-300">
             <img
               v-if="!getImgError('school-motto-footer')"
-              :src="'/su-shuo-xin-yu/images/team/school-motto.png'"
+              :src="'images/team/school-motto.png'"
               alt="校训"
               class="h-full w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity px-3"
               loading="lazy"
