@@ -38,26 +38,13 @@
         </div>
       </div>
 
-      <!-- Navigation -->
-      <div v-if="!submitted" style="max-width:720px;margin:2rem auto 0;display:flex;justify-content:space-between;align-items:center">
+      <!-- Navigation: only prev button, auto-advance on select -->
+      <div v-if="!submitted" style="max-width:720px;margin:2rem auto 0;display:flex;justify-content:center;align-items:center">
         <button @click="prevQuestion" :disabled="currentIndex===0"
-          style="border:1px solid rgba(140,74,47,0.15);padding:0.6rem 2rem;border-radius:999px;background:transparent;color:#53433d;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.5rem;opacity:0.6"
+          style="border:1px solid rgba(140,74,47,0.15);padding:0.5rem 1.5rem;border-radius:999px;background:transparent;color:#53433d;font-weight:600;cursor:pointer;font-size:0.9rem"
           :style="currentIndex===0 ? 'opacity:0.3;cursor:not-allowed' : ''">← 上一题</button>
-
-        <button v-if="currentIndex < questions.length - 1" @click="nextQuestion" :disabled="selectedAnswer===null"
-          style="background:#8c4a2f;color:#fff;padding:0.6rem 2.5rem;border-radius:999px;font-weight:600;cursor:pointer;border:none;font-size:1rem;display:flex;align-items:center;gap:0.5rem;box-shadow:0 8px 20px rgba(140,74,47,0.2)"
-          :style="selectedAnswer===null ? 'opacity:0.4;cursor:not-allowed;box-shadow:none' : ''">下一题 →</button>
-
-        <button v-else @click="submit" :disabled="selectedAnswer===null"
-          style="background:#8c4a2f;color:#fff;padding:0.6rem 2.5rem;border-radius:999px;font-weight:600;cursor:pointer;border:none;font-size:1rem;box-shadow:0 8px 20px rgba(140,74,47,0.2)"
-          :style="selectedAnswer===null ? 'opacity:0.4;cursor:not-allowed;box-shadow:none' : ''">查看结果</button>
       </div>
 
-      <!-- Computing -->
-      <div v-if="submitted" style="text-align:center;padding:5rem 0">
-        <div style="font-size:4rem;animation:float 2s ease-in-out infinite">🔮</div>
-        <h2 style="font-family:'Noto Serif SC',serif;font-size:1.5rem;color:#1c1c18;margin-top:1rem">正在匹配你的生肖守护神...</h2>
-      </div>
     </div>
   </div>
 </template>
