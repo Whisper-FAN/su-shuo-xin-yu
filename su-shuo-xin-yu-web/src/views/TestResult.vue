@@ -152,11 +152,7 @@
               </div>
             </div>
             <div style="background:#fafaf8;text-align:center;padding:1rem">
-              <p style="font-size:0.65rem;color:#86736c;margin:0 0 0.5rem">扫码测测你的生肖守护神</p>
-              <div style="width:4rem;height:4rem;margin:0 auto 0.25rem;background:#fff;border-radius:0.5rem;border:1px solid #e5e2dc;overflow:hidden">
-                <img :src="qrCodeUrl" alt="扫码测试" style="width:100%;height:100%;object-fit:cover"/>
-              </div>
-              <p style="font-size:0.55rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
+              <p style="font-size:0.6rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
             </div>
           </div>
           <div style="text-align:center;margin-top:0.75rem">
@@ -254,8 +250,6 @@ const dataDots = computed(()=>{
 })
 
 const NAME_TO_EN = { '鼠':'rat','牛':'ox','虎':'tiger','兔':'rabbit','龙':'dragon','蛇':'snake','马':'horse','羊':'goat','猴':'monkey','鸡':'rooster','狗':'dog','猪':'pig' }
-
-const qrCodeUrl = computed(()=>`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.origin+'/test')}`)
 
 function norm(v){return (v+1)/2}
 function openTaobao(link) { window.open(link || 'https://shop.m.taobao.com', '_blank') }
