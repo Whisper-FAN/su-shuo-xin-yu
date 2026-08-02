@@ -232,22 +232,25 @@ const scoresDisplay = computed(() => {
 
 function ringPoints(r){return axes.map(a=>`${100+90*r*Math.cos(a.angle)},${100-90*r*Math.sin(a.angle)}`).join(' ')}
 
+function valScore(label){
+  if(label==='成就型') return 0.88
+  if(label==='安稳型') return 0.28
+  if(label==='自由型') return 0.72
+  return 0.5
+}
+
 const dataPoints = computed(()=>{
   const s=result.value?.dimensionScores
   if(!s) return '100,100 '.repeat(5)
-  return axes.map(a=>{
-    const v = a.key==='vl' ? valScore(s.valueLabel) : norm(s[a.key])
-    return `${100+82*v*Math.cos(a.angle)},${100-82*v*Math.sin(a.angle)}`
-  }).join(' ')
+  const vals = [norm(s.ei), norm(s.sn), norm(s.tf), norm(s.jp), valScore(s.valueLabel)]
+  return axes.map((a,i) => `${100+82*vals[i]*Math.cos(a.angle)},${100-82*vals[i]*Math.sin(a.angle)}`).join(' ')
 })
 
 const dataDots = computed(()=>{
   const s=result.value?.dimensionScores
   if(!s) return []
-  return axes.map(a=>{
-    const v = a.key==='vl' ? valScore(s.valueLabel) : norm(s[a.key])
-    return {x:100+82*v*Math.cos(a.angle),y:100-82*v*Math.sin(a.angle)}
-  })
+  const vals = [norm(s.ei), norm(s.sn), norm(s.tf), norm(s.jp), valScore(s.valueLabel)]
+  return axes.map((a,i) => ({x:100+82*vals[i]*Math.cos(a.angle),y:100-82*vals[i]*Math.sin(a.angle)}))
 })
 
 const NAME_TO_EN = { '鼠':'rat','牛':'ox','虎':'tiger','兔':'rabbit','龙':'dragon','蛇':'snake','马':'horse','羊':'goat','猴':'monkey','鸡':'rooster','狗':'dog','猪':'pig' }
