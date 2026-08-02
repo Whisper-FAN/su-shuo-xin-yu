@@ -235,13 +235,19 @@ function ringPoints(r){return axes.map(a=>`${100+90*r*Math.cos(a.angle)},${100-9
 const dataPoints = computed(()=>{
   const s=result.value?.dimensionScores
   if(!s) return '100,100 '.repeat(5)
-  return axes.map(a=>`${100+82*norm(s[a.key])*Math.cos(a.angle)},${100-82*norm(s[a.key])*Math.sin(a.angle)}`).join(' ')
+  return axes.map(a=>{
+    const v = a.key==='vl' ? valScore(s.valueLabel) : norm(s[a.key])
+    return `${100+82*v*Math.cos(a.angle)},${100-82*v*Math.sin(a.angle)}`
+  }).join(' ')
 })
 
 const dataDots = computed(()=>{
   const s=result.value?.dimensionScores
   if(!s) return []
-  return axes.map(a=>({x:100+82*norm(s[a.key])*Math.cos(a.angle),y:100-82*norm(s[a.key])*Math.sin(a.angle)}))
+  return axes.map(a=>{
+    const v = a.key==='vl' ? valScore(s.valueLabel) : norm(s[a.key])
+    return {x:100+82*v*Math.cos(a.angle),y:100-82*v*Math.sin(a.angle)}
+  })
 })
 
 const NAME_TO_EN = { '鼠':'rat','牛':'ox','虎':'tiger','兔':'rabbit','龙':'dragon','蛇':'snake','马':'horse','羊':'goat','猴':'monkey','鸡':'rooster','狗':'dog','猪':'pig' }
