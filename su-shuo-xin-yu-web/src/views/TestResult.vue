@@ -8,7 +8,7 @@
       </div>
 
       <div style="max-width:360px;margin:0 auto 1.5rem;aspect-ratio:4/3;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1)">
-        <img v-if="!imgErr" :src="'/su-shuo-xin-yu'+result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover" @error="imgErr=true"/>
+        <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover" @error="imgErr=true"/>
         <div v-else style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,rgba(140,74,47,0.1),rgba(57,103,89,0.1))">{{ emoji }}</div>
       </div>
 
@@ -83,7 +83,7 @@
           <div style="margin-top:0.75rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
             <div v-for="p in relatedProducts" :key="p.id" @click="openTaobao(p.taobao)" style="cursor:pointer;background:rgba(140,74,47,0.03);border-radius:0.75rem;overflow:hidden;transition:all 0.2s">
               <div style="aspect-ratio:1;overflow:hidden;background:#f0eee8">
-                <img :src="'/su-shuo-xin-yu'+p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
+                <img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
               </div>
               <div style="padding:0.5rem;text-align:center">
                 <div style="font-size:0.75rem;color:#1c1c18;margin-bottom:0.15rem;line-height:1.3">{{ p.name }}</div>
@@ -129,7 +129,7 @@
               <p style="font-size:0.7rem;opacity:0.4;margin:0">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
             </div>
             <div style="aspect-ratio:4/3;overflow:hidden">
-              <img v-if="!imgErr" :src="'/su-shuo-xin-yu'+result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover"/>
+              <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover"/>
             </div>
             <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.4rem;padding:1rem;border-bottom:1px solid #f0eee8">
               <span v-for="t in result.personalityTags" :key="t" style="padding:0.25rem 0.75rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.7rem;font-weight:600">{{ t }}</span>
@@ -288,7 +288,7 @@ onMounted(()=>{
     recordId: record.recordId || Date.now(),
     zodiacId: record.zodiacId,
     zodiacName: record.zodiacName || z.name,
-    zodiacImage: (location.hostname==='localhost'?'':'/su-shuo-xin-yu') + '/images/zodiac/' + NAME_TO_EN[record.zodiacName||z.name] + '.jpg',
+    zodiacImage: 'images/zodiac/' + NAME_TO_EN[record.zodiacName||z.name] + '.jpg',
     dialectName: z.dialect, element: z.element, luckyColor: z.luckyColor,
     luckyNumber: z.luckyNumber, personalityTags: z.personalityTags,
     strengths: z.strengths, weaknesses: z.weaknesses, relationshipAdvice: z.relationshipAdvice,

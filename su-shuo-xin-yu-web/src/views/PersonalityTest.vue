@@ -91,7 +91,14 @@ const currentQuestion = computed(() => questions.value[currentIndex.value])
 const currentOptions = computed(() => currentQuestion.value?.options || [])
 const progressPercent = computed(() => questions.value.length ? ((currentIndex.value + 1) / questions.value.length) * 100 : 0)
 
-function selectOption(score) { selectedAnswer.value = score }
+function selectOption(score) {
+  selectedAnswer.value = score
+  // Auto-advance after brief delay for visual feedback
+  setTimeout(() => {
+    if (currentIndex.value < questions.value.length - 1) nextQuestion()
+    else submit()
+  }, 350)
+}
 function nextQuestion() {
   if (selectedAnswer.value === null) return
   answers.value[currentQuestion.value.id] = selectedAnswer.value
