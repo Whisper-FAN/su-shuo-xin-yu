@@ -48,17 +48,17 @@
 <script setup>
 
 const zodiacs = [
-  { id:1, name:'鼠', alias:'子鼠', emoji:'🐭', img:'/images/zodiac/rat.jpg' },
-  { id:2, name:'牛', alias:'丑牛', emoji:'🐮', img:'/images/zodiac/ox.jpg' },
-  { id:3, name:'虎', alias:'寅虎', emoji:'🐯', img:'/images/zodiac/tiger.jpg' },
-  { id:4, name:'兔', alias:'卯兔', emoji:'🐰', img:'/images/zodiac/rabbit.jpg' },
-  { id:5, name:'龙', alias:'辰龙', emoji:'🐲', img:'/images/zodiac/dragon.jpg' },
-  { id:6, name:'蛇', alias:'巳蛇', emoji:'🐍', img:'/images/zodiac/snake.jpg' },
-  { id:7, name:'马', alias:'午马', emoji:'🐴', img:'/images/zodiac/horse.jpg' },
-  { id:8, name:'羊', alias:'未羊', emoji:'🐏', img:'/images/zodiac/goat.jpg' },
-  { id:9, name:'猴', alias:'申猴', emoji:'🐵', img:'/images/zodiac/monkey.jpg' },
-  { id:10, name:'鸡', alias:'酉鸡', emoji:'🐔', img:'/images/zodiac/rooster.jpg' },
-  { id:11, name:'狗', alias:'戌狗', emoji:'🐶', img:'/images/zodiac/dog.jpg' },
-  { id:12, name:'猪', alias:'亥猪', emoji:'🐷', img:'/images/zodiac/pig.jpg' },
+  { id:1, name:'鼠', alias:'子鼠', emoji:'🐭', img:'images/zodiac/rat.jpg' },
+  { id:2, name:'牛', alias:'丑牛', emoji:'🐮', img:'images/zodiac/ox.jpg' },
+  { id:3, name:'虎', alias:'寅虎', emoji:'🐯', img:'images/zodiac/tiger.jpg' },
+  { id:4, name:'兔', alias:'卯兔', emoji:'🐰', img:'images/zodiac/rabbit.jpg' },
+  { id:5, name:'龙', alias:'辰龙', emoji:'🐲', img:'images/zodiac/dragon.jpg' },
+  { id:6, name:'蛇', alias:'巳蛇', emoji:'🐍', img:'images/zodiac/snake.jpg' },
+  { id:7, name:'马', alias:'午马', emoji:'🐴', img:'images/zodiac/horse.jpg' },
+  { id:8, name:'羊', alias:'未羊', emoji:'🐏', img:'images/zodiac/goat.jpg' },
+  { id:9, name:'猴', alias:'申猴', emoji:'🐵', img:'images/zodiac/monkey.jpg' },
+  { id:10, name:'鸡', alias:'酉鸡', emoji:'🐔', img:'images/zodiac/rooster.jpg' },
+  { id:11, name:'狗', alias:'戌狗', emoji:'🐶', img:'images/zodiac/dog.jpg' },
+  { id:12, name:'猪', alias:'亥猪', emoji:'🐷', img:'images/zodiac/pig.jpg' },
 ]
 </script>

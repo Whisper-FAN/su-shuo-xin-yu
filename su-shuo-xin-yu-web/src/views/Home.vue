@@ -146,25 +146,25 @@ import { onMounted } from 'vue'
 import { recordBehavior } from '@/utils/scroll-reveal'
 
 const allZodiacs = [
-  { id:1, name:'鼠', alias:'子鼠', element:'水', color:'棕色、金色', img:'/images/zodiac/rat.jpg' },
-  { id:2, name:'牛', alias:'丑牛', element:'土', color:'棕色、黄色', img:'/images/zodiac/ox.jpg' },
-  { id:3, name:'虎', alias:'寅虎', element:'木', color:'黄色、红色、黑色', img:'/images/zodiac/tiger.jpg' },
-  { id:4, name:'兔', alias:'卯兔', element:'木', color:'白色、粉色', img:'/images/zodiac/rabbit.jpg' },
-  { id:5, name:'龙', alias:'辰龙', element:'土', color:'金色、红色', img:'/images/zodiac/dragon.jpg' },
-  { id:6, name:'蛇', alias:'巳蛇', element:'火', color:'绿色、金色', img:'/images/zodiac/snake.jpg' },
-  { id:7, name:'马', alias:'午马', element:'火', color:'棕色、栗色', img:'/images/zodiac/horse.jpg' },
-  { id:8, name:'羊', alias:'未羊', element:'土', color:'白色、粉色', img:'/images/zodiac/goat.jpg' },
-  { id:9, name:'猴', alias:'申猴', element:'金', color:'棕色、黄色', img:'/images/zodiac/monkey.jpg' },
-  { id:10, name:'鸡', alias:'酉鸡', element:'金', color:'黄色、红色', img:'/images/zodiac/rooster.jpg' },
-  { id:11, name:'狗', alias:'戌狗', element:'土', color:'棕色、黄色', img:'/images/zodiac/dog.jpg' },
-  { id:12, name:'猪', alias:'亥猪', element:'水', color:'粉色、白色', img:'/images/zodiac/pig.jpg' },
+  { id:1, name:'鼠', alias:'子鼠', element:'水', color:'棕色、金色', img:'images/zodiac/rat.jpg' },
+  { id:2, name:'牛', alias:'丑牛', element:'土', color:'棕色、黄色', img:'images/zodiac/ox.jpg' },
+  { id:3, name:'虎', alias:'寅虎', element:'木', color:'黄色、红色、黑色', img:'images/zodiac/tiger.jpg' },
+  { id:4, name:'兔', alias:'卯兔', element:'木', color:'白色、粉色', img:'images/zodiac/rabbit.jpg' },
+  { id:5, name:'龙', alias:'辰龙', element:'土', color:'金色、红色', img:'images/zodiac/dragon.jpg' },
+  { id:6, name:'蛇', alias:'巳蛇', element:'火', color:'绿色、金色', img:'images/zodiac/snake.jpg' },
+  { id:7, name:'马', alias:'午马', element:'火', color:'棕色、栗色', img:'images/zodiac/horse.jpg' },
+  { id:8, name:'羊', alias:'未羊', element:'土', color:'白色、粉色', img:'images/zodiac/goat.jpg' },
+  { id:9, name:'猴', alias:'申猴', element:'金', color:'棕色、黄色', img:'images/zodiac/monkey.jpg' },
+  { id:10, name:'鸡', alias:'酉鸡', element:'金', color:'黄色、红色', img:'images/zodiac/rooster.jpg' },
+  { id:11, name:'狗', alias:'戌狗', element:'土', color:'棕色、黄色', img:'images/zodiac/dog.jpg' },
+  { id:12, name:'猪', alias:'亥猪', element:'水', color:'粉色、白色', img:'images/zodiac/pig.jpg' },
 ]
 
 const hotProducts = [
-  { id:1, name:'潮剧脸谱冰箱贴', price:'12', img:'/images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
-  { id:2, name:'生肖守护神盲盒', price:'29', img:'/images/zodiac/all-zodiac.png' },
-  { id:3, name:'基础DIY材料包', price:'29', img:'/images/products/creative/IMG_9912.JPG' },
-  { id:4, name:'大师手作珍藏定制', price:'699', img:'/images/products/premium/premium1.png' },
+  { id:1, name:'潮剧脸谱冰箱贴', price:'12', img:'images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
+  { id:2, name:'生肖守护神盲盒', price:'29', img:'images/zodiac/all-zodiac.png' },
+  { id:3, name:'基础DIY材料包', price:'29', img:'images/products/creative/IMG_9912.JPG' },
+  { id:4, name:'大师手作珍藏定制', price:'699', img:'images/products/premium/premium1.png' },
 ]
 
 const craftSteps = [

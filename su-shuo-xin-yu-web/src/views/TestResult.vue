@@ -212,10 +212,10 @@ const attrs = computed(() => result.value ? [
 ] : [])
 
 const relatedProducts = [
-  { id:1, name:'生肖守护神盲盒', price:'29', taobao:'https://shop.m.taobao.com', img:'/images/zodiac/all-zodiac.png' },
-  { id:2, name:'基础DIY材料包', price:'29', taobao:'https://shop.m.taobao.com', img:'/images/products/creative/IMG_9912.JPG' },
-  { id:3, name:'大师手作珍藏定制', price:'699', taobao:'https://shop.m.taobao.com', img:'/images/products/premium/premium1.png' },
-  { id:4, name:'潮剧脸谱冰箱贴（4枚）', price:'39', taobao:'https://shop.m.taobao.com', img:'/images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
+  { id:1, name:'生肖守护神盲盒', price:'29', taobao:'https://shop.m.taobao.com', img:'images/zodiac/all-zodiac.png' },
+  { id:2, name:'基础DIY材料包', price:'29', taobao:'https://shop.m.taobao.com', img:'images/products/creative/IMG_9912.JPG' },
+  { id:3, name:'大师手作珍藏定制', price:'699', taobao:'https://shop.m.taobao.com', img:'images/products/premium/premium1.png' },
+  { id:4, name:'潮剧脸谱冰箱贴（4枚）', price:'39', taobao:'https://shop.m.taobao.com', img:'images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
 ]
 
 const scoresDisplay = computed(() => {

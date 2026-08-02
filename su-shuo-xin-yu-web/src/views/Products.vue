@@ -33,14 +33,14 @@
 <script setup>
 
 const products = [
-  { id:1, name:'十二生肖泥塑摆件', price:'29', cat:'文创', img:'/images/zodiac/all-zodiac.png' },
-  { id:2, name:'红桃粿泥塑口哨', price:'12', cat:'文创', img:'/images/products/creative/hongtaoguo.jpg' },
-  { id:3, name:'潮剧脸谱冰箱贴', price:'15', cat:'文创', img:'/images/products/creative/IMG_9910.JPG' },
-  { id:4, name:'生肖DIY材料包', price:'39', cat:'DIY', img:'/images/products/creative/IMG_9912.JPG' },
-  { id:5, name:'福禄寿高端定制', price:'880', cat:'高端定制', img:'/images/products/premium/fulushou.jpg' },
-  { id:6, name:'祥龙出云摆件', price:'1380', cat:'高端定制', img:'/images/products/premium/premium1.png' },
-  { id:7, name:'生肖泥塑体验课(单人)', price:'99', cat:'工坊', img:'/images/products/workshop/IMG_0031.JPG' },
-  { id:8, name:'亲子泥塑体验课(一大一小)', price:'168', cat:'工坊', img:'/images/products/workshop/IMG_0050.JPG' },
-  { id:9, name:'研学课程包', price:'298', cat:'工坊', img:'/images/products/workshop/IMG_0037.JPG' },
+  { id:1, name:'十二生肖泥塑摆件', price:'29', cat:'文创', img:'images/zodiac/all-zodiac.png' },
+  { id:2, name:'红桃粿泥塑口哨', price:'12', cat:'文创', img:'images/products/creative/hongtaoguo.jpg' },
+  { id:3, name:'潮剧脸谱冰箱贴', price:'15', cat:'文创', img:'images/products/creative/IMG_9910.JPG' },
+  { id:4, name:'生肖DIY材料包', price:'39', cat:'DIY', img:'images/products/creative/IMG_9912.JPG' },
+  { id:5, name:'福禄寿高端定制', price:'880', cat:'高端定制', img:'images/products/premium/fulushou.jpg' },
+  { id:6, name:'祥龙出云摆件', price:'1380', cat:'高端定制', img:'images/products/premium/premium1.png' },
+  { id:7, name:'生肖泥塑体验课(单人)', price:'99', cat:'工坊', img:'images/products/workshop/IMG_0031.JPG' },
+  { id:8, name:'亲子泥塑体验课(一大一小)', price:'168', cat:'工坊', img:'images/products/workshop/IMG_0050.JPG' },
+  { id:9, name:'研学课程包', price:'298', cat:'工坊', img:'images/products/workshop/IMG_0037.JPG' },
 ]
 </script>
