@@ -3,7 +3,7 @@
   <!-- ======== HERO ======== -->
   <section style="position:relative;height:100vh;overflow:hidden">
     <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e)">
-      <img :src="'images/zodiac/all-zodiac.png'" alt="十二生肖" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.3" />
+      
     </div>
     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3)"></div>
     <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;color:#fff;padding:0 1.5rem;width:100%;max-width:56rem">
