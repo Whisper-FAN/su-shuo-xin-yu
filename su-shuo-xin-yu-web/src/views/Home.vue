@@ -3,7 +3,7 @@
   <!-- ======== HERO ======== -->
   <section style="position:relative;height:100vh;overflow:hidden">
     <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e)">
-      <img :src="'images/zodiac/all-zodiac.png'" alt="十二生肖" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.3" loading="eager">
+      <img :src="'images/zodiac/all-zodiac.png'" alt="十二生肖" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.3" loading="eager" />
     </div>
     <div style="position:absolute;inset:0;background:rgba(0,0,0,0.3)"></div>
     <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;color:#fff;padding:0 1.5rem;width:100%;max-width:56rem">
@@ -13,9 +13,6 @@
       <router-link to="/test" style="display:inline-block;background:#8c4a2f;color:#fff;padding:0.75rem 2.5rem;border-radius:999px;font-weight:600;font-size:1.1rem;text-decoration:none;box-shadow:0 10px 30px rgba(140,74,47,0.3);transition:all .3s">开始性格测试</router-link>
     </div>
     <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:0.5rem;cursor:pointer;animation:bounce 2s infinite" @click="scrollToVideo">
-      <span style="color:rgba(255,255,255,0.5);font-size:0.8rem">探索文化</span>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-    </div>
       <span style="color:rgba(255,255,255,0.5);font-size:0.8rem">探索文化</span>
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </div>
