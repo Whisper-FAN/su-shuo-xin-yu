@@ -12,7 +12,10 @@
       <p style="font-size:clamp(0.85rem,2vw,1rem);margin-bottom:3rem;opacity:0.7;max-width:36rem;margin-left:auto;margin-right:auto">在指尖的温度中，开启一场跨越千年的灵魂对话</p>
       <router-link to="/test" style="display:inline-block;background:#8c4a2f;color:#fff;padding:0.75rem 2.5rem;border-radius:999px;font-weight:600;font-size:1.1rem;text-decoration:none;box-shadow:0 10px 30px rgba(140,74,47,0.3);transition:all .3s">开始性格测试</router-link>
     </div>
-    <div onclick="document.getElementById('heritage-video').scrollIntoView({behavior:'smooth'})" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:0.5rem;cursor:pointer;animation:bounce 2s infinite">
+    <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:0.5rem;cursor:pointer;animation:bounce 2s infinite" @click="scrollToVideo">
+      <span style="color:rgba(255,255,255,0.5);font-size:0.8rem">探索文化</span>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
       <span style="color:rgba(255,255,255,0.5);font-size:0.8rem">探索文化</span>
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </div>
@@ -173,6 +176,10 @@ const craftSteps = [
   { id:4, title:'烧坯 · 窑火淬炼', desc:'捏塑完成后入窑烧制，泥坯在高温中发生质变，从此告别凡胎，化为坚硬牢固的陶质作品。' },
   { id:5, title:'彩绘 · 焕发新生', desc:'以天然矿物颜料施彩——红为朱砂，绿为孔雀石，金为云母。每一抹色彩都来自大地，历经窑火不褪，正如这近八百年的技艺。' },
 ]
+
+function scrollToVideo() {
+  document.getElementById('heritage-video')?.scrollIntoView({ behavior: 'smooth' })
+}
 
 onMounted(() => { recordBehavior('page_view', null, 'home') })
 </script>
