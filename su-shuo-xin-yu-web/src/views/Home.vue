@@ -24,14 +24,10 @@
       <span style="font-size:0.75rem;color:#8c4a2f;text-transform:uppercase;letter-spacing:0.2em">Video</span>
       <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(1.5rem,3vw,2rem);color:#1c1c18;margin:1rem 0 1.5rem;font-weight:700">八百年泥韵 · 一分钟初识</h2>
       <div style="aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:#000;box-shadow:0 10px 40px rgba(0,0,0,0.15);max-width:50rem;margin:0 auto">
-        <iframe
-          :src="'https://player.bilibili.com/player.html?bvid=' + bvid + '&page=1&high_quality=1&autoplay=0'"
-          style="width:100%;height:100%;border:none"
-          allow="autoplay;encrypted-media"
-          allowfullscreen
-          scrolling="no"
-          title="大吴泥塑专题视频">
-        </iframe>
+        <video controls preload="metadata" style="width:100%;height:100%;object-fit:contain;background:#000">
+          <source :src="'介绍页视频.mp4'" type="video/mp4">
+          您的浏览器不支持视频播放
+        </video>
       </div>
       <p style="font-size:0.8rem;color:rgba(83,67,61,0.5);margin-top:1rem">"土叽咕，土叽咕，阿公捏泥做戏出" — 潮汕童谣</p>
     </div>
@@ -169,9 +165,6 @@ const hotProducts = [
   { id:3, name:'基础DIY材料包', price:'29', img:'images/products/creative/IMG_9912.JPG' },
   { id:4, name:'大师手作珍藏定制', price:'699', img:'images/products/premium/premium1.png' },
 ]
-
-// Replace with your Bilibili BV number after uploading the video
-const bvid = 'BV1xx411E7xH'
 
 const craftSteps = [
   { id:1, title:'挖泥 · 取材大地', desc:'从潮州本地取澄泥，这是泥塑的物质起点。泥土经反复捶打醒泥后质地均匀细腻，为后续工序做好准备。' },
