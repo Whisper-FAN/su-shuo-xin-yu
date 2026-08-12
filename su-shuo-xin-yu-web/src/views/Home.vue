@@ -24,7 +24,7 @@
       <span style="font-size:0.75rem;color:#8c4a2f;text-transform:uppercase;letter-spacing:0.2em">Video</span>
       <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(1.5rem,3vw,2rem);color:#1c1c18;margin:1rem 0 1.5rem;font-weight:700">八百年泥韵 · 一分钟初识</h2>
       <div style="aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:#000;box-shadow:0 10px 40px rgba(0,0,0,0.15);max-width:50rem;margin:0 auto">
-        <video controls preload="none" :poster="'images/zodiac/all-zodiac.png'" style="width:100%;height:100%;object-fit:contain;background:#000">
+        <video controls preload="none" style="width:100%;height:100%;object-fit:contain;background:linear-gradient(160deg,#2d1a0e,#3a1c10,#5a3020)">
           <source :src="'介绍页视频.mp4'" type="video/mp4">
           您的浏览器不支持视频播放
         </video>
@@ -45,8 +45,8 @@
         <router-link to="/stories" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:2rem;color:#8c4a2f;font-weight:600;text-decoration:none;font-size:0.95rem">探索传承故事 →</router-link>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div style="aspect-ratio:1;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);background:#f0eee8"><img :src="'images/products/premium/premium1.png'" alt="祥龙" style="width:100%;height:100%;object-fit:cover" /></div>
-        <div style="aspect-ratio:3/4;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-top:2rem;background:#f0eee8"><img :src="'images/products/premium/fulushou.jpg'" alt="福禄寿" style="width:100%;height:100%;object-fit:cover" /></div>
+        <div style="aspect-ratio:1;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);background:#f0eee8"><img :src="'images/products/premium/premium1.png'" alt="祥龙" style="width:100%;height:100%;object-fit:cover" loading="lazy" /></div>
+        <div style="aspect-ratio:3/4;border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);margin-top:2rem;background:#f0eee8"><img :src="'images/products/premium/fulushou.jpg'" alt="福禄寿" style="width:100%;height:100%;object-fit:cover" loading="lazy" /></div>
       </div>
     </div>
   </section>
@@ -63,7 +63,7 @@
     <div style="display:flex;gap:2rem;overflow-x:auto;padding:0 5% 3rem;-ms-overflow-style:none;scrollbar-width:none">
       <div v-for="(z,i) in allZodiacs" :key="z.id" :style="{flexShrink:0,width:'260px',cursor:'pointer',marginTop:i%2===1?'3rem':'0'}" @click="$router.push(`/zodiac/${z.id}`)">
         <div style="aspect-ratio:3/4;border-radius:1rem;overflow:hidden;background:#fff;margin-bottom:1rem;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:all .4s">
-          <img :src="z.img" :alt="z.name" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" />
+          <img :src="z.img" :alt="z.name" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" loading="lazy" />
         </div>
         <h3 style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:#1c1c18;margin:0">{{ z.name }} <span style="font-size:0.85rem;color:#53433d;opacity:0.6">· {{ z.alias }}</span></h3>
         <p style="font-size:0.8rem;color:#53433d;margin:0.25rem 0 0">{{ z.element }} · {{ z.color }}</p>
@@ -79,7 +79,7 @@
         <p style="font-size:1.1rem;margin-bottom:2.5rem;opacity:0.8">24道趣味测试，基于五维人格模型，匹配专属泥塑生肖。</p>
         <router-link to="/test" style="display:inline-flex;align-items:center;gap:0.5rem;background:#fff;color:#8c4a2f;padding:0.75rem 2.5rem;border-radius:999px;font-weight:600;font-size:1.1rem;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,0.2)">开始测试 →</router-link>
       </div>
-      <div style="flex:0 0 auto;width:100%;max-width:18rem;margin:0 auto"><img :src="'images/zodiac/all-zodiac.png'" alt="十二生肖" style="width:100%;object-fit:contain;border-radius:1rem;box-shadow:0 20px 40px rgba(0,0,0,0.3)" /></div>
+      <div style="flex:0 0 auto;width:100%;max-width:18rem;margin:0 auto"><img :src="'images/zodiac/all-zodiac.png'" alt="十二生肖" style="width:100%;object-fit:contain;border-radius:1rem;box-shadow:0 20px 40px rgba(0,0,0,0.3)" loading="lazy" /></div>
     </div>
   </section>
 
@@ -117,7 +117,7 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem">
         <div v-for="p in hotProducts" :key="p.id" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:all .3s">
-          <div style="aspect-ratio:1;background:#f0eee8;overflow:hidden"><img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" /></div>
+          <div style="aspect-ratio:1;background:#f0eee8;overflow:hidden"><img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy" /></div>
           <div style="padding:1rem"><h3 style="font-size:0.9rem;color:#1c1c18;margin:0 0 0.5rem">{{ p.name }}</h3><p style="font-size:0.95rem;color:#8c4a2f;font-weight:600;margin:0">&yen;{{ p.price }}</p></div>
         </div>
       </div>

@@ -4,10 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>塑说心语 - 大吴泥塑文化传承</title>
+  <!-- Inline font fallback - renders instantly without waiting for Google Fonts -->
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; margin: 0 }
+    h1, h2, h3, h4 { font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Serif SC', serif }
+  </style>
+  <!-- Google Fonts load async, won't block rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.onload=null;this.media='all'">
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
-<body class="bg-background text-on-surface">
+<body>
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
 </body>
