@@ -24,7 +24,7 @@
       <span style="font-size:0.75rem;color:#8c4a2f;text-transform:uppercase;letter-spacing:0.2em">Video</span>
       <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(1.5rem,3vw,2rem);color:#1c1c18;margin:1rem 0 1.5rem;font-weight:700">八百年泥韵 · 一分钟初识</h2>
       <div style="aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:#000;box-shadow:0 10px 40px rgba(0,0,0,0.15);max-width:50rem;margin:0 auto">
-        <video controls preload="metadata" style="width:100%;height:100%;object-fit:contain;background:#000">
+        <video controls preload="none" :poster="'images/zodiac/all-zodiac.png'" style="width:100%;height:100%;object-fit:contain;background:#000">
           <source :src="'介绍页视频.mp4'" type="video/mp4">
           您的浏览器不支持视频播放
         </video>
