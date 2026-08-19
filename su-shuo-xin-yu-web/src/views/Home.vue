@@ -116,9 +116,9 @@
         <router-link to="/gallery" style="color:#8c4a2f;font-size:0.9rem;text-decoration:none">全部产品 →</router-link>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem">
-        <div v-for="p in hotProducts" :key="p.id" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:all .3s">
+        <div v-for="p in hotProducts" :key="p.id" @click="openTaobao(p.taobao)" style="background:#fff;border-radius:1rem;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:all .3s;cursor:pointer">
           <div style="aspect-ratio:1;background:#f0eee8;overflow:hidden"><img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy" /></div>
-          <div style="padding:1rem"><h3 style="font-size:0.9rem;color:#1c1c18;margin:0 0 0.5rem">{{ p.name }}</h3><p style="font-size:0.95rem;color:#8c4a2f;font-weight:600;margin:0">&yen;{{ p.price }}</p></div>
+          <div style="padding:1rem;text-align:center"><h3 style="font-size:0.9rem;color:#1c1c18;margin:0 0 0.4rem">{{ p.name }}</h3><p style="font-size:0.8rem;color:#8c4a2f;font-weight:600;margin:0">去淘宝购买 →</p></div>
         </div>
       </div>
     </div>
@@ -130,7 +130,7 @@
       <h3 style="font-size:0.75rem;color:rgba(83,67,61,0.5);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:2rem">Partners & Sponsors</h3>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2rem;opacity:0.7">
         <div style="background:#fff;padding:0.3rem 0.6rem;border-radius:0.25rem;border:1px solid rgba(0,0,0,0.04)">
-          <img :src="'images/team/school-name-badge.png'" alt="广东金融学院" style="height:3.5rem;width:auto;object-fit:contain" />
+          <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:3.5rem;width:auto;object-fit:contain" />
         </div>
         <img :src="'images/team/contest-full.png'" alt="国创赛" style="height:4rem;width:auto;object-fit:contain" />
       </div>
@@ -160,10 +160,11 @@ const allZodiacs = [
 ]
 
 const hotProducts = [
-  { id:1, name:'潮剧脸谱冰箱贴', price:'12', img:'images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
-  { id:2, name:'生肖守护神盲盒', price:'29', img:'images/zodiac/all-zodiac.png' },
-  { id:3, name:'基础DIY材料包', price:'29', img:'images/products/creative/IMG_9912.JPG' },
-  { id:4, name:'大师手作珍藏定制', price:'699', img:'images/products/premium/premium1.png' },
+  { id:1, name:'十二生肖摆件·揽福生肖', taobao:'https://e.tb.cn/h.8QkWqn2EMn6nmdU?tk=mm5qTcZ6srO', img:'images/taobao/taobao-1.jpg' },
+  { id:2, name:'红桃粿口哨系列·潮州', taobao:'https://e.tb.cn/h.8iyqOUltCpPrBQb?tk=nUukTcZSYTJ', img:'images/taobao/taobao-2.jpg' },
+  { id:3, name:'英歌福蛇·时迁', taobao:'https://e.tb.cn/h.8jYEWj03ytIrZzN?tk=wyi1TcZR9HL', img:'images/taobao/taobao-3.jpg' },
+  { id:4, name:'月老好姻缘·招桃花', taobao:'https://e.tb.cn/h.8iys426RblGshG1?tk=TughTcZizka', img:'images/taobao/taobao-4.jpg' },
+  { id:5, name:'金榜题名·文昌帝君', taobao:'https://e.tb.cn/h.8iyHpBuSiJMPU6q?tk=uIpyTcZjm0L', img:'images/taobao/taobao-5.jpg' },
 ]
 
 const craftSteps = [
@@ -174,6 +175,7 @@ const craftSteps = [
   { id:5, title:'彩绘 · 焕发新生', desc:'以天然矿物颜料施彩——红为朱砂，绿为孔雀石，金为云母。每一抹色彩都来自大地，历经窑火不褪，正如这近八百年的技艺。' },
 ]
 
+function openTaobao(link) { window.open(link, '_blank') }
 function scrollToVideo() {
   document.getElementById('heritage-video')?.scrollIntoView({ behavior: 'smooth' })
 }

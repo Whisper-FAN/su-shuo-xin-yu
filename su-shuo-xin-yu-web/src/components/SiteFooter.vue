@@ -19,7 +19,7 @@
         <!-- Badges -->
         <div style="display:flex;align-items:center;gap:1.5rem;flex-shrink:0">
           <div style="background:#fff;padding:0.3rem 0.5rem;border-radius:0.25rem;border:1px solid rgba(0,0,0,0.04)">
-            <img :src="'images/team/school-name-badge.png'" alt="广东金融学院" style="height:2rem;width:auto;object-fit:contain" />
+            <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:2rem;width:auto;object-fit:contain" />
           </div>
           <img :src="'images/team/contest-full.png'" alt="国创赛" style="height:3rem;width:auto;object-fit:contain" />
         </div>
