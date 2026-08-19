@@ -16,7 +16,7 @@
       <p style="text-align:center;color:#86736c;font-size:0.8rem;margin-bottom:1rem">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
 
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;margin-bottom:2rem">
-        <span v-for="t in result.personalityTags" :key="t" style="padding:0.35rem 1rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.85rem;font-weight:600">{{ t }}</span>
+        <span v-for="t in result.personalityTags" :key="t" style="display:inline-flex;align-items:center;justify-content:center;padding:0.35rem 1rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.85rem;font-weight:600;line-height:1">{{ t }}</span>
       </div>
 
       <!-- ===== 工艺解析 ===== -->
@@ -119,7 +119,7 @@
               <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:auto;display:block"/>
             </div>
             <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.4rem;padding:1rem;border-bottom:1px solid #f0eee8">
-              <span v-for="t in result.personalityTags" :key="t" style="padding:0.25rem 0.75rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.7rem;font-weight:600">{{ t }}</span>
+              <span v-for="t in result.personalityTags" :key="t" style="display:inline-flex;align-items:center;justify-content:center;padding:0.25rem 0.75rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.7rem;font-weight:600;line-height:1">{{ t }}</span>
             </div>
             <div style="padding:1rem;border-bottom:1px solid #f0eee8">
               <p style="font-size:0.8rem;color:#53433d;line-height:1.7;margin:0">{{ result.description }}</p>
@@ -146,10 +146,18 @@
               </div>
             </div>
             <div style="background:#fafaf8;text-align:center;padding:1rem">
-              <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:0.5rem">
-                <img :src="'images/team/team-logo-transparent.png'" alt="塑说心语团队" style="height:3rem;width:auto;object-fit:contain" />
-                <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:2.5rem;width:auto;object-fit:contain" />
-                <img :src="'images/team/school-badge.png'" alt="校徽" style="height:2.5rem;width:auto;object-fit:contain" />
+              <div style="display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-bottom:0.75rem">
+                <div style="text-align:center">
+                  <img :src="qrCodeUrl" alt="扫码测评" style="width:5rem;height:5rem;border-radius:0.5rem;border:1px solid #e5e2dc" />
+                  <p style="font-size:0.55rem;color:#86736c;margin:0.3rem 0 0">扫码测一测</p>
+                </div>
+                <div style="text-align:center">
+                  <div style="display:flex;flex-direction:column;gap:0.5rem;align-items:center">
+                    <img :src="'images/team/team-logo-transparent.png'" alt="塑说心语团队" style="height:2.5rem;width:auto;object-fit:contain" />
+                    <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:2rem;width:auto;object-fit:contain" />
+                    <img :src="'images/team/school-badge.png'" alt="校徽" style="height:2rem;width:auto;object-fit:contain" />
+                  </div>
+                </div>
               </div>
               <p style="font-size:0.6rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
             </div>
@@ -199,6 +207,12 @@ const axes = [
 ]
 
 const craftDesc = computed(() => result.value?.craft || '')
+
+// 测试页二维码（动态生成）
+const qrCodeUrl = computed(() => {
+  const url = window.location.origin + '/su-shuo-xin-yu/#/test'
+  return 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(url)
+})
 
 const attrs = computed(() => result.value ? [
   {label:'五行属性',value:result.value.element||'—'},
