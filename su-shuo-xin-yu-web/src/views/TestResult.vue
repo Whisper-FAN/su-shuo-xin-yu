@@ -130,13 +130,19 @@
             </div>
             <div v-if="result.dimensionScores" style="padding:0.75rem 1rem;border-bottom:1px solid #f0eee8">
               <p style="font-size:0.65rem;color:#86736c;text-align:center;letter-spacing:0.2em;margin-bottom:0.5rem">五维性格剖面</p>
-              <div style="width:180px;height:180px;margin:0 auto">
+              <div style="position:relative;width:200px;height:200px;margin:0 auto">
                 <svg viewBox="0 0 200 200" style="width:100%;height:100%">
                   <defs><radialGradient id="rg2"><stop offset="0%" stop-color="#8c4a2f" stop-opacity="0.25"/><stop offset="100%" stop-color="#8c4a2f" stop-opacity="0.03"/></radialGradient></defs>
                   <polygon v-for="r in [0.25,0.5,0.75,1]" :key="r" :points="ringPoints(r)" fill="none" stroke="#e5e2dc" stroke-width="0.5"/>
+                  <line v-for="(a,i) in axes" :key="'pa'+i" :x1="100" :y1="100" :x2="100+90*Math.cos(a.angle)" :y2="100-90*Math.sin(a.angle)" stroke="#e5e2dc" stroke-width="0.5"/>
                   <polygon :points="dataPoints" fill="url(#rg2)" stroke="#8c4a2f" stroke-width="1.5" stroke-linejoin="round"/>
                   <circle v-for="(p,i) in dataDots" :key="i" :cx="p.x" :cy="p.y" r="3.5" fill="#8c4a2f" stroke="white" stroke-width="1.5"/>
                 </svg>
+                <div v-for="(a,i) in axes" :key="'pl'+i" style="position:absolute;font-size:0.6rem;color:#53433d;transform:translate(-50%,-50%);pointer-events:none"
+                     :style="{left:(50+47*Math.cos(a.angle))+'%',top:(50-47*Math.sin(a.angle))+'%'}">{{ a.label }}</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.25rem;margin-top:0.5rem;text-align:center">
+                <div v-for="(a,i) in axes" :key="'ps'+i" style="font-size:0.6rem;color:#8c4a2f;font-weight:600">{{ scoresDisplay[i] }}</div>
               </div>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #f0eee8">
