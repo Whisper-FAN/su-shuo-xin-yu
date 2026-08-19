@@ -15,10 +15,7 @@
       </div>
 
       <!-- Question Card -->
-      <div v-if="!submitted" style="background:#fff;border-radius:1.5rem;padding:2.5rem;box-shadow:0 4px 30px rgba(140,74,47,0.06);border:1px solid rgba(217,194,186,0.3);position:relative">
-        <div style="position:absolute;top:1.5rem;right:1.5rem;width:3rem;height:3rem;border:2px solid rgba(140,74,47,0.1);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;opacity:0.3">
-          <span style="font-family:'Noto Serif SC',serif;color:#8c4a2f;font-size:1.2rem">心</span>
-        </div>
+      <div v-if="!submitted" style="background:#fff;border-radius:1.5rem;padding:2.5rem;box-shadow:0 4px 30px rgba(140,74,47,0.06);border:1px solid rgba(217,194,186,0.3)">
         <p style="font-family:'Noto Serif SC',serif;font-size:1.25rem;line-height:1.8;color:#1c1c18;text-align:center;font-style:italic;opacity:0.9;margin:0 0 2.5rem">
           "{{ currentQuestion?.questionText }}"
         </p>
@@ -92,7 +89,13 @@ const currentQuestion = computed(() => questions.value[currentIndex.value])
 const currentOptions = computed(() => currentQuestion.value?.options || [])
 const progressPercent = computed(() => questions.value.length ? ((currentIndex.value + 1) / questions.value.length) * 100 : 0)
 
-function selectOption(score) { selectedAnswer.value = score }
+function selectOption(score) {
+  selectedAnswer.value = score
+  // 第1-23题选完自动跳下一题，第24题停留等手动点"生成结果"
+  if (currentIndex.value < questions.value.length - 1) {
+    setTimeout(() => nextQuestion(), 350)
+  }
+}
 function nextQuestion() {
   if (selectedAnswer.value === null) return
   answers.value[currentQuestion.value.id] = selectedAnswer.value
