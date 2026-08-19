@@ -115,11 +115,18 @@
               <p style="font-size:2.5rem;font-weight:700;color:#8c4a2f;margin:0.25rem 0;text-shadow:0 2px 10px rgba(140,74,47,0.3)">{{ result.zodiacName }}</p>
               <p style="font-size:0.7rem;opacity:0.4;margin:0">潮汕音：{{ result.dialectName || result.zodiacName }}</p>
             </div>
-            <div style="aspect-ratio:4/3;overflow:hidden">
-              <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:100%;object-fit:cover"/>
+            <div style="overflow:hidden">
+              <img v-if="!imgErr" :src="result.zodiacImage" :alt="result.zodiacName" style="width:100%;height:auto;display:block"/>
             </div>
             <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.4rem;padding:1rem;border-bottom:1px solid #f0eee8">
               <span v-for="t in result.personalityTags" :key="t" style="padding:0.25rem 0.75rem;border-radius:999px;background:rgba(140,74,47,0.08);color:#8c4a2f;font-size:0.7rem;font-weight:600">{{ t }}</span>
+            </div>
+            <div style="padding:1rem;border-bottom:1px solid #f0eee8">
+              <p style="font-size:0.8rem;color:#53433d;line-height:1.7;margin:0">{{ result.description }}</p>
+            </div>
+            <div v-if="result.craft" style="padding:1rem;border-bottom:1px solid #f0eee8">
+              <p style="font-size:0.7rem;color:#86736c;margin:0 0 0.3rem;letter-spacing:0.1em">贴塑工艺</p>
+              <p style="font-size:0.75rem;color:#53433d;line-height:1.7;margin:0">{{ result.craft }}</p>
             </div>
             <div v-if="result.dimensionScores" style="padding:0.75rem 1rem;border-bottom:1px solid #f0eee8">
               <p style="font-size:0.65rem;color:#86736c;text-align:center;letter-spacing:0.2em;margin-bottom:0.5rem">五维性格剖面</p>

@@ -45,12 +45,5 @@ export function useScrollReveal() {
 }
 
 export function recordBehavior(type, targetId, targetType, extraData) {
-  import('@/api').then(({ statsAPI }) => {
-    statsAPI.recordBehavior({
-      behaviorType: type,
-      targetId,
-      targetType,
-      extraData: extraData ? JSON.stringify(extraData) : null
-    }).catch(() => {})
-  })
+  // 纯静态站无后端，不发送埋点请求（避免 405 报错刷屏）
 }
