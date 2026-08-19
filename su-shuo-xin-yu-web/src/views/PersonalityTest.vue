@@ -8,7 +8,7 @@
           第 <span style="font-size:2rem;font-weight:700">{{ currentIndex + 1 }}</span> / 24 步
         </p>
         <h1 style="font-family:'Noto Serif SC',serif;font-size:2rem;color:#1c1c18;letter-spacing:0.2em">探 寻 本 我</h1>
-        <p style="font-size:0.8rem;color:#86736c;margin-top:0.5rem">已有 <span style="font-weight:700;color:#8c4a2f">{{ totalTests }}</span> 人完成测试</p>
+        <p style="font-size:0.8rem;color:#86736c;margin-top:0.5rem">已有 <span id="busuanzi_value_site_pv" style="font-weight:700;color:#8c4a2f">0</span> 人次访问</p>
         <div style="max-width:320px;margin:1rem auto 0;height:2px;background:rgba(217,194,186,0.3);border-radius:1px;position:relative">
           <div style="position:absolute;top:0;left:0;height:100%;background:#8c4a2f;border-radius:1px;transition:width 0.6s" :style="{width:progressPercent+'%'}"></div>
         </div>
@@ -88,11 +88,6 @@ const selectedAnswer = ref(null)
 const answers = ref({})
 const submitted = ref(false)
 
-// Counter: BASE_SEED (admin-set) + local completions (this browser)
-const BASE_SEED = parseInt(localStorage.getItem('test_base') || '3280', 10)
-const localDone = parseInt(localStorage.getItem('test_done') || '0', 10)
-const totalTests = ref(BASE_SEED + localDone)
-
 const currentQuestion = computed(() => questions.value[currentIndex.value])
 const currentOptions = computed(() => currentQuestion.value?.options || [])
 const progressPercent = computed(() => questions.value.length ? ((currentIndex.value + 1) / questions.value.length) * 100 : 0)
@@ -124,10 +119,6 @@ function submit() {
     valueType: result.valueType,
     valueLabel: result.valueLabel,
   }
-  // Increment local counter (prevent double-count on same browser within 1h)
-  const lastDone = parseInt(localStorage.getItem('test_done') || '0', 10)
-  localStorage.setItem('test_done', String(lastDone + 1))
-
   sessionStorage.setItem('testResult', JSON.stringify(record))
   router.push('/result/' + record.recordId)
 }

@@ -86,9 +86,8 @@
                 <img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
               </div>
               <div style="padding:0.5rem;text-align:center">
-                <div style="font-size:0.75rem;color:#1c1c18;margin-bottom:0.15rem;line-height:1.3">{{ p.name }}</div>
-                <div style="font-size:0.8rem;color:#8c4a2f;font-weight:600">&yen;{{ p.price }}</div>
-                <div style="font-size:0.6rem;color:#86736c;margin-top:0.15rem">去淘宝购买 →</div>
+                <div style="font-size:0.75rem;color:#1c1c18;margin-bottom:0.3rem;line-height:1.3">{{ p.name }}</div>
+                <div style="font-size:0.65rem;color:#8c4a2f;font-weight:600">去淘宝购买 →</div>
               </div>
             </div>
           </div>
@@ -118,7 +117,7 @@
     <!-- ===== POSTER ===== -->
     <Teleport to="body">
       <div v-if="showPoster" style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:1rem 0" @click.self="showPoster=false">
-        <div style="position:relative;width:375px">
+        <div style="position:relative;width:480px;max-width:92vw">
           <button @click="showPoster=false" style="position:sticky;top:0.25rem;left:calc(100% - 2rem);width:2rem;height:2rem;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10">✕</button>
 
           <div ref="posterRef" style="background:#fff;font-family:'Noto Serif SC',serif;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
@@ -152,11 +151,16 @@
               </div>
             </div>
             <div style="background:#fafaf8;text-align:center;padding:1rem">
+              <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:0.5rem">
+                <img :src="'images/team/team-logo-transparent.png'" alt="塑说心语团队" style="height:3rem;width:auto;object-fit:contain" />
+                <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:2.5rem;width:auto;object-fit:contain" />
+                <img :src="'images/team/school-badge.png'" alt="校徽" style="height:2.5rem;width:auto;object-fit:contain" />
+              </div>
               <p style="font-size:0.6rem;color:#c4bfb8;margin:0">塑说心语 · 大吴泥塑文化传承平台</p>
             </div>
           </div>
           <div style="text-align:center;margin-top:0.75rem">
-            <button @click="downloadPoster" style="background:#fff;color:#1c1c18;padding:0.65rem 2rem;border-radius:999px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.15)">💾 保存长图 / 截图分享</button>
+            <button @click="downloadPoster" style="background:#fff;color:#1c1c18;padding:0.65rem 2rem;border-radius:999px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.15)">💾 下载高清海报</button>
           </div>
         </div>
       </div>
@@ -166,8 +170,9 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
+import html2canvas from 'html2canvas'
 
 const ZODIAC_DATA = {
   1:{name:'鼠',emoji:'🐭',element:'水',luckyColor:'棕色、金色',luckyNumber:'2、3',dialect:'Cêh',personalityTags:['机敏灵活','聪明','善于理财'],strengths:'敏锐的直觉判断、超强的适应能力、出色的社交手腕',weaknesses:'有时过于谨慎多疑、容易想太多',relationshipAdvice:'学会信任身边的人，坦诚沟通是建立深度关系的基石',craft:'生肖鼠泥塑以贴塑技法层层叠加毛发纹理，以捏塑定其灵巧身形，以彩绘赋予机敏神采'},
@@ -208,10 +213,11 @@ const attrs = computed(() => result.value ? [
 ] : [])
 
 const relatedProducts = [
-  { id:1, name:'生肖守护神盲盒', price:'29', taobao:'https://shop.m.taobao.com', img:'images/zodiac/all-zodiac.png' },
-  { id:2, name:'基础DIY材料包', price:'29', taobao:'https://shop.m.taobao.com', img:'images/products/creative/IMG_9912.JPG' },
-  { id:3, name:'大师手作珍藏定制', price:'699', taobao:'https://shop.m.taobao.com', img:'images/products/premium/premium1.png' },
-  { id:4, name:'潮剧脸谱冰箱贴（4枚）', price:'39', taobao:'https://shop.m.taobao.com', img:'images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
+  { id:1, name:'十二生肖摆件·揽福生肖', taobao:'https://e.tb.cn/h.8QkWqn2EMn6nmdU?tk=mm5qTcZ6srO', img:'images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
+  { id:2, name:'红桃粿口哨系列·潮州', taobao:'https://e.tb.cn/h.8iyqOUltCpPrBQb?tk=nUukTcZSYTJ', img:'images/products/creative/hongtaoguo.jpg' },
+  { id:3, name:'英歌福蛇·时迁', taobao:'https://e.tb.cn/h.8jYEWj03ytIrZzN?tk=wyi1TcZR9HL', img:'images/zodiac/snake.jpg' },
+  { id:4, name:'月老好姻缘·招桃花', taobao:'https://e.tb.cn/h.8iys426RblGshG1?tk=TughTcZizka', img:'images/products/premium/fulushou.jpg' },
+  { id:5, name:'金榜题名·文昌帝君', taobao:'https://e.tb.cn/h.8iyHpBuSiJMPU6q?tk=uIpyTcZjm0L', img:'images/products/premium/premium1.png' },
 ]
 
 const scoresDisplay = computed(() => {
@@ -254,16 +260,26 @@ const NAME_TO_EN = { '鼠':'rat','牛':'ox','虎':'tiger','兔':'rabbit','龙':'
 function norm(v){return (v+1)/2}
 function openTaobao(link) { window.open(link || 'https://shop.m.taobao.com', '_blank') }
 
-function downloadPoster(){
-  const el=posterRef.value
+async function downloadPoster(){
+  const el = posterRef.value
   if(!el) return
-  const clone=el.cloneNode(true)
-  clone.querySelectorAll('img').forEach(img=>{
-    const s=img.getAttribute('src')
-    if(s&&s.startsWith('/')) img.setAttribute('src',window.location.origin+s)
-  })
-  const w=window.open('','_blank','width=420,height=900')
-  if(w){w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>我的生肖守护神</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet"><style>body{margin:0;display:flex;justify-content:center;background:#e5e2dc;padding:1rem}@media print{body{background:#fff;padding:0}}</style></head><body>'+clone.outerHTML+'</body></html>');w.document.close()}
+  try {
+    // High-res export (2x scale)
+    const canvas = await html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' })
+    const link = document.createElement('a')
+    link.download = '我的生肖守护神.png'
+    link.href = canvas.toDataURL('image/png')
+    link.click()
+  } catch(e) {
+    // Fallback: open in new tab for manual save
+    const clone = el.cloneNode(true)
+    clone.querySelectorAll('img').forEach(img=>{
+      const s=img.getAttribute('src')
+      if(s&&s.startsWith('/')) img.setAttribute('src',window.location.origin+s)
+    })
+    const w=window.open('','_blank','width=520,height=960')
+    if(w){w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>我的生肖守护神</title><style>body{margin:0;display:flex;justify-content:center;background:#e5e2dc;padding:1rem}</style></head><body>'+clone.outerHTML+'</body></html>');w.document.close()}
+  }
 }
 
 onMounted(()=>{

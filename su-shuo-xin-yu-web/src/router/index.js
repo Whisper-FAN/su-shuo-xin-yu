@@ -12,7 +12,6 @@ const routes = [
   // Admin (lean: dashboard + login only)
   { path: '/admin/login', name: 'AdminLogin', component: () => import('@/views/admin/Login.vue') },
   { path: '/admin', name: 'AdminDashboard', component: () => import('@/views/admin/Dashboard.vue') },
-  { path: '/admin/counter', name: 'AdminCounter', component: () => import('@/views/admin/Counter.vue') },
   // Redirect old/deleted pages to home
   { path: '/articles', redirect: '/stories' },
   { path: '/article/:id', redirect: '/stories' },
