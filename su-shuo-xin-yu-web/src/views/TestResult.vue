@@ -78,20 +78,16 @@
 
       <!-- ===== 你的守护神文创 ===== -->
       <div style="background:#fff;border-radius:1rem;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.03)">
-        <details open>
-          <summary style="cursor:pointer;font-family:'Noto Serif SC',serif;font-size:1rem;color:#1c1c18;font-weight:600">你的守护神文创</summary>
-          <div style="margin-top:0.75rem;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
-            <div v-for="p in relatedProducts" :key="p.id" @click="openTaobao(p.taobao)" style="cursor:pointer;background:rgba(140,74,47,0.03);border-radius:0.75rem;overflow:hidden;transition:all 0.2s">
-              <div style="aspect-ratio:1;overflow:hidden;background:#f0eee8">
-                <img :src="p.img" :alt="p.name" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
-              </div>
-              <div style="padding:0.5rem;text-align:center">
-                <div style="font-size:0.75rem;color:#1c1c18;margin-bottom:0.3rem;line-height:1.3">{{ p.name }}</div>
-                <div style="font-size:0.65rem;color:#8c4a2f;font-weight:600">去淘宝购买 →</div>
-              </div>
-            </div>
+        <p style="font-family:'Noto Serif SC',serif;font-size:1rem;color:#1c1c18;font-weight:600;margin:0 0 0.75rem">你的守护神文创</p>
+        <div @click="openTaobao(relatedProducts[0].taobao)" style="cursor:pointer;background:rgba(140,74,47,0.03);border-radius:0.75rem;overflow:hidden;transition:all 0.2s">
+          <div style="aspect-ratio:16/9;overflow:hidden;background:#f0eee8">
+            <img :src="relatedProducts[0].img" :alt="relatedProducts[0].name" style="width:100%;height:100%;object-fit:cover" loading="lazy"/>
           </div>
-        </details>
+          <div style="padding:0.75rem;text-align:center">
+            <div style="font-size:0.9rem;color:#1c1c18;margin-bottom:0.3rem">{{ relatedProducts[0].name }}</div>
+            <div style="font-size:0.75rem;color:#8c4a2f;font-weight:600">去淘宝购买 →</div>
+          </div>
+        </div>
       </div>
 
       <!-- ===== Actions ===== -->
@@ -99,14 +95,6 @@
         <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-bottom:2rem">
           <button @click="showPoster=true" style="background:#8c4a2f;color:#fff;padding:0.65rem 2rem;border-radius:999px;font-weight:600;font-size:1rem;border:none;cursor:pointer;box-shadow:0 6px 16px rgba(140,74,47,0.2)">📋 生成分享长图</button>
           <button @click="$router.push('/test')" style="background:transparent;color:#53433d;padding:0.65rem 2rem;border-radius:999px;border:1px solid #86736c;font-weight:600;font-size:1rem;cursor:pointer">🔄 重新测评</button>
-        </div>
-
-        <div style="background:rgba(140,74,47,0.03);border-radius:1rem;padding:1.25rem;border:1px solid rgba(140,74,47,0.06);max-width:18rem;margin:0 auto 1rem">
-          <p style="font-size:0.85rem;color:#53433d;margin-bottom:0.75rem">加入生肖守护者社群 · 领9折定制券</p>
-          <div style="width:5rem;height:5rem;margin:0 auto 0.5rem;border-radius:0.75rem;overflow:hidden;border:1px solid rgba(0,0,0,0.05)">
-            <img :src="'/images/team/qrcode.jpg'" alt="公众号二维码" style="width:100%;height:100%;object-fit:cover" @error="e=>e.target.remove()"/>
-          </div>
-          <p style="font-size:0.7rem;color:rgba(83,67,61,0.5)">扫码入群 · 每周福利 · 传承人直播</p>
         </div>
 
         <router-link :to="'/zodiac/'+result.zodiacId" style="font-size:0.85rem;color:#8c4a2f;text-decoration:none">查看{{ result.zodiacName }}泥塑详情 →</router-link>
