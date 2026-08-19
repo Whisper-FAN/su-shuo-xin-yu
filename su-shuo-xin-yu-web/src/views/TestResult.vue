@@ -213,11 +213,11 @@ const attrs = computed(() => result.value ? [
 ] : [])
 
 const relatedProducts = [
-  { id:1, name:'十二生肖摆件·揽福生肖', taobao:'https://e.tb.cn/h.8QkWqn2EMn6nmdU?tk=mm5qTcZ6srO', img:'images/products/creative/903f1b76a74efcdf752ef25dc4f95b8.jpg' },
-  { id:2, name:'红桃粿口哨系列·潮州', taobao:'https://e.tb.cn/h.8iyqOUltCpPrBQb?tk=nUukTcZSYTJ', img:'images/products/creative/hongtaoguo.jpg' },
-  { id:3, name:'英歌福蛇·时迁', taobao:'https://e.tb.cn/h.8jYEWj03ytIrZzN?tk=wyi1TcZR9HL', img:'images/zodiac/snake.jpg' },
-  { id:4, name:'月老好姻缘·招桃花', taobao:'https://e.tb.cn/h.8iys426RblGshG1?tk=TughTcZizka', img:'images/products/premium/fulushou.jpg' },
-  { id:5, name:'金榜题名·文昌帝君', taobao:'https://e.tb.cn/h.8iyHpBuSiJMPU6q?tk=uIpyTcZjm0L', img:'images/products/premium/premium1.png' },
+  { id:1, name:'十二生肖摆件·揽福生肖', taobao:'https://e.tb.cn/h.8QkWqn2EMn6nmdU?tk=mm5qTcZ6srO', img:'images/taobao/taobao-1.jpg' },
+  { id:2, name:'红桃粿口哨系列·潮州', taobao:'https://e.tb.cn/h.8iyqOUltCpPrBQb?tk=nUukTcZSYTJ', img:'images/taobao/taobao-2.jpg' },
+  { id:3, name:'英歌福蛇·时迁', taobao:'https://e.tb.cn/h.8jYEWj03ytIrZzN?tk=wyi1TcZR9HL', img:'images/taobao/taobao-3.jpg' },
+  { id:4, name:'月老好姻缘·招桃花', taobao:'https://e.tb.cn/h.8iys426RblGshG1?tk=TughTcZizka', img:'images/taobao/taobao-4.jpg' },
+  { id:5, name:'金榜题名·文昌帝君', taobao:'https://e.tb.cn/h.8iyHpBuSiJMPU6q?tk=uIpyTcZjm0L', img:'images/taobao/taobao-5.jpg' },
 ]
 
 const scoresDisplay = computed(() => {
