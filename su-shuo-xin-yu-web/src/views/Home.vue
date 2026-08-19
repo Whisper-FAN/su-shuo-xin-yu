@@ -128,11 +128,8 @@
   <section style="padding:3rem 1.5rem;background:#f6f3ed;border-top:1px solid rgba(217,194,186,0.3)">
     <div style="max-width:69rem;margin:0 auto;text-align:center">
       <h3 style="font-size:0.75rem;color:rgba(83,67,61,0.5);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:2rem">Partners & Sponsors</h3>
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2rem;opacity:0.7">
-        <div style="background:#fff;padding:0.3rem 0.6rem;border-radius:0.25rem;border:1px solid rgba(0,0,0,0.04)">
-          <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:3.5rem;width:auto;object-fit:contain" />
-        </div>
-        <img :src="'images/team/contest-full.png'" alt="国创赛" style="height:4rem;width:auto;object-fit:contain" />
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2rem;opacity:0.8">
+        <img :src="'images/team/school-name.png'" alt="广东金融学院" style="height:3rem;width:auto;object-fit:contain" />
       </div>
     </div>
   </section>
