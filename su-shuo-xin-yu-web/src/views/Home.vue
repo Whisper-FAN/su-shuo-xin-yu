@@ -7,7 +7,7 @@
       <source :src="'介绍页视频.mp4'" type="video/mp4">
     </video>
     <!-- 跳过按钮 -->
-    <button @click="closeIntro" style="position:absolute;top:1.5rem;right:1.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:0.85rem;backdrop-filter:blur(4px)">跳过 ▸</button>
+    <button @click="closeIntro" style="position:absolute;top:1.5rem;right:1.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:0.85rem;backdrop-filter:blur(4px)">探索 →</button>
     <!-- 底部提示 -->
     <div style="position:absolute;bottom:2rem;left:0;right:0;text-align:center;color:rgba(255,255,255,0.6);font-size:0.85rem;letter-spacing:0.1em">塑说心语 · 八百年泥韵</div>
     <!-- 右上角静音开关 -->
