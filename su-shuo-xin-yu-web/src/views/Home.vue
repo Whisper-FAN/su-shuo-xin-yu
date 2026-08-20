@@ -2,14 +2,20 @@
 <div style="overflow-x:hidden">
   <!-- ======== 开屏引导视频（进入自动全屏播放） ======== -->
   <div v-if="showIntro" style="position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center">
-    <video ref="introVideoRef" autoplay playsinline muted @ended="closeIntro" @click="toggleIntroPlay"
-      style="width:100%;height:100%;object-fit:contain">
+    <!-- 视频未就绪时显示品牌占位，避免黑屏 -->
+    <div v-if="!introReady" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e)">
+      <div style="font-family:'Noto Serif SC',serif;font-size:2rem;color:#fff;margin-bottom:1rem;letter-spacing:0.2em">塑说心语</div>
+      <div style="width:2rem;height:2rem;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite"></div>
+      <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem">视频加载中...</div>
+    </div>
+    <video ref="introVideoRef" autoplay playsinline muted @ended="closeIntro" @click="toggleIntroPlay" @canplay="introReady=true"
+      style="width:100%;height:100%;object-fit:contain;position:relative">
       <source :src="'介绍页视频.mp4'" type="video/mp4">
     </video>
     <!-- 跳过按钮 -->
-    <button @click="closeIntro" style="position:absolute;top:1.5rem;right:1.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:0.85rem;backdrop-filter:blur(4px)">探索 →</button>
-    <!-- 右上角静音开关 -->
-    <button @click.stop="toggleMute" style="position:absolute;top:1.5rem;left:1.5rem;width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:1rem">{{ introMuted ? '🔇' : '🔊' }}</button>
+    <button @click="closeIntro" style="position:absolute;top:1.5rem;right:1.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:0.85rem;backdrop-filter:blur(4px);z-index:10">探索 →</button>
+    <!-- 静音开关 -->
+    <button @click.stop="toggleMute" style="position:absolute;top:1.5rem;left:1.5rem;width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:1rem;z-index:10">{{ introMuted ? '🔇' : '🔊' }}</button>
   </div>
 
   <!-- ======== HERO ======== -->
@@ -158,7 +164,13 @@ import { recordBehavior } from '@/utils/scroll-reveal'
 // 开屏引导视频状态
 const showIntro = ref(true)
 const introMuted = ref(true) // 手机浏览器限制，默认静音才能自动播放
+const introReady = ref(false) // 视频是否加载完成
 const introVideoRef = ref(null)
+
+// 3秒超时：视频没加载出来就自动进入主页，避免黑屏卡死
+setTimeout(() => {
+  if (showIntro.value && !introReady.value) closeIntro()
+}, 3000)
 
 function closeIntro() {
   showIntro.value = false
@@ -221,3 +233,7 @@ function scrollToVideo() {
 
 onMounted(() => { recordBehavior('page_view', null, 'home') })
 </script>
+
+<style scoped>
+@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+</style>
