@@ -32,7 +32,8 @@
     </div>
   </section>
 
-  <!-- ======== VIDEO INTRO ======== -->
+  <!-- ======== VIDEO INTRO（已注释，改由开屏视频替代） ======== -->
+  <!--
   <section id="heritage-video" style="padding:4rem 1.5rem;background:#f6f3ed">
     <div style="max-width:56rem;margin:0 auto;text-align:center">
       <span style="font-size:0.75rem;color:#8c4a2f;text-transform:uppercase;letter-spacing:0.2em">Video</span>
@@ -46,6 +47,7 @@
       <p style="font-size:0.8rem;color:rgba(83,67,61,0.5);margin-top:1rem">"土叽咕，土叽咕，阿公捏泥做戏出" — 潮汕童谣</p>
     </div>
   </section>
+  -->
 
   <!-- ======== HERITAGE ======== -->
   <section style="padding:clamp(4rem,10vw,7.5rem) 1.5rem;background:#fcf9f3">
@@ -214,7 +216,9 @@ const craftSteps = [
 
 function openTaobao(link) { window.open(link, '_blank') }
 function scrollToVideo() {
-  document.getElementById('heritage-video')?.scrollIntoView({ behavior: 'smooth' })
+  // 视频区已注释，改滚到文化起源区
+  const sections = document.querySelectorAll('section')
+  sections[1]?.scrollIntoView({ behavior: 'smooth' })
 }
 
 onMounted(() => { recordBehavior('page_view', null, 'home') })
