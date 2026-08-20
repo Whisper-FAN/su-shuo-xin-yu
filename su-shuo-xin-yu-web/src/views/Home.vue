@@ -1,5 +1,19 @@
 <template>
 <div style="overflow-x:hidden">
+  <!-- ======== 开屏引导视频（进入自动全屏播放） ======== -->
+  <div v-if="showIntro" style="position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center">
+    <video ref="introVideoRef" autoplay playsinline muted @ended="closeIntro" @click="toggleIntroPlay"
+      style="width:100%;height:100%;object-fit:contain">
+      <source :src="'介绍页视频.mp4'" type="video/mp4">
+    </video>
+    <!-- 跳过按钮 -->
+    <button @click="closeIntro" style="position:absolute;top:1.5rem;right:1.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:0.85rem;backdrop-filter:blur(4px)">跳过 ▸</button>
+    <!-- 底部提示 -->
+    <div style="position:absolute;bottom:2rem;left:0;right:0;text-align:center;color:rgba(255,255,255,0.6);font-size:0.85rem;letter-spacing:0.1em">塑说心语 · 八百年泥韵</div>
+    <!-- 右上角静音开关 -->
+    <button @click.stop="toggleMute" style="position:absolute;top:1.5rem;left:1.5rem;width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:1rem">{{ introMuted ? '🔇' : '🔊' }}</button>
+  </div>
+
   <!-- ======== HERO ======== -->
   <section style="position:relative;height:100vh;overflow:hidden">
     <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e)">
@@ -138,8 +152,34 @@
 
 <script setup>
 
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { recordBehavior } from '@/utils/scroll-reveal'
+
+// 开屏引导视频状态
+const showIntro = ref(true)
+const introMuted = ref(true) // 手机浏览器限制，默认静音才能自动播放
+const introVideoRef = ref(null)
+
+function closeIntro() {
+  showIntro.value = false
+  // 停止播放
+  const v = introVideoRef.value
+  if (v) { v.pause(); v.currentTime = 0 }
+}
+
+function toggleIntroPlay() {
+  const v = introVideoRef.value
+  if (!v) return
+  if (v.paused) v.play()
+  else v.pause()
+}
+
+function toggleMute() {
+  const v = introVideoRef.value
+  if (!v) return
+  introMuted.value = !introMuted.value
+  v.muted = introMuted.value
+}
 
 const allZodiacs = [
   { id:1, name:'鼠', alias:'子鼠', element:'水', color:'棕色、金色', img:'images/zodiac/rat.jpg' },
