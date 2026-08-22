@@ -8,7 +8,7 @@
           第 <span style="font-size:2rem;font-weight:700">{{ currentIndex + 1 }}</span> / 24 步
         </p>
         <h1 style="font-family:'Noto Serif SC',serif;font-size:2rem;color:#1c1c18;letter-spacing:0.2em">探 寻 本 我</h1>
-        <p style="font-size:0.8rem;color:#86736c;margin-top:0.5rem">已有 <span id="busuanzi_value_site_pv" style="font-weight:700;color:#8c4a2f">0</span> 人次访问</p>
+        <p style="font-size:0.8rem;color:#86736c;margin-top:0.5rem">已有 <span style="font-weight:700;color:#8c4a2f">{{ visitCount }}</span> 人次访问</p>
         <div style="max-width:320px;margin:1rem auto 0;height:2px;background:rgba(217,194,186,0.3);border-radius:1px;position:relative">
           <div style="position:absolute;top:0;left:0;height:100%;background:#8c4a2f;border-radius:1px;transition:width 0.6s" :style="{width:progressPercent+'%'}"></div>
         </div>
@@ -84,6 +84,24 @@ const currentIndex = ref(0)
 const selectedAnswer = ref(null)
 const answers = ref({})
 const submitted = ref(false)
+
+// 访问计数：localStorage 真实计数（每设备首次访问 +1）
+const visitCount = ref(0)
+;(function() {
+  try {
+    // 起始基数（后台可调整），加上本机访问
+    const base = parseInt(localStorage.getItem('visit_base') || '0', 10)
+    // 本机是否已计入
+    const counted = localStorage.getItem('visit_counted') === '1'
+    const visitors = parseInt(localStorage.getItem('visit_total') || '0', 10)
+    // 首次访问本机才 +1
+    if (!counted) {
+      localStorage.setItem('visit_counted', '1')
+      localStorage.setItem('visit_total', String(visitors + 1))
+    }
+    visitCount.value = base + parseInt(localStorage.getItem('visit_total') || '0', 10)
+  } catch(e) {}
+})()
 
 const currentQuestion = computed(() => questions.value[currentIndex.value])
 const currentOptions = computed(() => currentQuestion.value?.options || [])
