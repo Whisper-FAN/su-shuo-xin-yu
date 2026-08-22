@@ -8,7 +8,7 @@
       <div style="width:2rem;height:2rem;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite"></div>
       <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem">视频加载中...</div>
     </div>
-    <video ref="introVideoRef" autoplay playsinline muted @ended="closeIntro" @click="toggleIntroPlay" @canplay="introReady=true"
+    <video ref="introVideoRef" autoplay playsinline muted preload="auto" @ended="closeIntro" @click="toggleIntroPlay" @canplay="introReady=true" @loadeddata="introReady=true"
       style="width:100%;height:100%;object-fit:contain;position:relative">
       <source :src="'介绍页视频.mp4'" type="video/mp4">
     </video>
@@ -167,16 +167,17 @@ const introMuted = ref(true) // 手机浏览器限制，默认静音才能自动
 const introReady = ref(false) // 视频是否加载完成
 const introVideoRef = ref(null)
 
-// 3秒超时：视频没加载出来就自动进入主页，避免黑屏卡死
+// 3秒超时：视频没加载出来就进入主页，但视频继续后台缓冲
 setTimeout(() => {
-  if (showIntro.value && !introReady.value) closeIntro()
+  if (showIntro.value && !introReady.value) {
+    showIntro.value = false
+    // 不 pause，让视频继续 preload 缓冲
+  }
 }, 3000)
 
 function closeIntro() {
   showIntro.value = false
-  // 停止播放
-  const v = introVideoRef.value
-  if (v) { v.pause(); v.currentTime = 0 }
+  // 不暂停视频，保留缓冲进度
 }
 
 function toggleIntroPlay() {
