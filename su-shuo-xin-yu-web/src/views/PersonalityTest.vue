@@ -87,19 +87,19 @@ const selectedAnswer = ref(null)
 const answers = ref({})
 const submitted = ref(false)
 
-// 全站总访问量：阿里云计数服务（img 触发计数，fetch 读取数字）
+// 全站总访问量：Cloudflare Tunnel HTTPS 转发到服务器
 const visitCount = ref(0)
-const COUNTER_API = 'http://47.113.222.34:8000'
+const COUNTER_API = 'https://pst-implications-ordinance-advise.trycloudflare.com'
 ;(function() {
-  // 读取当前计数（fetch 在 HTTPS 页面调 HTTP 可能被拦，但这里是数据读取非资源加载）
+  // 读取当前计数（HTTPS 隧道，无混合内容拦截）
   try {
-    fetch(COUNTER_API + '/count')
+    fetch(COUNTER_API + '/counter/count')
       .then(r => r.json())
       .then(d => { if (d && d.count) visitCount.value = d.count })
       .catch(() => {})
     // 3秒后重试一次（网络慢时）
     setTimeout(() => {
-      fetch(COUNTER_API + '/count')
+      fetch(COUNTER_API + '/counter/count')
         .then(r => r.json())
         .then(d => { if (d && d.count) visitCount.value = d.count })
         .catch(() => {})

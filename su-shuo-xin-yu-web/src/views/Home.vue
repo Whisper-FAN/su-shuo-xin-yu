@@ -161,8 +161,8 @@
 import { ref, onMounted } from 'vue'
 import { recordBehavior } from '@/utils/scroll-reveal'
 
-// 视频地址：服务器托管
-const VIDEO_URL = 'http://47.113.222.34:8000/intro.mp4'
+// 视频地址：Cloudflare Tunnel HTTPS 转发到服务器
+const VIDEO_URL = 'https://pst-implications-ordinance-advise.trycloudflare.com/intro.mp4'
 
 // 开屏引导视频状态
 const showIntro = ref(true)
