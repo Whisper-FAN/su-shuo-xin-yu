@@ -85,22 +85,14 @@ const selectedAnswer = ref(null)
 const answers = ref({})
 const submitted = ref(false)
 
-// 访问计数：localStorage 真实计数（每设备首次访问 +1）
+// 全站总访问量：调用阿里云计数器服务
 const visitCount = ref(0)
+const COUNTER_API = 'http://47.113.222.34:8000'
 ;(function() {
-  try {
-    // 起始基数（后台可调整），加上本机访问
-    const base = parseInt(localStorage.getItem('visit_base') || '0', 10)
-    // 本机是否已计入
-    const counted = localStorage.getItem('visit_counted') === '1'
-    const visitors = parseInt(localStorage.getItem('visit_total') || '0', 10)
-    // 首次访问本机才 +1
-    if (!counted) {
-      localStorage.setItem('visit_counted', '1')
-      localStorage.setItem('visit_total', String(visitors + 1))
-    }
-    visitCount.value = base + parseInt(localStorage.getItem('visit_total') || '0', 10)
-  } catch(e) {}
+  fetch(COUNTER_API)
+    .then(r => r.json())
+    .then(d => { visitCount.value = d.count })
+    .catch(() => {})
 })()
 
 const currentQuestion = computed(() => questions.value[currentIndex.value])
