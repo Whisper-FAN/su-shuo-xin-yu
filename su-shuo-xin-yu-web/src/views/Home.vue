@@ -161,9 +161,8 @@
 import { ref, onMounted } from 'vue'
 import { recordBehavior } from '@/utils/scroll-reveal'
 
-// 视频地址：用 jsDelivr CDN（HTTPS、免费、全球加速）
-// 视频已提交到 GitHub 仓库 public/intro.mp4
-const VIDEO_URL = 'https://cdn.jsdelivr.net/gh/Whisper-FAN/su-shuo-xin-yu@main/su-shuo-xin-yu-web/public/intro.mp4'
+// 视频地址：服务器托管
+const VIDEO_URL = 'http://47.113.222.34:8000/intro.mp4'
 
 // 开屏引导视频状态
 const showIntro = ref(true)
