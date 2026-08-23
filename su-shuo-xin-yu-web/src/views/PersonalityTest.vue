@@ -9,6 +9,8 @@
         </p>
         <h1 style="font-family:'Noto Serif SC',serif;font-size:2rem;color:#1c1c18;letter-spacing:0.2em">探 寻 本 我</h1>
         <p style="font-size:0.8rem;color:#86736c;margin-top:0.5rem">已有 <span style="font-weight:700;color:#8c4a2f">{{ visitCount }}</span> 人次访问</p>
+        <!-- 隐藏 img 触发计数，HTTP 图片不被 HTTPS 拦截 -->
+        <img :src="COUNTER_API + '/pixel?t=' + Date.now()" style="width:1px;height:1px;opacity:0;position:absolute" alt="" aria-hidden="true" />
         <div style="max-width:320px;margin:1rem auto 0;height:2px;background:rgba(217,194,186,0.3);border-radius:1px;position:relative">
           <div style="position:absolute;top:0;left:0;height:100%;background:#8c4a2f;border-radius:1px;transition:width 0.6s" :style="{width:progressPercent+'%'}"></div>
         </div>
@@ -85,14 +87,24 @@ const selectedAnswer = ref(null)
 const answers = ref({})
 const submitted = ref(false)
 
-// 全站总访问量：调用阿里云计数器服务
+// 全站总访问量：阿里云计数服务（img 触发计数，fetch 读取数字）
 const visitCount = ref(0)
 const COUNTER_API = 'http://47.113.222.34:8000'
 ;(function() {
-  fetch(COUNTER_API)
-    .then(r => r.json())
-    .then(d => { visitCount.value = d.count })
-    .catch(() => {})
+  // 读取当前计数（fetch 在 HTTPS 页面调 HTTP 可能被拦，但这里是数据读取非资源加载）
+  try {
+    fetch(COUNTER_API + '/count')
+      .then(r => r.json())
+      .then(d => { if (d && d.count) visitCount.value = d.count })
+      .catch(() => {})
+    // 3秒后重试一次（网络慢时）
+    setTimeout(() => {
+      fetch(COUNTER_API + '/count')
+        .then(r => r.json())
+        .then(d => { if (d && d.count) visitCount.value = d.count })
+        .catch(() => {})
+    }, 3000)
+  } catch(e) {}
 })()
 
 const currentQuestion = computed(() => questions.value[currentIndex.value])

@@ -10,7 +10,7 @@
     </div>
     <video ref="introVideoRef" autoplay playsinline muted preload="auto" @ended="closeIntro" @click="toggleIntroPlay" @canplay="introReady=true" @loadeddata="introReady=true"
       style="width:100%;height:100%;object-fit:contain;position:relative">
-      <source :src="'介绍页视频.mp4'" type="video/mp4">
+      <source :src="'intro.mp4'" type="video/mp4">
     </video>
     <!-- 跳过按钮 -->
     <button @click="closeIntro" style="position:absolute;top:1.5rem;right:1.5rem;padding:0.5rem 1.25rem;border-radius:999px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);cursor:pointer;font-size:0.85rem;backdrop-filter:blur(4px);z-index:10">探索 →</button>
@@ -44,7 +44,7 @@
       <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(1.5rem,3vw,2rem);color:#1c1c18;margin:1rem 0 1.5rem;font-weight:700">八百年泥韵 · 一分钟初识</h2>
       <div style="aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:#000;box-shadow:0 10px 40px rgba(0,0,0,0.15);max-width:50rem;margin:0 auto">
         <video controls preload="none" style="width:100%;height:100%;object-fit:contain;background:linear-gradient(160deg,#2d1a0e,#3a1c10,#5a3020)">
-          <source :src="'介绍页视频.mp4'" type="video/mp4">
+          <source :src="'intro.mp4'" type="video/mp4">
           您的浏览器不支持视频播放
         </video>
       </div>
