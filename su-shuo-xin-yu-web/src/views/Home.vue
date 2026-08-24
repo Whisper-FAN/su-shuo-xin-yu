@@ -3,10 +3,12 @@
   <!-- ======== 开屏引导视频（进入自动全屏播放） ======== -->
   <div v-if="showIntro" style="position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center">
     <!-- 视频未就绪时显示品牌占位，避免黑屏 -->
-    <div v-if="!introReady" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e)">
+    <div v-if="!introReady" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#3a1c10,#5a3020,#2d1a0e);cursor:pointer" @click="closeIntro">
       <div style="font-family:'Noto Serif SC',serif;font-size:2rem;color:#fff;margin-bottom:1rem;letter-spacing:0.2em">塑说心语</div>
-      <div style="width:2rem;height:2rem;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite"></div>
-      <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem">视频加载中...</div>
+      <div v-if="!introTimedOut" style="width:2rem;height:2rem;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite"></div>
+      <div style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:1rem">
+        {{ introTimedOut ? '加载缓慢，点击进入' : '视频加载中...' }}
+      </div>
     </div>
     <video ref="introVideoRef" autoplay playsinline muted preload="auto" @ended="closeIntro" @click="toggleIntroPlay" @canplay="introReady=true" @loadeddata="introReady=true"
       style="width:100%;height:100%;object-fit:contain;position:relative">
@@ -170,11 +172,11 @@ const introMuted = ref(true) // 手机浏览器限制，默认静音才能自动
 const introReady = ref(false) // 视频是否加载完成
 const introVideoRef = ref(null)
 
-// 3秒超时：视频没加载出来就进入主页，但视频继续后台缓冲
+// 3秒超时：视频没加载出来，改为显示"加载超时可点击进入"提示，不再强制跳主页
+const introTimedOut = ref(false)
 setTimeout(() => {
   if (showIntro.value && !introReady.value) {
-    showIntro.value = false
-    // 不 pause，让视频继续 preload 缓冲
+    introTimedOut.value = true
   }
 }, 3000)
 
